@@ -185,14 +185,19 @@ function buildEmissions(
     if (numero !== null) seenNumero.add(numero);
 
     valid.push({
-      id, numero, titre,
-      date_diffusion: dDif,
-      description: trim(r.description_longue),
-      type_libelle: type,
-      audio_url: audio,
-      visuel_path: trim(r.image),
-      playlist_pdf_path: trim(r.source_pdf),
-    });
+  id, numero, titre,
+  date_diffusion: dDif,
+  description: trim(r.description_longue),
+  description_courte: trim(r.description_courte),
+  description_longue: trim(r.description_longue),
+  yem_observation: trim(r.yem_observation),
+  yem_type: trim(r.yem_type),
+  duree: trim(r.duree),
+  type_libelle: type,
+  audio_url: audio,
+  visuel_path: trim(r.image),
+  playlist_pdf_path: trim(r.source_pdf),
+});
   }
   return { valid, errors, warnings };
 }
