@@ -158,7 +158,18 @@ export default async function ImPage() {
 
       <div className="mt-10">
         {featured ? (
-          <LecteurIM emission={featured} />
+          <LecteurIM
+  emission={{
+    ...featured,
+    stats: statsByEmission.get(featured.id)
+      ? {
+          titres: statsByEmission.get(featured.id)?.titres ?? 0,
+          groupes: statsByEmission.get(featured.id)?.artistes.size ?? 0,
+          pays: statsByEmission.get(featured.id)?.pays.size ?? 0,
+        }
+      : undefined,
+  }}
+/>
         ) : (
           <p className="text-muted">Aucune émission disponible.</p>
         )}
