@@ -6,10 +6,10 @@ type EmissionMinimal = {
   duree: string | null;
   playlist_pdf_path: string | null;
   stats?: {
-  titres: number;
-  groupes: number;
-  pays: number;
-};
+    titres: number;
+    groupes: number;
+    pays: number;
+  };
 };
 
 type Props = {
@@ -49,7 +49,7 @@ export function LecteurIM({ emission }: Props) {
       aria-label="Lecteur Interférence Métalicielle"
       className="border border-border bg-black p-6"
     >
-      <div className="grid gap-8 desktop:grid-cols-[320px_1fr]">
+      <div className="grid gap-8 desktop:grid-cols-[320px_1fr_240px]">
         <div className="aspect-square overflow-hidden border border-border bg-bg">
           {visuel ? (
             <img
@@ -73,50 +73,61 @@ export function LecteurIM({ emission }: Props) {
             </p>
 
             {emission.description_courte ? (
-            <p className="mt-6 max-w-2xl leading-7 text-muted">
-           {emission.description_courte}
-            </p>
+              <p className="mt-6 max-w-2xl leading-7 text-muted">
+                {emission.description_courte}
+              </p>
             ) : null}
-
           </div>
 
-          <div className="grid gap-4 border-t border-border pt-6 tablet:grid-cols-5">
+          <div className="border-t border-border pt-6">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted">
+              État
+            </p>
+            <p className="mt-2 text-sm">Transmission en attente</p>
+          </div>
+        </div>
+
+        <aside className="border-l border-border pl-6">
+          <p className="font-mono text-xs uppercase tracking-widest text-transmission">
+            Métadonnées
+          </p>
+
+          <div className="mt-6 space-y-5">
             <div>
               <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                État
+                Durée
               </p>
-              <p className="mt-2 text-sm">Transmission en attente</p>
+              <p className="mt-2 font-mono text-sm">{emission.duree ?? '—'}</p>
             </div>
 
             <div>
-  <p className="font-mono text-xs uppercase tracking-widest text-muted">
-    Durée
-  </p>
-  <p className="mt-2 font-mono text-sm">{emission.duree ?? '—'}</p>
-</div>
-
-<div>
-  <p className="font-mono text-xs uppercase tracking-widest text-muted">
-    Titres
-  </p>
-  <p className="mt-2 font-mono text-sm">{emission.stats?.titres ?? '—'}</p>
-</div>
-
-<div>
-  <p className="font-mono text-xs uppercase tracking-widest text-muted">
-    Groupes
-  </p>
-  <p className="mt-2 font-mono text-sm">{emission.stats?.groupes ?? '—'}</p>
-</div>
-
-<div>
-  <p className="font-mono text-xs uppercase tracking-widest text-muted">
-    Pays
-  </p>
-  <p className="mt-2 font-mono text-sm">{emission.stats?.pays ?? '—'}</p>
-</div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Titres
+              </p>
+              <p className="mt-2 font-mono text-sm">
+                {emission.stats?.titres ?? '—'}
+              </p>
+            </div>
 
             <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Groupes
+              </p>
+              <p className="mt-2 font-mono text-sm">
+                {emission.stats?.groupes ?? '—'}
+              </p>
+            </div>
+
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Pays
+              </p>
+              <p className="mt-2 font-mono text-sm">
+                {emission.stats?.pays ?? '—'}
+              </p>
+            </div>
+
+            <div className="border-t border-border pt-5">
               <p className="font-mono text-xs uppercase tracking-widest text-muted">
                 Playlist
               </p>
@@ -134,7 +145,7 @@ export function LecteurIM({ emission }: Props) {
               )}
             </div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
   );
