@@ -50,6 +50,13 @@ function imagePathForEmission(id: string): string | null {
 
   return null;
 }
+function pluralize(count: number, singular: string, plural: string): string {
+  return count > 1 ? plural : singular;
+}
+
+function formatStats(titres: number, groupes: number): string {
+  return `${titres} ${pluralize(titres, 'titre', 'titres')} · ${groupes} ${pluralize(groupes, 'groupe', 'groupes')}`;
+}
 
 export default async function ImPage() {
   const { data, error } = await supabase
@@ -72,6 +79,45 @@ export default async function ImPage() {
 
   const emissions = (data ?? []) as Emission[];
   const [featured, ...others] = emissions;
+
+  const emissionIds = emissions.map((emission) => emission.id);
+
+const { data: morceauxPage1 } = await supabase
+  .from('morceaux')
+  .select('emission_id, artiste_id')
+  .in('emission_id', emissionIds)
+  .range(0, 999);
+
+const { data: morceauxPage2 } = await supabase
+  .from('morceaux')
+  .select('emission_id, artiste_id')
+  .in('emission_id', emissionIds)
+  .range(1000, 1999);
+
+const morceauxData = [
+  ...(morceauxPage1 ?? []),
+  ...(morceauxPage2 ?? []),
+];
+
+const statsByEmission = new Map<
+  string,
+  { titres: number; artistes: Set<number> }
+>();
+
+for (const morceau of morceauxData ?? []) {
+  const current = statsByEmission.get(morceau.emission_id) ?? {
+    titres: 0,
+    artistes: new Set<number>(),
+  };
+
+  current.titres += 1;
+
+  if (morceau.artiste_id !== null) {
+    current.artistes.add(morceau.artiste_id);
+  }
+
+  statsByEmission.set(morceau.emission_id, current);
+}
 
   return (
     <section className="mx-auto max-w-(--breakpoint-desktop) px-6 py-16">
@@ -148,6 +194,14 @@ export default async function ImPage() {
           <h3 className="mt-1 font-display text-xl">
             {emission.titre}
           </h3>
+          {statsByEmission.get(emission.id) ? (
+  <p className="mt-2 text-sm text-muted">
+    {formatStats(
+      statsByEmission.get(emission.id)?.titres ?? 0,
+      statsByEmission.get(emission.id)?.artistes.size ?? 0,
+    )}
+  </p>
+) : null}
         </div>
       </div>
 
