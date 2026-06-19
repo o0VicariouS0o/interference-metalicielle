@@ -54,8 +54,8 @@ function pluralize(count: number, singular: string, plural: string): string {
   return count > 1 ? plural : singular;
 }
 
-function formatStats(titres: number, groupes: number): string {
-  return `${titres} ${pluralize(titres, 'titre', 'titres')} · ${groupes} ${pluralize(groupes, 'groupe', 'groupes')}`;
+function formatStats(titres: number, groupes: number, pays: number): string {
+  return `${titres} ${pluralize(titres, 'titre', 'titres')} · ${groupes} ${pluralize(groupes, 'groupe', 'groupes')} · ${pays} ${pluralize(pays, 'pays', 'pays')}`;
 }
 
 export default async function ImPage() {
@@ -82,42 +82,67 @@ export default async function ImPage() {
 
   const emissionIds = emissions.map((emission) => emission.id);
 
-const { data: morceauxPage1 } = await supabase
-  .from('morceaux')
-  .select('emission_id, artiste_id')
-  .in('emission_id', emissionIds)
-  .range(0, 999);
+  const { data: morceauxPage1 } = await supabase
+    .from('morceaux')
+    .select('emission_id, artiste_id')
+    .in('emission_id', emissionIds)
+    .range(0, 999);
 
-const { data: morceauxPage2 } = await supabase
-  .from('morceaux')
-  .select('emission_id, artiste_id')
-  .in('emission_id', emissionIds)
-  .range(1000, 1999);
+  const { data: morceauxPage2 } = await supabase
+    .from('morceaux')
+    .select('emission_id, artiste_id')
+    .in('emission_id', emissionIds)
+    .range(1000, 1999);
 
-const morceauxData = [
-  ...(morceauxPage1 ?? []),
-  ...(morceauxPage2 ?? []),
-];
+  const morceauxData = [
+    ...(morceauxPage1 ?? []),
+    ...(morceauxPage2 ?? []),
+  ];
 
-const statsByEmission = new Map<
-  string,
-  { titres: number; artistes: Set<number> }
->();
+  const artisteIds = Array.from(
+    new Set(
+      morceauxData
+        .map((morceau) => morceau.artiste_id)
+        .filter((id): id is number => id !== null),
+    ),
+  );
 
-for (const morceau of morceauxData ?? []) {
-  const current = statsByEmission.get(morceau.emission_id) ?? {
-    titres: 0,
-    artistes: new Set<number>(),
-  };
+  const { data: artistesData } = await supabase
+    .from('artistes')
+    .select('id, pays_id')
+    .in('id', artisteIds);
 
-  current.titres += 1;
+  const paysByArtiste = new Map<number, number | null>();
 
-  if (morceau.artiste_id !== null) {
-    current.artistes.add(morceau.artiste_id);
+  for (const artiste of artistesData ?? []) {
+    paysByArtiste.set(artiste.id, artiste.pays_id);
   }
 
-  statsByEmission.set(morceau.emission_id, current);
-}
+  const statsByEmission = new Map<
+    string,
+    { titres: number; artistes: Set<number>; pays: Set<number> }
+  >();
+
+  for (const morceau of morceauxData) {
+    const current = statsByEmission.get(morceau.emission_id) ?? {
+      titres: 0,
+      artistes: new Set<number>(),
+      pays: new Set<number>(),
+    };
+
+    current.titres += 1;
+
+    if (morceau.artiste_id !== null) {
+      current.artistes.add(morceau.artiste_id);
+
+      const paysId = paysByArtiste.get(morceau.artiste_id);
+      if (paysId !== null && paysId !== undefined) {
+        current.pays.add(paysId);
+      }
+    }
+
+    statsByEmission.set(morceau.emission_id, current);
+  }
 
   return (
     <section className="mx-auto max-w-(--breakpoint-desktop) px-6 py-16">
@@ -197,9 +222,10 @@ for (const morceau of morceauxData ?? []) {
           {statsByEmission.get(emission.id) ? (
   <p className="mt-2 text-sm text-muted">
     {formatStats(
-      statsByEmission.get(emission.id)?.titres ?? 0,
-      statsByEmission.get(emission.id)?.artistes.size ?? 0,
-    )}
+  statsByEmission.get(emission.id)?.titres ?? 0,
+  statsByEmission.get(emission.id)?.artistes.size ?? 0,
+  statsByEmission.get(emission.id)?.pays.size ?? 0,
+)}
   </p>
 ) : null}
         </div>
