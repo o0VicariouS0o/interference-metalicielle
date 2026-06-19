@@ -2,7 +2,8 @@ type EmissionMinimal = {
   id: string;
   titre: string;
   date_diffusion: string;
-  description: string | null;
+  description_courte: string | null;
+  duree: string | null;
   playlist_pdf_path: string | null;
 };
 
@@ -66,11 +67,12 @@ export function LecteurIM({ emission }: Props) {
               {formatDateFr(emission.date_diffusion)}
             </p>
 
-            {emission.description ? (
-              <p className="mt-6 max-w-2xl leading-7 text-muted">
-                {emission.description}
-              </p>
+            {emission.description_courte ? (
+            <p className="mt-6 max-w-2xl leading-7 text-muted">
+           {emission.description_courte}
+            </p>
             ) : null}
+
           </div>
 
           <div className="grid gap-4 border-t border-border pt-6 tablet:grid-cols-3">
@@ -85,7 +87,9 @@ export function LecteurIM({ emission }: Props) {
               <p className="font-mono text-xs uppercase tracking-widest text-muted">
                 Durée
               </p>
-              <p className="mt-2 font-mono text-sm">—</p>
+              <p className="mt-2 font-mono text-sm">
+              {emission.duree ?? '—'}
+              </p>
             </div>
 
             <div>

@@ -7,6 +7,10 @@ type Emission = {
   date_diffusion: string;
   description: string | null;
   description_courte: string | null;
+  description_longue: string | null;
+  yem_observation: string | null;
+  yem_type: string | null;
+  duree: string | null;
   playlist_pdf_path: string | null;
 };
 
@@ -37,8 +41,8 @@ export default async function ImPage() {
   const { data, error } = await supabase
     .from('emissions')
     .select(
-      'id, titre, date_diffusion, description, playlist_pdf_path',
-    )
+  'id, titre, date_diffusion, description, description_courte, description_longue, yem_observation, yem_type, duree, playlist_pdf_path',
+  )
     .order('date_diffusion', { ascending: false });
 
   if (error) {
@@ -74,6 +78,29 @@ export default async function ImPage() {
           <p className="text-muted">Aucune émission disponible.</p>
         )}
       </div>
+
+{featured?.description_longue ? (
+  <section className="mt-8 border border-border p-6">
+    <h2 className="font-mono text-sm uppercase tracking-widest text-transmission">
+      Description de l'émission
+    </h2>
+    <div className="mt-6 whitespace-pre-line leading-7 text-muted">
+      {featured.description_longue}
+    </div>
+  </section>
+) : null}
+
+{featured?.yem_observation ? (
+  <section className="mt-6 border border-border p-6">
+    <p className="font-mono text-sm uppercase tracking-widest text-transmission">
+      Observation YEM
+      {featured.yem_type ? ` — ${featured.yem_type}` : ''}
+    </p>
+    <blockquote className="mt-6 text-lg leading-8 text-muted">
+      {featured.yem_observation}
+    </blockquote>
+  </section>
+) : null}
 
       {others.length > 0 ? (
         <section className="mt-12">
