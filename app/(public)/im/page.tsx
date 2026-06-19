@@ -37,6 +37,20 @@ function excerpt(text: string | null, maxLength = 180): string {
   return `${lastSpace > 40 ? truncated.slice(0, lastSpace) : truncated}…`;
 }
 
+function imagePathForEmission(id: string): string | null {
+  const match = id.match(/^IM-(\d{3})$/);
+
+  if (match) {
+    return `/visuels/emissions/avec-titres/Episode ${match[1]}.jpg`;
+  }
+
+  if (id === 'IM-HS001') {
+    return '/visuels/emissions/avec-titres/Episode HS001.jpg';
+  }
+
+  return null;
+}
+
 export default async function ImPage() {
   const { data, error } = await supabase
     .from('emissions')
@@ -109,20 +123,50 @@ export default async function ImPage() {
           </h2>
 
           <div className="mt-4 divide-y divide-border border-y border-border">
-            {others.map((emission) => (
-              <article key={emission.id} className="py-5">
-                <p className="font-mono text-xs text-muted">{emission.id}</p>
-                <h3 className="mt-2 font-display text-xl">{emission.titre}</h3>
-                <p className="mt-1 text-sm text-muted">
-                  {formatDateFr(emission.date_diffusion)}
-                </p>
-                {emission.description ? (
-                  <p className="mt-3 text-sm leading-6 text-muted">
-                    {excerpt(emission.description, 220)}
-                  </p>
-                ) : null}
-              </article>
-            ))}
+            {others.map((emission) => {
+  const visuel = imagePathForEmission(emission.id);
+
+  return (
+    <article
+      key={emission.id}
+      className="flex items-center justify-between gap-6 py-5"
+    >
+      <div className="flex items-center gap-4">
+        {visuel ? (
+          <img
+            src={visuel}
+            alt={`Visuel ${emission.id}`}
+            className="h-24 w-24 shrink-0 object-cover border border-border"
+          />
+        ) : null}
+
+        <div>
+          <p className="font-mono text-xs text-muted">
+            {emission.id}
+          </p>
+
+          <h3 className="mt-1 font-display text-xl">
+            {emission.titre}
+          </h3>
+        </div>
+      </div>
+
+      {emission.playlist_pdf_path ? (
+        <a
+          href={emission.playlist_pdf_path}
+          target="_blank"
+          rel="noreferrer"
+          className="shrink-0 border border-border px-4 py-2 text-sm hover:border-transmission hover:text-transmission"
+        >
+          Playlist
+        </a>
+      ) : (
+        <span className="text-sm text-muted">—</span>
+      )}
+    </article>
+  );
+})}
+           
           </div>
         </section>
       ) : null}
