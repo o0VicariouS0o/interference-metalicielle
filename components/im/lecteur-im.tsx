@@ -1,3 +1,5 @@
+import type { ChangeEvent, MouseEvent } from 'react';
+
 type EmissionMinimal = {
   id: string;
   titre: string;
@@ -20,8 +22,13 @@ type Props = {
   currentTimeLabel: string;
   durationLabel: string;
   progressPercent: number;
+  volumePercent: number;
+  isMuted: boolean;
   onTogglePlayback: () => void;
   onSeekRelative: (seconds: number) => void;
+  onSeekToPercent: (percent: number) => void;
+  onVolumeChange: (percent: number) => void;
+  onToggleMute: () => void;
 };
 
 function formatDateFr(iso: string): string {
@@ -50,13 +57,8 @@ function formatTypeEmission(type: string | null | undefined): string {
 function imagePathForEmission(id: string): string | null {
   const match = id.match(/^IM-(\d{3})$/);
 
-  if (match) {
-    return `/visuels/emissions/sans-titres/Episode ${match[1]}.jpg`;
-  }
-
-  if (id === 'IM-HS001') {
-    return '/visuels/emissions/sans-titres/Episode HS001.jpg';
-  }
+  if (match) return `/visuels/emissions/sans-titres/Episode ${match[1]}.jpg`;
+  if (id === 'IM-HS001') return '/visuels/emissions/sans-titres/Episode HS001.jpg';
 
   return null;
 }
@@ -67,10 +69,27 @@ export function LecteurIM({
   currentTimeLabel,
   durationLabel,
   progressPercent,
+  volumePercent,
+  isMuted,
   onTogglePlayback,
   onSeekRelative,
+  onSeekToPercent,
+  onVolumeChange,
+  onToggleMute,
 }: Props) {
   const visuel = imagePathForEmission(emission.id);
+
+  function handleProgressClick(event: MouseEvent<HTMLButtonElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const percent = (x / rect.width) * 100;
+
+    onSeekToPercent(percent);
+  }
+
+  function handleVolumeChange(event: ChangeEvent<HTMLInputElement>) {
+    onVolumeChange(Number(event.target.value));
+  }
 
   return (
     <section
@@ -134,12 +153,17 @@ export function LecteurIM({
                 <span>{durationLabel}</span>
               </div>
 
-              <div className="mt-3 h-2 border border-border bg-bg">
-                <div
-                  className="h-full bg-transmission"
+              <button
+                type="button"
+                onClick={handleProgressClick}
+                aria-label="Déplacer la tête de lecture"
+                className="mt-3 block h-3 w-full cursor-pointer border border-border bg-bg text-left"
+              >
+                <span
+                  className="block h-full bg-transmission"
                   style={{ width: `${progressPercent}%` }}
                 />
-              </div>
+              </button>
 
               <div className="mt-5 grid grid-cols-[1fr_1.5fr_1fr] items-center gap-3">
                 <button
@@ -165,6 +189,36 @@ export function LecteurIM({
                 >
                   +30 sec
                 </button>
+              </div>
+
+              <div className="mt-5 border-t border-border pt-4">
+                <div className="flex items-center justify-between gap-4">
+                  <button
+                    type="button"
+                    onClick={onToggleMute}
+                    className="border border-border px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-transmission hover:text-transmission"
+                  >
+                    {isMuted ? 'Muet' : 'Signal'}
+                  </button>
+
+                  <label className="flex flex-1 items-center gap-3">
+                    <span className="font-mono text-xs uppercase tracking-widest text-muted">
+                      Niveau
+                    </span>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={volumePercent}
+                      onChange={handleVolumeChange}
+                      className="w-full accent-red-700"
+                      aria-label="Niveau du signal audio"
+                    />
+                    <span className="w-10 text-right font-mono text-xs text-muted">
+                      {volumePercent}
+                    </span>
+                  </label>
+                </div>
               </div>
 
               <p className="mt-3 font-mono text-xs uppercase tracking-widest text-muted">

@@ -30,13 +30,8 @@ type Props = {
 function imagePathForEmission(id: string): string | null {
   const match = id.match(/^IM-(\d{3})$/);
 
-  if (match) {
-    return `/visuels/emissions/avec-titres/Episode ${match[1]}.jpg`;
-  }
-
-  if (id === 'IM-HS001') {
-    return '/visuels/emissions/avec-titres/Episode HS001.jpg';
-  }
+  if (match) return `/visuels/emissions/avec-titres/Episode ${match[1]}.jpg`;
+  if (id === 'IM-HS001') return '/visuels/emissions/avec-titres/Episode HS001.jpg';
 
   return null;
 }
@@ -93,6 +88,9 @@ export function ImClient({ emissions }: Props) {
   const [shouldAutoplay, setShouldAutoplay] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [audioDuration, setAudioDuration] = useState(0);
+  const [volume, setVolume] = useState(0.85);
+  const [lastVolume, setLastVolume] = useState(0.85);
+  const [isMuted, setIsMuted] = useState(false);
 
   const activeEmission =
     emissions.find((emission) => emission.id === activeId) ?? emissions[0];
@@ -106,6 +104,13 @@ export function ImClient({ emissions }: Props) {
 
   const progressPercent =
     duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = isMuted ? 0 : volume;
+  }, [volume, isMuted]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -123,15 +128,9 @@ export function ImClient({ emissions }: Props) {
 
     audio
       .play()
-      .then(() => {
-        setIsPlaying(true);
-      })
-      .catch(() => {
-        setIsPlaying(false);
-      })
-      .finally(() => {
-        setShouldAutoplay(false);
-      });
+      .then(() => setIsPlaying(true))
+      .catch(() => setIsPlaying(false))
+      .finally(() => setShouldAutoplay(false));
   }, [activeEmission?.audio_url, shouldAutoplay]);
 
   if (!activeEmission) {
@@ -150,12 +149,8 @@ export function ImClient({ emissions }: Props) {
     if (audio.paused) {
       audio
         .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch(() => {
-          setIsPlaying(false);
-        });
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
     } else {
       audio.pause();
       setIsPlaying(false);
@@ -175,6 +170,42 @@ export function ImClient({ emissions }: Props) {
     setCurrentTime(nextTime);
   }
 
+  function handleSeekToPercent(percent: number) {
+    const audio = audioRef.current;
+    if (!audio || duration <= 0) return;
+
+    const safePercent = Math.min(100, Math.max(0, percent));
+    const nextTime = (safePercent / 100) * duration;
+
+    audio.currentTime = nextTime;
+    setCurrentTime(nextTime);
+  }
+
+  function handleVolumeChange(nextVolume: number) {
+    const safeVolume = Math.min(1, Math.max(0, nextVolume));
+
+    setVolume(safeVolume);
+
+    if (safeVolume > 0) {
+      setLastVolume(safeVolume);
+      setIsMuted(false);
+    } else {
+      setIsMuted(true);
+    }
+  }
+
+  function handleToggleMute() {
+    if (isMuted || volume === 0) {
+      const restoredVolume = lastVolume > 0 ? lastVolume : 0.85;
+      setVolume(restoredVolume);
+      setIsMuted(false);
+      return;
+    }
+
+    setLastVolume(volume);
+    setIsMuted(true);
+  }
+
   return (
     <>
       <audio
@@ -187,15 +218,9 @@ export function ImClient({ emissions }: Props) {
             setAudioDuration(nextDuration);
           }
         }}
-        onTimeUpdate={(event) => {
-          setCurrentTime(event.currentTarget.currentTime);
-        }}
-        onPause={() => {
-          setIsPlaying(false);
-        }}
-        onPlay={() => {
-          setIsPlaying(true);
-        }}
+        onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
         onEnded={() => {
           setIsPlaying(false);
           setCurrentTime(0);
@@ -209,8 +234,13 @@ export function ImClient({ emissions }: Props) {
           currentTimeLabel={formatAudioTime(currentTime)}
           durationLabel={formatAudioTime(duration)}
           progressPercent={progressPercent}
+          volumePercent={Math.round((isMuted ? 0 : volume) * 100)}
+          isMuted={isMuted || volume === 0}
           onTogglePlayback={handleTogglePlayback}
           onSeekRelative={handleSeekRelative}
+          onSeekToPercent={handleSeekToPercent}
+          onVolumeChange={(percent) => handleVolumeChange(percent / 100)}
+          onToggleMute={handleToggleMute}
         />
       </div>
 
