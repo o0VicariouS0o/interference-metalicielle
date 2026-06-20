@@ -4,7 +4,9 @@ type EmissionMinimal = {
   date_diffusion: string;
   description_courte: string | null;
   duree: string | null;
+  audio_url?: string | null;
   playlist_pdf_path: string | null;
+  type_libelle?: string | null;
   stats?: {
     titres: number;
     groupes: number;
@@ -14,6 +16,12 @@ type EmissionMinimal = {
 
 type Props = {
   emission: EmissionMinimal;
+  isPlaying: boolean;
+  currentTimeLabel: string;
+  durationLabel: string;
+  progressPercent: number;
+  onTogglePlayback: () => void;
+  onSeekRelative: (seconds: number) => void;
 };
 
 function formatDateFr(iso: string): string {
@@ -25,6 +33,18 @@ function formatDateFr(iso: string): string {
     month: 'long',
     year: 'numeric',
   });
+}
+
+function formatTypeEmission(type: string | null | undefined): string {
+  if (!type) return '—';
+
+  const labels: Record<string, string> = {
+    thematique: 'Thématique',
+    retrospective: 'Rétrospective',
+    hors_serie: 'Hors-série',
+  };
+
+  return labels[type] ?? type;
 }
 
 function imagePathForEmission(id: string): string | null {
@@ -41,7 +61,15 @@ function imagePathForEmission(id: string): string | null {
   return null;
 }
 
-export function LecteurIM({ emission }: Props) {
+export function LecteurIM({
+  emission,
+  isPlaying,
+  currentTimeLabel,
+  durationLabel,
+  progressPercent,
+  onTogglePlayback,
+  onSeekRelative,
+}: Props) {
   const visuel = imagePathForEmission(emission.id);
 
   return (
@@ -80,10 +108,69 @@ export function LecteurIM({ emission }: Props) {
           </div>
 
           <div className="border-t border-border pt-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">
-              État
-            </p>
-            <p className="mt-2 text-sm">Transmission en attente</p>
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                  Canal
+                </p>
+                <p className="mt-2 font-mono text-sm text-transmission">
+                  Canal {emission.id}
+                </p>
+              </div>
+
+              <div className="text-right">
+                <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                  Statut
+                </p>
+                <p className="mt-2 font-mono text-sm">
+                  {isPlaying ? 'Lecture en cours' : 'Transmission en attente'}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <div className="flex justify-between font-mono text-xs text-muted">
+                <span>{currentTimeLabel}</span>
+                <span>{durationLabel}</span>
+              </div>
+
+              <div className="mt-3 h-2 border border-border bg-bg">
+                <div
+                  className="h-full bg-transmission"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+
+              <div className="mt-5 grid grid-cols-[1fr_1.5fr_1fr] items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => onSeekRelative(-30)}
+                  className="border border-border px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-transmission hover:text-transmission"
+                >
+                  -30 sec
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onTogglePlayback}
+                  className="border border-transmission px-4 py-3 font-mono text-xs uppercase tracking-widest text-transmission hover:bg-transmission hover:text-black"
+                >
+                  {isPlaying ? 'Lecture en cours' : 'Transmission en attente'}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onSeekRelative(30)}
+                  className="border border-border px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-transmission hover:text-transmission"
+                >
+                  +30 sec
+                </button>
+              </div>
+
+              <p className="mt-3 font-mono text-xs uppercase tracking-widest text-muted">
+                Jauge documentaire — transmission réelle
+              </p>
+            </div>
           </div>
         </div>
 
@@ -98,6 +185,15 @@ export function LecteurIM({ emission }: Props) {
                 Durée
               </p>
               <p className="mt-2 font-mono text-sm">{emission.duree ?? '—'}</p>
+            </div>
+
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Type
+              </p>
+              <p className="mt-2 font-mono text-sm">
+                {formatTypeEmission(emission.type_libelle)}
+              </p>
             </div>
 
             <div>
