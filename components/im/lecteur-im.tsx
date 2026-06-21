@@ -1,5 +1,7 @@
 import type { ChangeEvent, MouseEvent } from 'react';
 
+type TransmissionState = 'idle' | 'loading' | 'playing' | 'ended';
+
 type EmissionMinimal = {
   id: string;
   titre: string;
@@ -19,6 +21,7 @@ type EmissionMinimal = {
 type Props = {
   emission: EmissionMinimal;
   isPlaying: boolean;
+  transmissionState: TransmissionState;
   currentTimeLabel: string;
   durationLabel: string;
   progressPercent: number;
@@ -63,9 +66,25 @@ function imagePathForEmission(id: string): string | null {
   return null;
 }
 
+function getTransmissionLabel(state: TransmissionState): string {
+  switch (state) {
+    case 'loading':
+      return 'Ouverture du canal';
+
+    case 'playing':
+      return 'Transmission active';
+
+    case 'ended':
+      return 'Transmission terminée';
+
+    default:
+      return 'Transmission en attente';
+  }
+}
+
 export function LecteurIM({
   emission,
-  isPlaying,
+  transmissionState,
   currentTimeLabel,
   durationLabel,
   progressPercent,
@@ -78,6 +97,7 @@ export function LecteurIM({
   onToggleMute,
 }: Props) {
   const visuel = imagePathForEmission(emission.id);
+  const transmissionLabel = getTransmissionLabel(transmissionState);
 
   function handleProgressClick(event: MouseEvent<HTMLButtonElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -142,7 +162,7 @@ export function LecteurIM({
                   Statut
                 </p>
                 <p className="mt-2 font-mono text-sm">
-                  {isPlaying ? 'Lecture en cours' : 'Transmission en attente'}
+                  {transmissionLabel}
                 </p>
               </div>
             </div>
@@ -179,7 +199,7 @@ export function LecteurIM({
                   onClick={onTogglePlayback}
                   className="border border-transmission px-4 py-3 font-mono text-xs uppercase tracking-widest text-transmission hover:bg-transmission hover:text-black"
                 >
-                  {isPlaying ? 'Lecture en cours' : 'Transmission en attente'}
+                  {transmissionLabel}
                 </button>
 
                 <button

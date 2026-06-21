@@ -27,6 +27,10 @@ type Props = {
   emissions: EmissionClient[];
 };
 
+type TransmissionState = 'idle' | 'loading' | 'playing' | 'ended';
+
+const STORAGE_KEY = 'im-playback-positions';
+
 function imagePathForEmission(id: string): string | null {
   const match = id.match(/^IM-(\d{3})$/);
 
@@ -80,11 +84,41 @@ function parseDurationToSeconds(raw: string | null): number {
   return 0;
 }
 
+function loadSavedPositions(): Record<string, number> {
+  if (typeof window === 'undefined') return {};
+
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    if (!raw) return {};
+
+    return JSON.parse(raw) as Record<string, number>;
+  } catch {
+    return {};
+  }
+}
+
+function savePosition(emissionId: string, seconds: number) {
+  if (typeof window === 'undefined') return;
+
+  try {
+    const positions = loadSavedPositions();
+
+    positions[emissionId] = seconds;
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(positions));
+  } catch {
+    // Ignore localStorage errors.
+  }
+}
+
 export function ImClient({ emissions }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [activeId, setActiveId] = useState(emissions[0]?.id ?? null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [transmissionState, setTransmissionState] =
+    useState<TransmissionState>('idle');
   const [shouldAutoplay, setShouldAutoplay] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [audioDuration, setAudioDuration] = useState(0);
@@ -121,23 +155,41 @@ export function ImClient({ emissions }: Props) {
     setCurrentTime(0);
     setAudioDuration(0);
 
+    const positions = loadSavedPositions();
+    const savedPosition = positions[activeEmission.id];
+
+    if (savedPosition && savedPosition > 0) {
+      audio.currentTime = savedPosition;
+      setCurrentTime(savedPosition);
+    }
+
     if (!shouldAutoplay) {
       setIsPlaying(false);
+      setTransmissionState('idle');
       return;
     }
 
+    setTransmissionState('loading');
+
     audio
       .play()
-      .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false))
+      .then(() => {
+        setIsPlaying(true);
+        setTransmissionState('playing');
+      })
+      .catch(() => {
+        setIsPlaying(false);
+        setTransmissionState('idle');
+      })
       .finally(() => setShouldAutoplay(false));
-  }, [activeEmission?.audio_url, shouldAutoplay]);
+  }, [activeEmission?.audio_url, activeEmission?.id, shouldAutoplay]);
 
   if (!activeEmission) {
     return <p className="mt-10 text-muted">Aucune émission disponible.</p>;
   }
 
   function handleSelectEmission(id: string) {
+    setTransmissionState('loading');
     setActiveId(id);
     setShouldAutoplay(true);
   }
@@ -147,13 +199,22 @@ export function ImClient({ emissions }: Props) {
     if (!audio || !activeEmission.audio_url) return;
 
     if (audio.paused) {
+      setTransmissionState('loading');
+
       audio
         .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => setIsPlaying(false));
+        .then(() => {
+          setIsPlaying(true);
+          setTransmissionState('playing');
+        })
+        .catch(() => {
+          setIsPlaying(false);
+          setTransmissionState('idle');
+        });
     } else {
       audio.pause();
       setIsPlaying(false);
+      setTransmissionState('idle');
     }
   }
 
@@ -168,6 +229,7 @@ export function ImClient({ emissions }: Props) {
 
     audio.currentTime = nextTime;
     setCurrentTime(nextTime);
+    savePosition(activeEmission.id, nextTime);
   }
 
   function handleSeekToPercent(percent: number) {
@@ -179,6 +241,7 @@ export function ImClient({ emissions }: Props) {
 
     audio.currentTime = nextTime;
     setCurrentTime(nextTime);
+    savePosition(activeEmission.id, nextTime);
   }
 
   function handleVolumeChange(nextVolume: number) {
@@ -212,18 +275,42 @@ export function ImClient({ emissions }: Props) {
         ref={audioRef}
         src={activeEmission.audio_url ?? undefined}
         preload="metadata"
+        onLoadStart={() => {
+          setTransmissionState('loading');
+        }}
         onLoadedMetadata={(event) => {
           const nextDuration = event.currentTarget.duration;
           if (Number.isFinite(nextDuration)) {
             setAudioDuration(nextDuration);
           }
         }}
-        onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
-        onPause={() => setIsPlaying(false)}
-        onPlay={() => setIsPlaying(true)}
+        onCanPlay={() => {
+          if (!isPlaying) {
+            setTransmissionState('idle');
+          }
+        }}
+        onTimeUpdate={(event) => {
+          const time = event.currentTarget.currentTime;
+
+          setCurrentTime(time);
+
+          if (activeEmission.id) {
+            savePosition(activeEmission.id, time);
+          }
+        }}
+        onPause={() => {
+          setIsPlaying(false);
+          setTransmissionState('idle');
+        }}
+        onPlay={() => {
+          setIsPlaying(true);
+          setTransmissionState('playing');
+        }}
         onEnded={() => {
           setIsPlaying(false);
           setCurrentTime(0);
+          setTransmissionState('ended');
+          savePosition(activeEmission.id, 0);
         }}
       />
 
@@ -231,6 +318,7 @@ export function ImClient({ emissions }: Props) {
         <LecteurIM
           emission={activeEmission}
           isPlaying={isPlaying}
+          transmissionState={transmissionState}
           currentTimeLabel={formatAudioTime(currentTime)}
           durationLabel={formatAudioTime(duration)}
           progressPercent={progressPercent}
