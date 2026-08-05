@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 
 import { SiteBackground } from '@/components/layout/SiteBackground';
-import { Footer } from '@/components/shared/footer';
-import { Header } from '@/components/shared/header';
+import { Footer } from '@/components/shared/Footer';
+import { Header } from '@/components/shared/Header';
 
 export default function PublicLayout({
   children,

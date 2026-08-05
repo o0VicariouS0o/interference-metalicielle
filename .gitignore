@@ -41,5 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 # Données locales d'import
-data/
+/data/
 *.xlsx
