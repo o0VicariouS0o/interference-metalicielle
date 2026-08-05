@@ -31,7 +31,9 @@ jobs:
           cache: npm
 
       - name: Configurer GitHub Pages
-        uses: actions/configure-pages@v5
+  uses: actions/configure-pages@v5
+  with:
+    enablement: true
 
       - name: Installer les dépendances
         run: npm ci
