@@ -1,0 +1,297 @@
+/* =========================================================
+   ACCUEIL — HERO CONSOLIDÉ
+   Illustration, textes, lecteur, métadonnées et bouton
+   sont pilotés par site-settings.css.
+   ========================================================= */
+
+.homeHero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+/* =========================================================
+   ILLUSTRATION
+   ========================================================= */
+
+.homeHero__artwork {
+  position: absolute;
+  z-index: var(--hero-image-z);
+  top: var(--hero-image-top);
+  left: var(--hero-image-left);
+  width: var(--hero-image-width);
+  height: var(--hero-image-height);
+  overflow: hidden;
+  opacity: var(--hero-image-opacity);
+  transform:
+    translate(var(--hero-image-x), var(--hero-image-y))
+    rotate(var(--hero-image-rotation))
+    scale(var(--hero-image-scale));
+  transform-origin: var(--hero-image-transform-origin);
+  background: transparent;
+}
+
+.homeHero__image,
+.homeHero__imageFallback {
+  position: absolute;
+  inset: 0;
+}
+
+.homeHero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--hero-image-object-fit);
+  object-position: var(--hero-image-object-position);
+  background: transparent;
+}
+
+.homeHero__imageFallback {
+  background: transparent;
+}
+
+/* =========================================================
+   CONTENEUR DES TEXTES ET DU CONTENU RESTANT
+   ========================================================= */
+
+.homeHero__content {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* =========================================================
+   TOPLINE
+   ========================================================= */
+
+.homeHero__topline {
+  position: absolute;
+  z-index: var(--hero-topline-z);
+  top: var(--hero-topline-top);
+  left: var(--hero-topline-left);
+  display: flex;
+  width: var(--hero-topline-width);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--hero-topline-gap);
+  margin: 0;
+  opacity: var(--hero-topline-opacity);
+  transform:
+    translate(var(--hero-topline-x), var(--hero-topline-y))
+    rotate(var(--hero-topline-rotation))
+    scale(var(--hero-topline-scale));
+  transform-origin: var(--hero-topline-transform-origin);
+  font-family: var(--font-mono);
+  font-size: var(--hero-topline-size-proportional);
+  line-height: var(--hero-topline-line-height);
+  letter-spacing: var(--hero-topline-letter-spacing);
+  text-transform: uppercase;
+  color: var(--color-transmission);
+}
+
+.homeHero__identifier {
+  flex: 0 0 auto;
+  padding:
+    var(--hero-identifier-padding-y)
+    var(--hero-identifier-padding-x);
+  color: rgba(237, 232, 222, 0.52);
+}
+
+/* =========================================================
+   IDENTIFIANT PRINCIPAL
+   ========================================================= */
+
+.homeHero__id {
+  position: absolute;
+  z-index: var(--hero-id-z);
+  top: var(--hero-id-top);
+  left: var(--hero-id-left);
+  width: var(--hero-id-width);
+  margin: 0;
+  opacity: var(--hero-id-opacity);
+  transform:
+    translate(var(--hero-id-x), var(--hero-id-y))
+    rotate(var(--hero-id-rotation))
+    scale(var(--hero-id-scale));
+  transform-origin: var(--hero-id-transform-origin);
+  font-family: var(--font-mono);
+  font-size: var(--hero-id-size-proportional);
+  line-height: var(--hero-id-line-height);
+  letter-spacing: var(--hero-id-letter-spacing);
+  color: var(--color-transmission);
+}
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.homeHero__title {
+  position: absolute;
+  z-index: var(--hero-emission-title-z);
+  top: var(--hero-emission-title-top);
+  left: var(--hero-emission-title-left);
+  width: var(--hero-emission-title-width);
+  max-width: none;
+  margin: 0;
+  opacity: var(--hero-emission-title-opacity);
+  transform:
+    translate(var(--hero-emission-title-x), var(--hero-emission-title-y))
+    rotate(var(--hero-emission-title-rotation))
+    scale(var(--hero-emission-title-scale));
+  transform-origin: var(--hero-emission-title-transform-origin);
+  font-family: var(--font-display);
+  font-size: var(--hero-emission-title-size-proportional);
+  line-height: var(--hero-emission-title-line-height);
+  letter-spacing: var(--hero-emission-title-letter-spacing);
+  color: rgba(237, 232, 222, 0.92);
+}
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.homeHero__description {
+  position: absolute;
+  z-index: var(--hero-description-z);
+  top: var(--hero-description-top);
+  left: var(--hero-description-left);
+  display: -webkit-box;
+  width: var(--hero-description-width);
+  max-width: none;
+  margin: 0;
+  overflow: hidden;
+  opacity: var(--hero-description-opacity);
+  transform:
+    translate(var(--hero-description-x), var(--hero-description-y))
+    rotate(var(--hero-description-rotation))
+    scale(var(--hero-description-scale));
+  transform-origin: var(--hero-description-transform-origin);
+  font-size: var(--hero-description-size-proportional);
+  line-height: var(--hero-description-line-height);
+  letter-spacing: var(--hero-description-letter-spacing);
+  color: rgba(237, 232, 222, 0.58);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--hero-description-lines);
+  line-clamp: var(--hero-description-lines);
+}
+
+/* =========================================================
+   LECTEUR
+   ========================================================= */
+
+.homeHero__player {
+  position: absolute;
+  z-index: var(--hero-player-z);
+  top: var(--hero-player-top);
+  left: var(--hero-player-left);
+  width: var(--hero-player-width);
+  height: var(--hero-player-height);
+  margin: 0;
+  opacity: var(--hero-player-opacity);
+  transform:
+    translate(var(--hero-player-x), var(--hero-player-y))
+    rotate(var(--hero-player-rotation))
+    scale(var(--hero-player-scale));
+  transform-origin: var(--hero-player-transform-origin);
+}
+
+/* =========================================================
+   MÉTADONNÉES
+   ========================================================= */
+
+.homeHero__metadata {
+  position: absolute;
+  z-index: var(--hero-meta-z);
+  top: var(--hero-meta-top);
+  left: var(--hero-meta-left);
+  display: grid;
+  width: var(--hero-meta-width);
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--hero-meta-columns-gap);
+  margin: 0;
+  opacity: var(--hero-meta-opacity);
+  transform:
+    translate(var(--hero-meta-x), var(--hero-meta-y))
+    rotate(var(--hero-meta-rotation))
+    scale(var(--hero-meta-scale));
+  transform-origin: var(--hero-meta-transform-origin);
+}
+
+.homeHero__metadataItem {
+  min-width: 0;
+  padding-right: var(--hero-meta-item-padding-right);
+}
+
+.homeHero__metadata span,
+.homeHero__metadata strong {
+  display: block;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.homeHero__metadata span {
+  font-size: var(--hero-meta-label-size);
+  line-height: var(--hero-meta-label-line-height);
+  letter-spacing: var(--hero-meta-label-letter-spacing);
+  color: rgba(237, 232, 222, 0.38);
+}
+
+.homeHero__metadata strong {
+  margin-top: var(--hero-meta-value-margin-top);
+  font-size: var(--hero-meta-value-size);
+  line-height: var(--hero-meta-value-line-height);
+  letter-spacing: var(--hero-meta-value-letter-spacing);
+  font-weight: 400;
+  color: rgba(237, 232, 222, 0.74);
+}
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.homeHero__cta {
+  position: absolute;
+  z-index: var(--hero-button-z);
+  top: var(--hero-button-top);
+  left: var(--hero-button-left);
+  display: inline-flex;
+  width: var(--hero-button-width);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--hero-button-gap);
+  margin: 0;
+  border: var(--hero-button-border-width) solid var(--color-transmission);
+  padding:
+    var(--hero-button-padding-y)
+    var(--hero-button-padding-x);
+  opacity: var(--hero-button-opacity);
+  transform:
+    translate(var(--hero-button-x), var(--hero-button-y))
+    rotate(var(--hero-button-rotation))
+    scale(var(--hero-button-scale));
+  transform-origin: var(--hero-button-transform-origin);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: var(--hero-button-font-size);
+  line-height: var(--hero-button-line-height);
+  letter-spacing: var(--hero-button-letter-spacing);
+  text-transform: uppercase;
+  color: var(--color-transmission);
+  text-decoration: none;
+}
+
+.homeHero__cta:hover,
+.homeHero__cta:focus-visible {
+  background: var(--color-transmission);
+  color: #050505;
+}

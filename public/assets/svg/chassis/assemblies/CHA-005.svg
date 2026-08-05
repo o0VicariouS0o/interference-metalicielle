@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Construction" xmlns="http://www.w3.org/2000/svg" width="8" height="96" version="1.1" viewBox="0 0 8 96">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <path id="Separateur" d="M0,0v96h8V0H0ZM6,80H2v-8h4v8ZM6,52H2v-8h4v8ZM6,24H2v-8h4v8Z" fill="#20242a"/>
+  <circle id="Fixation_x5F_Haute" cx="4" cy="8" r="2" fill="#20242a"/>
+  <circle id="Fixation_x5F_Basse" cx="4" cy="88" r="2" fill="#20242a"/>
+</svg>

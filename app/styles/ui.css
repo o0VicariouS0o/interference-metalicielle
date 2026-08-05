@@ -1,0 +1,140 @@
+:root {
+  --im-panel-bg: rgba(0, 0, 0, 0.34);
+  --im-panel-border: rgba(232, 230, 227, 0.12);
+
+  --im-red-soft: rgba(200, 49, 31, 0.7);
+  --im-blue-soft: rgba(111, 183, 216, 0.7);
+  --im-purple-soft: rgba(169, 123, 232, 0.7);
+
+  --im-transition: 180ms ease;
+}
+
+.im-panel {
+  position: relative;
+  overflow: hidden;
+
+  background: rgba(4, 4, 4, .42);
+
+  border: 1px solid rgba(255,255,255,.06);
+
+  box-shadow:
+      inset 0 1px rgba(255,255,255,.035),
+      inset 0 -1px rgba(0,0,0,.70);
+}
+
+.im-panel::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border:1px solid rgba(255,255,255,.025);
+
+    pointer-events:none;
+}
+
+.im-panel::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent),
+    radial-gradient(rgba(255, 255, 255, 0.08) 0.5px, transparent 0.5px);
+  background-size:
+    100% 100%,
+    4px 4px;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.im-panel::after{
+    content:"";
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    opacity:.35;
+
+    pointer-events:none;
+}
+
+.im-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.im-panel-red {
+  border-color: var(--im-red-soft);
+}
+
+.im-panel-blue {
+  border-color: var(--im-blue-soft);
+}
+
+.im-panel-purple {
+  border-color: var(--im-purple-soft);
+}
+
+.im-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.im-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--im-panel-border);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition:
+    background-color var(--im-transition),
+    border-color var(--im-transition),
+    color var(--im-transition);
+}
+
+.im-button-red {
+  border-color: var(--color-transmission);
+  color: var(--color-transmission);
+}
+
+.im-button-red:hover {
+  background: var(--color-transmission);
+  color: black;
+}
+
+.im-button-blue {
+  border-color: #2b5f7a;
+  color: #6fb7d8;
+}
+
+.im-button-blue:hover {
+  background: #2b5f7a;
+  color: black;
+}
+
+.im-button-purple {
+  border-color: var(--color-yem);
+  color: #a97be8;
+}
+
+.im-button-purple:hover {
+  background: var(--color-yem);
+  color: black;
+}

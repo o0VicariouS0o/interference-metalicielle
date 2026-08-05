@@ -1,0 +1,424 @@
+/* =========================================================
+   ACCUEIL — CARTE IM
+   Miniatures et canal de diffusion
+   ========================================================= */
+
+.homeSectionCard--im .homeSectionCard__content {
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.homeSectionCard--im .homeSectionCard__transmissions {
+  min-height: 0;
+  flex: 0 1 auto;
+  align-items: stretch;
+  align-content: start;
+  grid-auto-rows: auto;
+}
+
+.homeSectionCard--im .homeTransmissionMiniCard {
+  align-self: stretch;
+  height: 100%;
+  min-height: 0;
+}
+
+.homeSectionCard--im .homeTransmissionMiniCard__id {
+  flex: 0 0 auto;
+}
+
+/*
+ * Trois lignes sont réservées pour tous les titres.
+ * Les quatre mini-cartes conservent ainsi la même hauteur.
+ */
+
+.homeSectionCard--im .homeTransmissionMiniCard__title {
+  display: -webkit-box;
+  min-height: calc(
+    var(--im-mini-title-lines)
+    * var(--im-mini-title-line-height)
+    * 1em
+  );
+  margin-top: var(--im-mini-title-margin-top);
+  overflow: hidden;
+
+  line-height: var(--im-mini-title-line-height);
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--im-mini-title-lines);
+  line-clamp: var(--im-mini-title-lines);
+}
+
+/* =========================================================
+   CANAL DE DIFFUSION
+   ========================================================= */
+
+.homeImBroadcast {
+  position: relative;
+  isolation: isolate;
+
+  display: grid;
+  grid-template-columns: var(--im-broadcast-visual-width) minmax(0, 1fr);
+  min-height: var(--im-broadcast-min-height);
+  margin-top: var(--im-broadcast-margin-top);
+  overflow: hidden;
+
+  border: 1px solid rgba(200, 49, 31, 0.2);
+
+  background:
+    radial-gradient(
+      circle at 17% 50%,
+      rgba(200, 49, 31, 0.085),
+      transparent 30%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.015),
+      transparent 42%
+    ),
+    rgba(0, 0, 0, 0.3);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.018),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.62),
+    inset 0 0 30px rgba(0, 0, 0, 0.42);
+}
+
+.homeImBroadcast::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: var(--im-broadcast-inner-inset);
+
+  border: 1px solid rgba(237, 232, 222, 0.025);
+
+  pointer-events: none;
+}
+
+.homeImBroadcast::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: var(--im-broadcast-visual-width);
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(200, 49, 31, 0.2) 20%,
+      rgba(237, 232, 222, 0.07) 50%,
+      rgba(200, 49, 31, 0.14) 80%,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   RADAR
+   ========================================================= */
+
+.homeImBroadcast__visual {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  overflow: hidden;
+
+  padding-bottom: var(--im-radar-padding-bottom);
+}
+
+.homeImBroadcast__radar {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+  width: var(--im-radar-size);
+  height: var(--im-radar-size);
+
+  opacity: 0.48;
+
+  filter:
+    brightness(0.82)
+    saturate(0.72)
+    drop-shadow(0 0 3px rgba(200, 49, 31, 0.8));
+
+  animation: homeImRadarSignal 5.8s ease-in-out infinite;
+}
+
+/*
+ * Les impulsions ne modifient pas le SVG.
+ * Elles créent une diffusion lente derrière lui.
+ */
+
+.homeImBroadcast__pulse {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+
+  width: var(--im-pulse-size);
+  height: var(--im-pulse-size);
+
+  border: 1px solid rgba(200, 49, 31, 0.1);
+  border-radius: 50%;
+
+  opacity: 0;
+
+  transform: translate(-50%, -50%) scale(0.65);
+
+  animation: homeImBroadcastPulse 5.8s ease-out infinite;
+}
+
+.homeImBroadcast__pulse--two {
+  animation-delay: -2.9s;
+}
+
+/* =========================================================
+   INFORMATIONS DU CANAL
+   ========================================================= */
+
+.homeImBroadcast__content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+
+  padding:
+    var(--im-broadcast-padding-top)
+    var(--im-broadcast-padding-x)
+    var(--im-broadcast-padding-bottom);
+}
+
+.homeImBroadcast__topline {
+  display: flex;
+  align-items: center;
+  gap: var(--im-topline-gap);
+
+  font-family: var(--font-mono);
+  font-size: var(--im-topline-size);
+  line-height: var(--im-topline-line-height);
+  letter-spacing: var(--im-topline-letter-spacing);
+  text-transform: uppercase;
+
+  color: rgba(200, 49, 31, 0.76);
+}
+
+.homeImBroadcast__statusDot {
+  display: block;
+  width: var(--im-status-dot-size);
+  height: var(--im-status-dot-size);
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: var(--color-transmission);
+
+  box-shadow:
+    0 0 5px rgba(200, 49, 31, 0.5),
+    0 0 12px rgba(200, 49, 31, 0.18);
+
+  animation: homeImBroadcastStatus 3.6s ease-in-out infinite;
+}
+
+.homeImBroadcast__state {
+  display: block;
+  margin-top: var(--im-state-margin-top);
+
+  font-family: var(--font-display);
+  font-size: var(--im-state-size);
+  font-weight: 400;
+  line-height: var(--im-state-line-height);
+  letter-spacing: var(--im-state-letter-spacing);
+  text-transform: uppercase;
+
+  color: rgba(237, 232, 222, 0.84);
+}
+
+.homeImBroadcast__description {
+  max-width: var(--im-description-max-width);
+  margin-top: var(--im-description-margin-top);
+
+  font-size: var(--im-description-size);
+  line-height: var(--im-description-line-height);
+  letter-spacing: var(--im-description-letter-spacing);
+
+  color: rgba(237, 232, 222, 0.46);
+}
+
+.homeImBroadcast__footer {
+  display: none;
+}
+
+.homeImBroadcast__footer span:last-child {
+  color: rgba(200, 49, 31, 0.58);
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.homeSectionCard--im .homeSectionCard__cta {
+  margin-top: var(--im-cta-margin-top);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes homeImRadarSignal {
+  0%,
+  100% {
+    opacity: 0.42;
+
+    filter:
+      brightness(0.78)
+      saturate(0.68)
+      drop-shadow(0 0 2px rgba(200, 49, 31, 0.05));
+  }
+
+  50%{
+    opacity: 0.62;
+
+    filter:
+      brightness(0.92)
+      saturate(0.82)
+      drop-shadow(0 0 6px rgba(200, 49, 31, 0.14));
+  }
+}
+
+@keyframes homeImBroadcastPulse {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.58);
+  }
+
+  12% {
+    opacity: 0.34;
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.85);
+  }
+}
+
+@keyframes homeImBroadcastStatus {
+  0%,
+  100% {
+    opacity: 0.48;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .homeSectionCard--im .homeSectionCard__transmissions {
+    align-items: stretch;
+  }
+
+  .homeSectionCard--im .homeTransmissionMiniCard {
+    align-self: stretch;
+  }
+
+  .homeImBroadcast {
+    grid-template-columns: var(--im-broadcast-visual-width-mobile) minmax(0, 1fr);
+    min-height: var(--im-broadcast-min-height-mobile);
+  }
+
+  .homeImBroadcast::after {
+    left: var(--im-broadcast-visual-width-mobile);
+  }
+
+  .homeImBroadcast__radar {
+    width: var(--im-radar-size-mobile);
+    height: var(--im-radar-size-mobile);
+  }
+
+  .homeImBroadcast__content {
+    padding:
+      var(--im-broadcast-padding-mobile-y)
+      var(--im-broadcast-padding-mobile-x);
+  }
+
+  .homeImBroadcast__state {
+    font-size: var(--im-state-size-mobile);
+  }
+
+  .homeImBroadcast__description {
+    font-size: var(--im-description-size-mobile);
+  }
+
+  .homeImBroadcast__footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeImBroadcast__radar,
+  .homeImBroadcast__pulse,
+  .homeImBroadcast__statusDot {
+    animation: none;
+  }
+
+  .homeImBroadcast__radar {
+    opacity: 0.78;
+  }
+
+  .homeImBroadcast__statusDot {
+    opacity: 0.8;
+  }
+}
+
+@container (max-width: 340px) {
+  .homeSectionCard--im .homeTransmissionMiniCard__title {
+    min-height: calc(
+      var(--im-mini-title-lines-compact)
+      * var(--im-mini-title-line-height-compact)
+      * 1em
+    );
+    line-height: var(--im-mini-title-line-height-compact);
+    -webkit-line-clamp: var(--im-mini-title-lines-compact);
+    line-clamp: var(--im-mini-title-lines-compact);
+  }
+
+  .homeImBroadcast {
+    grid-template-columns:
+      var(--im-broadcast-visual-width-compact)
+      minmax(0, 1fr);
+    min-height: var(--im-broadcast-min-height-compact);
+    margin-top: var(--im-broadcast-margin-top-compact);
+  }
+
+  .homeImBroadcast::after {
+    left: var(--im-broadcast-visual-width-compact);
+  }
+
+  .homeImBroadcast__radar {
+    width: var(--im-radar-size-compact);
+    height: var(--im-radar-size-compact);
+  }
+
+  .homeImBroadcast__content {
+    padding:
+      var(--im-broadcast-padding-y-compact)
+      var(--im-broadcast-padding-x-compact);
+  }
+}

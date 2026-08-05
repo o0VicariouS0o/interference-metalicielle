@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1354 840">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_39);
+      }
+
+      .cls-2 {
+        fill: url(#Dégradé_sans_nom_39-4);
+      }
+
+      .cls-3 {
+        fill: #cfc8bb;
+        opacity: .36;
+      }
+
+      .cls-4 {
+        fill: url(#Dégradé_sans_nom_39-5);
+      }
+
+      .cls-5 {
+        fill: #040021;
+      }
+
+      .cls-6 {
+        fill: url(#Dégradé_sans_nom_39-6);
+      }
+
+      .cls-7 {
+        fill: url(#Dégradé_sans_nom_39-7);
+      }
+
+      .cls-8 {
+        fill: #c8311f;
+      }
+
+      .cls-9 {
+        fill: url(#Dégradé_sans_nom_39-3);
+      }
+
+      .cls-10 {
+        fill: url(#Dégradé_sans_nom_39-8);
+      }
+
+      .cls-11 {
+        fill: #353230;
+      }
+
+      .cls-12 {
+        fill: #23211f;
+      }
+
+      .cls-13 {
+        fill: #141312;
+      }
+
+      .cls-14, .cls-15 {
+        fill: #1c1c1b;
+      }
+
+      .cls-15 {
+        stroke: #575756;
+        stroke-miterlimit: 10;
+        stroke-width: .2px;
+      }
+
+      .cls-16 {
+        fill: url(#Dégradé_sans_nom_39-2);
+      }
+
+      .cls-17 {
+        fill: url(#Dégradé_sans_nom_39-9);
+      }
+
+      .cls-18 {
+        fill: url(#Dégradé_sans_nom_39-10);
+      }
+    </style>
+    <radialGradient id="Dégradé_sans_nom_39" data-name="Dégradé sans nom 39" cx="14.48" cy="8.12" fx="14.48" fy="8.12" r="5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9dee2"/>
+      <stop offset=".55" stop-color="#8a9198"/>
+      <stop offset="1" stop-color="#4a4f54"/>
+    </radialGradient>
+    <radialGradient id="Dégradé_sans_nom_39-2" data-name="Dégradé sans nom 39" cx="11.98" cy="121.66" fx="11.98" fy="121.66" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-3" data-name="Dégradé sans nom 39" cx="11.18" cy="611.78" fx="11.18" fy="611.78" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-4" data-name="Dégradé sans nom 39" cx="16.63" cy="825.85" fx="16.63" fy="825.85" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-5" data-name="Dégradé sans nom 39" cx="1336.06" cy="825.47" fx="1336.06" fy="825.47" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-6" data-name="Dégradé sans nom 39" cx="587.02" cy="825.85" fx="587.02" fy="825.85" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-7" data-name="Dégradé sans nom 39" cx="1341.83" cy="595.43" fx="1341.83" fy="595.43" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-8" data-name="Dégradé sans nom 39" cx="1340.35" cy="132.71" fx="1340.35" fy="132.71" r="5" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-9" data-name="Dégradé sans nom 39" cx="1337.85" cy="8.89" fx="1337.85" fy="8.89" r="5" xlink:href="#Dégradé_sans_nom_39"/>
+    <radialGradient id="Dégradé_sans_nom_39-10" data-name="Dégradé sans nom 39" cx="882.45" cy="8.73" fx="882.45" fy="8.73" r="5" xlink:href="#Dégradé_sans_nom_39"/>
+  </defs>
+  <g id="Barres_de_supports" data-name="Barres de supports">
+    <g>
+      <g>
+        <rect class="cls-14" x="860.89" y="619.9" width="63" height="25"/>
+        <rect class="cls-14" x="425.85" y="619.9" width="64.37" height="25"/>
+        <path class="cls-14" d="M1315.24,619.9h-27.17v25h27.17c3.11,0,5.62-2.52,5.62-5.62v-13.75c0-3.11-2.52-5.62-5.62-5.62h0Z"/>
+        <path class="cls-14" d="M56.89,619.9h-26.44c-3.11,0-5.62,2.52-5.62,5.62v13.75c0,3.11,2.52,5.62,5.62,5.62h26.44v-25h0Z"/>
+      </g>
+      <g>
+        <circle class="cls-5" cx="446.84" cy="632.4" r="2"/>
+        <circle class="cls-5" cx="458.25" cy="632.4" r="2"/>
+        <circle class="cls-5" cx="470.73" cy="632.4" r="2"/>
+        <circle class="cls-5" cx="881.31" cy="632.4" r="2"/>
+        <circle class="cls-5" cx="892.72" cy="632.4" r="2"/>
+        <circle class="cls-5" cx="905.2" cy="632.4" r="2"/>
+        <circle class="cls-5" cx="39.94" cy="632.4" r="2"/>
+        <circle class="cls-5" cx="1309.32" cy="632.4" r="2"/>
+      </g>
+    </g>
+    <g>
+      <g>
+        <rect class="cls-14" x="859.11" y="645.9" width="64.78" height="25"/>
+        <rect class="cls-14" x="429.74" y="645.9" width="62.26" height="25"/>
+        <path class="cls-14" d="M1315.24,645.9h-20.13v25h20.13c3.11,0,5.62-2.52,5.62-5.62v-13.75c0-3.11-2.52-5.62-5.62-5.62h0Z"/>
+        <path class="cls-14" d="M56.89,645.9h-26.44c-3.11,0-5.62,2.52-5.62,5.62v13.75c0,3.11,2.52,5.62,5.62,5.62h26.44v-25h0Z"/>
+      </g>
+      <circle class="cls-5" cx="446.84" cy="658.4" r="2"/>
+      <circle class="cls-8" cx="458.25" cy="658.4" r="2"/>
+      <circle class="cls-5" cx="470.73" cy="658.4" r="2"/>
+      <circle class="cls-5" cx="881.31" cy="658.4" r="2"/>
+      <circle class="cls-8" cx="892.72" cy="658.4" r="2"/>
+      <circle class="cls-5" cx="905.2" cy="658.4" r="2"/>
+      <circle class="cls-5" cx="39.94" cy="658.4" r="2"/>
+      <circle class="cls-5" cx="1309.32" cy="658.4" r="2"/>
+    </g>
+  </g>
+  <g id="Charnières">
+    <g id="charnière_2_haut" data-name="charnière 2 haut">
+      <path id="right" class="cls-15" d="M486.88,161.53h-5.79c-10.6,0-19.2-8.6-19.2-19.2v-30.11c0-10.6,8.6-19.2,19.2-19.2h5.79v68.51h0Z"/>
+      <rect id="center" class="cls-15" x="455.92" y="101.5" width="6" height="51.55" rx="2.92" ry="2.92"/>
+      <path id="left" class="cls-15" d="M430.96,93.02h5.79c10.6,0,19.2,8.6,19.2,19.2v30.11c0,10.6-8.6,19.2-19.2,19.2h-5.79v-68.51h0Z"/>
+    </g>
+    <g id="charnière_2_bas" data-name="charnière 2 bas">
+      <path id="left-2" class="cls-15" d="M430.29,500.13h5.79c10.6,0,19.2,8.6,19.2,19.2v30.11c0,10.6-8.6,19.2-19.2,19.2h-5.79v-68.51h0Z"/>
+      <rect id="center-2" class="cls-15" x="455.25" y="508.62" width="6" height="51.55" rx="2.92" ry="2.92"/>
+      <path id="right-2" class="cls-15" d="M486.2,568.65h-5.79c-10.6,0-19.2-8.6-19.2-19.2v-30.11c0-10.6,8.6-19.2,19.2-19.2h5.79v68.51h0Z"/>
+    </g>
+    <g id="Charnière_3_haut" data-name="Charnière 3 haut">
+      <path id="left-3" class="cls-15" d="M865.63,93.02h5.79c10.6,0,19.2,8.6,19.2,19.2v30.11c0,10.6-8.6,19.2-19.2,19.2h-5.79v-68.51h0Z"/>
+      <rect id="_Rectangcenterle_" data-name=" Rectangcenterle " class="cls-15" x="890.59" y="101.5" width="6" height="51.55" rx="2.92" ry="2.92"/>
+      <path id="right-3" class="cls-15" d="M921.55,161.53h-5.79c-10.6,0-19.2-8.6-19.2-19.2v-30.11c0-10.6,8.6-19.2,19.2-19.2h5.79v68.51h0Z"/>
+    </g>
+    <g id="Charnière_3_bas" data-name="Charnière 3 bas">
+      <path id="left-4" class="cls-15" d="M864.96,500.13h5.79c10.6,0,19.2,8.6,19.2,19.2v30.11c0,10.6-8.6,19.2-19.2,19.2h-5.79v-68.51h0Z"/>
+      <rect id="center-3" class="cls-15" x="889.92" y="508.62" width="6" height="51.55" rx="2.92" ry="2.92"/>
+      <path id="right-4" class="cls-15" d="M920.88,568.65h-5.79c-10.6,0-19.2-8.6-19.2-19.2v-30.11c0-10.6,8.6-19.2,19.2-19.2h5.79v68.51h0Z"/>
+    </g>
+    <path id="Charnière_droite" data-name="Charnière droite" class="cls-15" d="M1299.37,88.81h5.79c10.6,0,19.2,8.6,19.2,19.2v30.11c0,10.6-8.6,19.2-19.2,19.2h-5.79v-68.51h0Z"/>
+    <path id="Charnière_gauche" data-name="Charnière gauche" class="cls-15" d="M59.39,152.43h-5.79c-10.6,0-19.2-8.6-19.2-19.2v-18.71c0-10.6,8.6-19.2,19.2-19.2h5.79v57.11h0Z"/>
+  </g>
+  <g id="Touches_du_bas" data-name="Touches du bas">
+    <g id="Touche_1" data-name="Touche 1">
+      <path class="cls-14" d="M265.72,808.76h31.82c1.9,0,3.44,1.54,3.44,3.44v23.21h-38.7v-23.21c0-1.9,1.54-3.44,3.44-3.44Z"/>
+      <path class="cls-8" d="M276.76,826.68c-1.95,1.39,3.99-5.78,3.99-8s3.56,7.58,5.79,8-6.67-2.23-9.78,0Z"/>
+    </g>
+    <g id="touche_2" data-name="touche 2">
+      <path class="cls-14" d="M609.71,808.76h31.82c1.9,0,3.44,1.54,3.44,3.44v23.21h-38.7v-23.21c0-1.9,1.54-3.44,3.44-3.44Z"/>
+      <circle class="cls-5" cx="625.62" cy="822.09" r="6.38"/>
+    </g>
+    <g id="touche_3" data-name="touche 3">
+      <path class="cls-14" d="M701.27,808.76h31.82c1.9,0,3.44,1.54,3.44,3.44v23.21h-38.7v-23.21c0-1.9,1.54-3.44,3.44-3.44Z"/>
+      <g id="Logo_IM" data-name="Logo IM">
+        <polygon id="I" class="cls-8" points="718.25 814.36 717.69 814.36 716.62 814.36 716.11 814.36 716.11 814.89 716.62 814.89 716.62 829.81 717.69 829.81 717.69 814.89 718.25 814.89 718.25 814.36"/>
+        <path class="cls-8" d="M717.69,815.22s.09-.13.17-.19c.16-.12.32-.13.39-.13v-.3h-.77v.62h.21Z"/>
+        <path class="cls-8" d="M716.67,815.22s-.09-.13-.17-.19c-.16-.12-.32-.13-.39-.13v-.3h.77v.62h-.21Z"/>
+        <polygon id="M_gauche" data-name="M gauche" class="cls-8" points="712.12 815.16 712.12 816.76 712.12 817.02 712.12 825.82 713.45 826.88 713.45 818.27 715.58 820.22 715.58 822.35 715.05 822.88 715.05 823.95 715.58 824.48 715.58 827.68 716.38 828.27 716.38 820.81 716.38 819.29 716.38 819.15 712.12 815.16"/>
+        <polygon id="M_droite" data-name="M droite" class="cls-8" points="722.24 815.16 722.24 816.76 722.24 817.02 722.24 825.82 720.91 826.88 720.91 818.27 718.78 820.22 718.78 822.35 719.31 822.88 719.31 823.95 718.78 824.48 718.78 827.68 717.98 828.27 717.98 820.81 717.98 819.29 717.98 819.15 722.24 815.16"/>
+      </g>
+    </g>
+    <g id="touche_4" data-name="touche 4">
+      <path class="cls-14" d="M1039.27,808.76h31.82c1.9,0,3.44,1.54,3.44,3.44v23.21h-38.7v-23.21c0-1.9,1.54-3.44,3.44-3.44h0Z"/>
+      <circle class="cls-5" cx="1055.18" cy="822.09" r="6.38"/>
+    </g>
+    <g id="touche_5" data-name="touche 5">
+      <path class="cls-14" d="M1127.27,808.76h31.82c1.9,0,3.44,1.54,3.44,3.44v23.21h-38.7v-23.21c0-1.9,1.54-3.44,3.44-3.44h0Z"/>
+      <path class="cls-8" d="M1138.31,825.33c-1.95,1.11,3.99-4.6,3.99-6.37s3.56,6.02,5.79,6.37-6.67-1.77-9.78,0Z"/>
+    </g>
+  </g>
+  <g id="traits_déco" data-name="traits déco">
+    <rect class="cls-3" x="93.57" y="823.6" width="114.67" height="2.26"/>
+    <rect class="cls-3" x="653.37" y="823.6" width="30" height="2.26"/>
+    <rect class="cls-3" x="741.23" y="823.6" width="38" height="2.26"/>
+    <rect class="cls-3" x="944.34" y="823.6" width="38" height="2.26"/>
+    <rect class="cls-3" x="1080.18" y="823.47" width="38" height="2.26"/>
+    <rect class="cls-3" x="1166.18" y="823.47" width="22" height="2.26"/>
+    <path class="cls-8" d="M1025,821.73c1.4,0,2.54,1.14,2.54,2.54s-1.14,2.54-2.54,2.54-2.54-1.14-2.54-2.54,1.14-2.54,2.54-2.54Z"/>
+    <circle class="cls-8" cx="1097.24" cy="824.27" r="2.54"/>
+    <circle class="cls-8" cx="666.57" cy="824.73" r="2.54"/>
+    <circle class="cls-5" cx="920.82" cy="824.73" r="2.54"/>
+  </g>
+  <g id="Vis">
+    <g>
+      <circle id="Disque_principal" data-name="Disque principal" class="cls-12" cx="490.78" cy="30.19" r="9"/>
+      <circle id="Bossage_central" data-name="Bossage central" class="cls-11" cx="490.78" cy="30.19" r="2.25"/>
+      <rect id="Fente_horizontale" data-name="Fente horizontale" class="cls-13" x="486.27" y="29.02" width="9" height="2.25" transform="translate(18.02 165.3) rotate(-19.47)"/>
+      <rect id="Fente_verticale" data-name="Fente verticale" class="cls-13" x="489.64" y="25.65" width="2.25" height="9" transform="translate(18.01 165.3) rotate(-19.47)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-2" data-name="Disque principal-2" class="cls-12" cx="423.63" cy="30.19" r="9"/>
+      <circle id="Bossage_central-2" data-name="Bossage central-2" class="cls-11" cx="423.63" cy="30.19" r="2.25"/>
+      <rect id="Fente_horizontale-2" data-name="Fente horizontale-2" class="cls-13" x="419.13" y="29.06" width="9" height="2.25" transform="translate(-1.02 37.04) rotate(-5)"/>
+      <rect id="Fente_verticale-2" data-name="Fente verticale-2" class="cls-13" x="422.5" y="25.69" width="2.25" height="9" transform="translate(-1.02 37.04) rotate(-5)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-3" data-name="Disque principal-3" class="cls-12" cx="56.89" cy="30.19" r="9"/>
+      <circle id="Bossage_central-3" data-name="Bossage central-3" class="cls-11" cx="56.89" cy="30.19" r="2.25"/>
+      <rect id="Fente_horizontale-3" data-name="Fente horizontale-3" class="cls-14" x="52.39" y="29.05" width="9" height="2.25" transform="translate(10.72 75.07) rotate(-72.14)"/>
+      <rect id="Fente_verticale-3" data-name="Fente verticale-3" class="cls-14" x="55.77" y="25.69" width="2.25" height="9" transform="translate(10.71 75.08) rotate(-72.14)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-4" data-name="Disque principal-4" class="cls-12" cx="56.89" cy="786.78" r="9"/>
+      <circle id="Bossage_central-4" data-name="Bossage central-4" class="cls-11" cx="56.89" cy="786.78" r="2.25"/>
+      <rect id="Fente_horizontale-4" data-name="Fente horizontale-4" class="cls-13" x="52.39" y="785.65" width="9" height="2.25" transform="translate(-68.36 7.95) rotate(-5)"/>
+      <rect id="Fente_verticale-4" data-name="Fente verticale-4" class="cls-13" x="55.76" y="782.28" width="2.25" height="9" transform="translate(-68.36 7.95) rotate(-5)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-5" data-name="Disque principal-5" class="cls-12" cx="425.11" cy="786.78" r="9"/>
+      <circle id="Bossage_central-5" data-name="Bossage central-5" class="cls-11" cx="425.11" cy="786.78" r="2.25"/>
+      <rect id="Fente_horizontale-5" data-name="Fente horizontale-5" class="cls-13" x="423.97" y="782.28" width="2.25" height="9" transform="translate(-446.78 985.7) rotate(-74.47)"/>
+      <rect id="Fente_verticale-5" data-name="Fente verticale-5" class="cls-13" x="420.6" y="785.66" width="9" height="2.25" transform="translate(-446.78 985.71) rotate(-74.47)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-6" data-name="Disque principal-6" class="cls-12" cx="490.78" cy="786.78" r="9"/>
+      <circle id="Bossage_central-6" data-name="Bossage central-6" class="cls-11" cx="490.78" cy="786.78" r="2.25"/>
+      <rect id="Fente_horizontale-6" data-name="Fente horizontale-6" class="cls-13" x="486.28" y="785.65" width="9" height="2.25" transform="translate(-66.7 45.77) rotate(-5)"/>
+      <rect id="Fente_verticale-6" data-name="Fente verticale-6" class="cls-13" x="489.65" y="782.28" width="2.25" height="9" transform="translate(-66.71 45.77) rotate(-5)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-7" data-name="Disque principal-7" class="cls-12" cx="859" cy="786.78" r="9"/>
+      <circle id="Bossage_central-7" data-name="Bossage central-7" class="cls-11" cx="859" cy="786.78" r="2.25"/>
+      <rect id="Fente_horizontale-7" data-name="Fente horizontale-7" class="cls-13" x="854.5" y="785.65" width="9" height="2.25"/>
+      <rect id="Fente_verticale-7" data-name="Fente verticale-7" class="cls-13" x="857.88" y="782.28" width="2.25" height="9"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-8" data-name="Disque principal-8" class="cls-12" cx="923.89" cy="784.11" r="9"/>
+      <circle id="Bossage_central-8" data-name="Bossage central-8" class="cls-11" cx="923.89" cy="784.11" r="2.25"/>
+      <rect id="Fente_horizontale-8" data-name="Fente horizontale-8" class="cls-13" x="922.77" y="779.6" width="2.25" height="9" transform="translate(-261.3624 1036.2297) rotate(-52.33)"/>
+      <rect id="Fente_verticale-8" data-name="Fente verticale-8" class="cls-13" x="919.39" y="782.98" width="9" height="2.25" transform="translate(-261.3659 1036.2245) rotate(-52.33)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-9" data-name="Disque principal-9" class="cls-12" cx="1295.11" cy="784.11" r="9"/>
+      <circle id="Bossage_central-9" data-name="Bossage central-9" class="cls-11" cx="1295.11" cy="784.11" r="2.25"/>
+      <rect id="Fente_horizontale-9" data-name="Fente horizontale-9" class="cls-13" x="1293.99" y="779.61" width="2.25" height="9" transform="translate(-117.37 239.1) rotate(-10.09)"/>
+      <rect id="Fente_verticale-9" data-name="Fente verticale-9" class="cls-13" x="1290.61" y="782.98" width="9" height="2.25" transform="translate(-117.37 239.1) rotate(-10.09)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-10" data-name="Disque principal-10" class="cls-12" cx="1293.63" cy="27.51" r="9"/>
+      <circle id="Bossage_central-10" data-name="Bossage central-10" class="cls-11" cx="1293.63" cy="27.51" r="2.25"/>
+      <rect id="Fente_horizontale-10" data-name="Fente horizontale-10" class="cls-13" x="1292.5" y="23.03" width="2.25" height="9" transform="translate(1190.7818 1317.3549) rotate(-86.66)"/>
+      <rect id="Fente_verticale-10" data-name="Fente verticale-10" class="cls-13" x="1289.12" y="26.4" width="9" height="2.25" transform="translate(1190.7826 1317.3452) rotate(-86.66)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-11" data-name="Disque principal-11" class="cls-12" cx="923.89" cy="27.51" r="9"/>
+      <circle id="Bossage_central-11" data-name="Bossage central-11" class="cls-11" cx="923.89" cy="27.51" r="2.25"/>
+      <rect id="Fente_horizontale-11" data-name="Fente horizontale-11" class="cls-13" x="922.81" y="22.97" width="2.25" height="9" transform="translate(317.48 725.05) rotate(-50.7)"/>
+      <rect id="Fente_verticale-11" data-name="Fente verticale-11" class="cls-13" x="919.44" y="26.33" width="9" height="2.25" transform="translate(317.48 725.05) rotate(-50.7)"/>
+    </g>
+    <g>
+      <circle id="Disque_principal-12" data-name="Disque principal-12" class="cls-12" cx="857.52" cy="30.19" r="9"/>
+      <circle id="Bossage_central-12" data-name="Bossage central-12" class="cls-11" cx="857.52" cy="30.19" r="2.25"/>
+      <rect id="Fente_horizontale-12" data-name="Fente horizontale-12" class="cls-13" x="856.41" y="25.65" width="2.25" height="9" transform="translate(524.83 821.09) rotate(-69.2)"/>
+      <rect id="Fente_verticale-12" data-name="Fente verticale-12" class="cls-13" x="853.03" y="29.03" width="9" height="2.25" transform="translate(524.83 821.08) rotate(-69.2)"/>
+    </g>
+  </g>
+  <g id="Rivets">
+    <path class="cls-1" d="M14.48,3.12c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM14.48,10.62c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-16" d="M11.98,116.66c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM11.98,124.16c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-9" d="M11.18,606.78c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM11.18,614.28c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-2" d="M16.63,820.85c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM16.63,828.35c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-4" d="M1336.06,820.47c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM1336.06,827.97c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-6" d="M587.02,820.85c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM587.02,828.35c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-7" d="M1341.83,590.43c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM1341.83,597.93c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-10" d="M1340.35,127.71c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM1340.35,135.21c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-17" d="M1337.85,3.89c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM1337.85,11.39c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+    <path class="cls-18" d="M882.45,3.73c-2.76,0-5,2.24-5,5s2.24,5,5,5,5-2.24,5-5-2.24-5-5-5ZM882.45,11.23c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5,2.5,1.12,2.5,2.5-1.12,2.5-2.5,2.5Z"/>
+  </g>
+</svg>

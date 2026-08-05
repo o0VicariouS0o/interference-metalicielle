@@ -1,0 +1,245 @@
+/* =========================================================
+   ACCUEIL — CSS TECHNIQUE
+   Les réglages sont centralisés dans site-settings.css.
+   ========================================================= */
+
+/* =========================================================
+   STRUCTURE
+   ========================================================= */
+
+.homePngMachine {
+  position: relative;
+  width: min(100%, var(--home-max-width));
+  margin-inline: auto;
+}
+
+.homeStructureConnector,
+.homePngModule {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+
+.homeStructureConnector {
+  z-index: 3;
+  pointer-events: none;
+}
+
+.homeStructureConnector img,
+.homePngModule__shell {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.homeStructureConnector--top {
+  z-index: var(--connector-top-z);
+  opacity: var(--connector-top-opacity);
+  transform: translate(var(--connector-top-x), var(--connector-top-y)) rotate(var(--connector-top-rotation)) scale(var(--connector-top-scale));
+  transform-origin: var(--connector-top-transform-origin);
+  width: var(--home-connector-top-width);
+  margin:
+    var(--home-connector-top-margin-top)
+    auto
+    var(--home-connector-top-margin-bottom);
+}
+
+.homeStructureConnector--middle {
+  z-index: var(--connector-middle-z);
+  opacity: var(--connector-middle-opacity);
+  transform: translate(var(--connector-middle-x), var(--connector-middle-y)) rotate(var(--connector-middle-rotation)) scale(var(--connector-middle-scale));
+  transform-origin: var(--connector-middle-transform-origin);
+  width: var(--home-connector-middle-width);
+  margin:
+    var(--home-connector-middle-margin-top)
+    auto
+    var(--home-connector-middle-margin-bottom);
+}
+
+.homeStructureConnector--bottom {
+  z-index: var(--connector-bottom-z);
+  opacity: var(--connector-bottom-opacity);
+  transform: translate(var(--connector-bottom-x), var(--connector-bottom-y)) rotate(var(--connector-bottom-rotation)) scale(var(--connector-bottom-scale));
+  transform-origin: var(--connector-bottom-transform-origin);
+  width: var(--home-connector-bottom-width);
+  margin:
+    var(--home-connector-bottom-margin-top)
+    auto
+    var(--home-connector-bottom-margin-bottom);
+}
+
+.homePngModule {
+  isolation: isolate;
+}
+
+.homePngModule--hero {
+  z-index: var(--hero-z);
+  opacity: var(--hero-opacity);
+  transform: translate(var(--hero-x), var(--hero-y)) rotate(var(--hero-rotation)) scale(var(--hero-scale));
+  transform-origin: var(--hero-transform-origin);
+}
+
+.homePngModule--modules {
+  z-index: var(--modules-z);
+  opacity: var(--modules-opacity);
+  transform: translate(var(--modules-x), var(--modules-y)) rotate(var(--modules-rotation)) scale(var(--modules-scale));
+  transform-origin: var(--modules-transform-origin);
+}
+
+.homePngModule__content,
+.homePngMachine__heading {
+  position: absolute;
+  z-index: 1;
+}
+
+.homePngMachine__heading {
+  position: absolute;
+  z-index: var(--hero-title-z);
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  opacity: var(--hero-title-opacity);
+  transform:
+    translate(var(--hero-title-x), var(--hero-title-y))
+    rotate(var(--hero-title-rotation))
+    scale(var(--hero-title-scale));
+  transform-origin: var(--hero-title-transform-origin);
+  line-height: normal;
+  pointer-events: none;
+}
+
+.homePngMachine__eyebrow {
+  position: absolute;
+  z-index: var(--home-eyebrow-z);
+  top: var(--home-eyebrow-top);
+  left: var(--home-eyebrow-left);
+  width: var(--home-eyebrow-width);
+  margin: 0;
+  opacity: var(--home-eyebrow-opacity);
+  transform:
+    translate(var(--home-eyebrow-x), var(--home-eyebrow-y))
+    rotate(var(--home-eyebrow-rotation))
+    scale(var(--home-eyebrow-scale));
+  transform-origin: var(--home-eyebrow-transform-origin);
+  font-family: var(--font-mono);
+  font-size: var(--home-eyebrow-size-proportional);
+  line-height: var(--home-eyebrow-line-height);
+  letter-spacing: var(--home-eyebrow-letter-spacing);
+  text-transform: uppercase;
+  color: var(--color-transmission);
+}
+
+.homePngMachine__title {
+  position: absolute;
+  z-index: var(--home-main-title-z);
+  top: var(--home-main-title-top);
+  left: var(--home-main-title-left);
+  width: var(--home-main-title-width);
+  margin: 0;
+  opacity: var(--home-main-title-opacity);
+  transform:
+    translate(var(--home-main-title-x), var(--home-main-title-y))
+    rotate(var(--home-main-title-rotation))
+    scale(var(--home-main-title-scale));
+  transform-origin: var(--home-main-title-transform-origin);
+  font-family: var(--font-display);
+  font-size: var(--home-main-title-size-proportional);
+  line-height: var(--home-main-title-line-height);
+  letter-spacing: var(--home-main-title-letter-spacing);
+  color: rgba(237, 232, 222, 0.94);
+}
+
+.homePngModule__content--hero {
+  z-index: var(--hero-content-z);
+  opacity: var(--hero-content-opacity);
+  transform: translate(var(--hero-content-x), var(--hero-content-y)) rotate(var(--hero-content-rotation)) scale(var(--hero-content-scale));
+  transform-origin: var(--hero-content-transform-origin);
+  top: var(--home-hero-content-top);
+  right: var(--home-hero-content-right);
+  bottom: var(--home-hero-content-bottom);
+  left: var(--home-hero-content-left);
+  overflow: hidden;
+  line-height: normal;
+}
+
+.homePngModule__content--modules {
+  z-index: var(--modules-content-z);
+  opacity: var(--modules-content-opacity);
+  transform: translate(var(--modules-content-x), var(--modules-content-y)) rotate(var(--modules-content-rotation)) scale(var(--modules-content-scale));
+  transform-origin: var(--modules-content-transform-origin);
+  top: var(--home-modules-content-top);
+  right: var(--home-modules-content-right);
+  bottom: var(--home-modules-content-bottom);
+  left: var(--home-modules-content-left);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--home-modules-gap);
+  align-items: stretch;
+  min-width: 0;
+  line-height: normal;
+}
+
+.homePngModule__content--modules > * {
+  min-width: 0;
+  height: 100%;
+}
+
+
+
+/* =========================================================
+   OVERLAYS HERO + MODULES
+   ========================================================= */
+
+.homePngModule__overlay {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.homePngModule__overlay--hero {
+  z-index: var(--hero-overlay-z);
+  top: var(--hero-overlay-top);
+  left: var(--hero-overlay-left);
+  width: var(--hero-overlay-width);
+  height: var(--hero-overlay-height);
+  opacity: var(--hero-overlay-opacity);
+  object-fit: var(--hero-overlay-object-fit);
+  transform:
+    translate(var(--hero-overlay-x), var(--hero-overlay-y))
+    rotate(var(--hero-overlay-rotation))
+    scale(var(--hero-overlay-scale));
+  transform-origin: var(--hero-overlay-transform-origin);
+}
+
+.homePngModule__overlay--modules {
+  z-index: var(--modules-overlay-z);
+  top: var(--modules-overlay-top);
+  left: var(--modules-overlay-left);
+  width: var(--modules-overlay-width);
+  height: var(--modules-overlay-height);
+  opacity: var(--modules-overlay-opacity);
+  object-fit: var(--modules-overlay-object-fit);
+  transform:
+    translate(var(--modules-overlay-x), var(--modules-overlay-y))
+    rotate(var(--modules-overlay-rotation))
+    scale(var(--modules-overlay-scale));
+  transform-origin: var(--modules-overlay-transform-origin);
+}
+
+
+@media (max-width: 720px) {
+  
+
+  .homePngMachine__heading h1 {
+    font-size: clamp(1.4rem, 6vw, 2.5rem);
+  }
+
+  .homePngMachine__heading p {
+    font-size: clamp(0.52rem, 1.8vw, 0.75rem);
+  }
+}

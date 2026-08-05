@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Construction" xmlns="http://www.w3.org/2000/svg" width="144" height="32" version="1.1" viewBox="0 0 144 32">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <polygon points="0 0 16 0 16 8 8 8 8 16 0 16 0 0" fill="#20242a"/>
+  <polygon points="0 16 8 16 8 24 16 24 16 32 0 32 0 16" fill="#20242a"/>
+  <polygon points="144 16 136 16 136 8 128 8 128 0 144 0 144 16" fill="#20242a"/>
+  <polygon points="144 32 128 32 128 24 136 24 136 16 144 16 144 32" fill="#20242a"/>
+  <rect x="16" width="112" height="8" fill="#20242a"/>
+  <rect x="16" y="24" width="112" height="8" fill="#20242a"/>
+</svg>

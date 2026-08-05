@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Construction" xmlns="http://www.w3.org/2000/svg" width="64" height="32" version="1.1" viewBox="0 0 64 32">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <g id="Rivet">
+    <circle id="Rivet1" data-name="Rivet" cx="8" cy="8" r="4" fill="#20242a"/>
+  </g>
+  <g id="Rivet2" data-name="Rivet">
+    <circle id="Rivet3" data-name="Rivet" cx="56" cy="8" r="4" fill="#20242a"/>
+  </g>
+  <g id="Rivet4" data-name="Rivet">
+    <circle id="Rivet5" data-name="Rivet" cx="56" cy="24" r="4" fill="#20242a"/>
+  </g>
+  <g id="Rivet6" data-name="Rivet">
+    <circle id="Rivet7" data-name="Rivet" cx="8" cy="24" r="4" fill="#20242a"/>
+  </g>
+  <g id="Plaque">
+    <rect id="Plaque1" data-name="Plaque" width="64" height="32" rx="4" ry="4" fill="#20242a"/>
+  </g>
+</svg>

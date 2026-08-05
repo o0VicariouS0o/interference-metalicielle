@@ -1,0 +1,373 @@
+/* =========================================================
+   PAGE YEM — JOURNAL DE BORD
+   ========================================================= */
+
+.yemPage {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(4, 3, 7, 0.42), rgba(4, 3, 7, 0.84)),
+    url('/assets/yem/yem-page-background.png') top center / cover fixed no-repeat,
+    #040306;
+}
+
+.yemPage::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(107, 63, 160, 0.08), transparent 28%),
+    radial-gradient(circle at 82% 72%, rgba(107, 63, 160, 0.06), transparent 30%);
+  mix-blend-mode: screen;
+}
+
+.yemHero,
+.yemJournal {
+  position: relative;
+  z-index: 1;
+}
+
+.yemHero {
+  min-height: min(92vh, 980px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(107, 63, 160, 0.24);
+  background: #020204;
+}
+
+.yemHero__image,
+.yemHero__veil,
+.yemHero__noise {
+  position: absolute;
+  inset: 0;
+}
+
+.yemHero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.88;
+}
+
+.yemHero__veil {
+  background:
+    linear-gradient(90deg, rgba(2, 2, 4, 0.92), rgba(2, 2, 4, 0.62) 30%, rgba(2, 2, 4, 0.16) 58%, rgba(2, 2, 4, 0.56)),
+    linear-gradient(180deg, rgba(2, 2, 4, 0.12), rgba(2, 2, 4, 0.08) 45%, rgba(2, 2, 4, 0.94));
+}
+
+.yemHero__noise {
+  opacity: 0.08;
+  background-image: repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(255,255,255,0.025) 2px, rgba(255,255,255,0.025) 3px);
+  mix-blend-mode: screen;
+}
+
+.yemHero__content {
+  position: relative;
+  z-index: 2;
+  width: min(720px, calc(100% - 40px));
+  margin-left: max(24px, calc((100vw - 1500px) / 2));
+  margin-bottom: clamp(56px, 10vh, 110px);
+}
+
+.yemHero__eyebrow,
+.yemJournal__eyebrow,
+.yemEntry__type,
+.yemEntry__id,
+.yemEntry__date,
+.yemEntry__footer {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.yemHero__eyebrow {
+  margin: 0;
+  color: rgba(202, 173, 230, 0.78);
+  font-size: 0.72rem;
+}
+
+.yemHero__title {
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 12vw, 10rem);
+  line-height: 0.8;
+  letter-spacing: 0.08em;
+  color: #ece3f3;
+  text-shadow: 0 0 20px rgba(107,63,160,0.5), 0 0 70px rgba(107,63,160,0.22);
+}
+
+.yemHero__intro,
+.yemHero__manifesto {
+  max-width: 640px;
+  color: rgba(232, 226, 216, 0.82);
+  line-height: 1.8;
+}
+
+.yemHero__intro {
+  margin: 28px 0 0;
+  font-size: clamp(1rem, 1.25vw, 1.14rem);
+}
+
+.yemHero__manifesto {
+  margin: 18px 0 0;
+  color: rgba(218, 196, 236, 0.88);
+  font-style: italic;
+}
+
+.yemHero__anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(107, 63, 160, 0.72);
+  color: rgba(226, 211, 239, 0.9);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.yemHero__anchor:hover {
+  color: #fff;
+  border-color: #9c69c8;
+}
+
+.yemJournal {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: clamp(80px, 10vw, 150px) 0 120px;
+}
+
+.yemJournal__intro {
+  max-width: 780px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+
+.yemJournal__eyebrow {
+  margin: 0;
+  color: #8c5eb3;
+  font-size: 0.7rem;
+}
+
+.yemJournal__title {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 0.95;
+}
+
+.yemJournal__text {
+  max-width: 720px;
+  margin: 24px auto 0;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+.yemJournal__entries {
+  display: grid;
+  gap: clamp(54px, 8vw, 96px);
+}
+
+.yemEntry {
+  position: relative;
+  width: min(920px, 100%);
+  min-height: 680px;
+  margin: 0 auto;
+  isolation: isolate;
+  opacity: 0;
+  transform: translateY(26px);
+  animation: yem-entry-appear 700ms ease forwards;
+  animation-delay: calc(var(--yem-entry-index) * 65ms);
+}
+
+.yemEntry__frame,
+.yemEntry__glass,
+.yemEntry__memoryLine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.yemEntry__frame {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  filter: drop-shadow(0 22px 38px rgba(0,0,0,0.46)) drop-shadow(0 0 20px rgba(107,63,160,0.08));
+}
+
+.yemEntry__glass {
+  z-index: 1;
+  inset: 7.8% 7.2% 8%;
+  border: 1px solid rgba(132, 91, 165, 0.12);
+  background: linear-gradient(155deg, rgba(255,255,255,0.025), transparent 22%, transparent 72%, rgba(107,63,160,0.03));
+  box-shadow: inset 0 0 34px rgba(107,63,160,0.035), inset 0 0 1px rgba(255,255,255,0.12);
+}
+
+.yemEntry__memoryLine {
+  z-index: 2;
+  left: 9%;
+  right: 9%;
+  top: 18%;
+  bottom: auto;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(137,84,180,0.7), rgba(221,192,241,0.88), rgba(137,84,180,0.7), transparent);
+  box-shadow: 0 0 12px rgba(107,63,160,0.5);
+}
+
+.yemEntry__content {
+  position: relative;
+  z-index: 3;
+  min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(84px, 10vw, 118px) clamp(72px, 10vw, 128px) clamp(78px, 9vw, 108px);
+}
+
+.yemEntry__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.yemEntry__type {
+  margin: 0;
+  color: #9360bb;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.yemEntry__id {
+  margin: 9px 0 0;
+  color: rgba(232,226,216,0.66);
+  font-size: 0.66rem;
+}
+
+.yemEntry__date {
+  margin: 0;
+  color: rgba(232,226,216,0.42);
+  font-size: 0.62rem;
+  text-align: right;
+}
+
+.yemEntry__title {
+  max-width: 700px;
+  margin: 38px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  line-height: 1.05;
+}
+
+.yemEntry__text {
+  flex: 1;
+  margin: 36px 0 0;
+  white-space: pre-line;
+  color: rgba(236,231,224,0.86);
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+  line-height: 1.9;
+}
+
+.yemEntry__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(107,63,160,0.28);
+  color: rgba(232,226,216,0.42);
+  font-size: 0.58rem;
+}
+
+.yemEntry__footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(190,151,219,0.86);
+}
+
+.yemEntry__footer a:hover {
+  color: #f0e8f7;
+}
+
+.yemEntry:hover .yemEntry__frame {
+  filter: drop-shadow(0 24px 42px rgba(0,0,0,0.52)) drop-shadow(0 0 24px rgba(107,63,160,0.16));
+}
+
+.yemEntry:hover .yemEntry__glass {
+  border-color: rgba(141,92,179,0.24);
+}
+
+.yemEntry:hover .yemEntry__memoryLine {
+  animation: yem-memory-line 2.2s ease both;
+}
+
+.yemJournal__message {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid rgba(107,63,160,0.32);
+  background: rgba(6,5,9,0.76);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+@keyframes yem-entry-appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes yem-memory-line {
+  0% { top: 18%; opacity: 0; }
+  18% { opacity: 0.8; }
+  82% { opacity: 0.5; }
+  100% { top: 82%; opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .yemHero { min-height: 780px; }
+  .yemHero__image { object-position: 62% center; }
+  .yemHero__content { margin-left: 24px; margin-right: 24px; }
+  .yemEntry, .yemEntry__content { min-height: 620px; }
+  .yemEntry__content { padding: 82px 76px 76px; }
+}
+
+@media (max-width: 680px) {
+  .yemPage { background-attachment: scroll; }
+  .yemHero { min-height: 700px; }
+  .yemHero__veil { background: linear-gradient(180deg, rgba(2,2,4,0.2), rgba(2,2,4,0.56) 44%, rgba(2,2,4,0.96)); }
+  .yemHero__content { width: calc(100% - 32px); margin: 0 16px 54px; }
+  .yemJournal { width: min(100% - 20px, 1120px); padding-top: 70px; }
+  .yemEntry, .yemEntry__content { min-height: 560px; }
+  .yemEntry__frame { opacity: 0.82; }
+  .yemEntry__glass { inset: 5%; }
+  .yemEntry__content { padding: 64px 34px 58px; }
+  .yemEntry__header, .yemEntry__footer { align-items: flex-start; flex-direction: column; }
+  .yemEntry__date { text-align: left; }
+  .yemEntry__title { margin-top: 28px; }
+  .yemEntry__text { margin-top: 26px; line-height: 1.75; }
+  .yemEntry__footer { margin-top: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yemEntry {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+
+  .yemEntry__memoryLine {
+    animation: none !important;
+  }
+}

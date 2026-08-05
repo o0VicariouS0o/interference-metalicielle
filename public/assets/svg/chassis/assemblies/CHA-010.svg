@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Construction" xmlns="http://www.w3.org/2000/svg" width="96" height="48" version="1.1" viewBox="0 0 96 48">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <path d="M88,0H8L0,8v32l8,8h80l8-8V8L88,0ZM22,36h-8V12h8v24ZM34,36h-8V12h8v24ZM46,36h-8V12h8v24ZM58,36h-8V12h8v24ZM70,36h-8V12h8v24ZM82,36h-8V12h8v24Z" fill="#20242a"/>
+  <circle cx="8" cy="24" r="2" fill="#20242a"/>
+  <circle cx="88" cy="24" r="2" fill="#20242a"/>
+</svg>

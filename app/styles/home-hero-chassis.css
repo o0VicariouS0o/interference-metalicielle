@@ -1,0 +1,1202 @@
+/* =========================================================
+   HOME HERO — CHÂSSIS SVG MÉCANIQUE
+   Les détails techniques restent exclusivement dans
+   les bandes visibles autour du panneau fonctionnel.
+   ========================================================= */
+
+.homeHeroChassis {
+  --hero-chassis-rail-thickness: 28px;
+  --hero-chassis-corner-size: 52px;
+  --hero-chassis-crown-width: 168px;
+  --hero-chassis-crown-height: 30px;
+  --hero-chassis-base-width: 176px;
+  --hero-chassis-base-height: 31px;
+  --hero-chassis-fastener-size: 12px;
+
+  position: relative;
+  isolation: isolate;
+
+  margin-top: 38px;
+
+  padding:
+    var(--hero-chassis-rail-thickness);
+
+  filter:
+    drop-shadow(
+      0
+      18px
+      34px
+      rgba(0, 0, 0, 0.46)
+    );
+}
+
+/* =========================================================
+   NEUTRALISATION DE L’ANCIEN CADRE CSS
+   ========================================================= */
+
+.homeMachine__hero {
+  margin:
+    28px
+    14px
+    0;
+
+  padding: 0;
+  border: 0;
+
+  background: none;
+  box-shadow: none;
+}
+
+.homeMachine__hero::before,
+.homeMachine__hero::after {
+  display: none;
+}
+
+.homeHeroChassis .homeHero.imPanel::after {
+  display: none;
+}
+
+.homeHeroChassis .homeHero__content::before,
+.homeHeroChassis .homeHero__content::after {
+  display: none;
+}
+
+/* =========================================================
+   CARROSSERIE DE FOND
+   ========================================================= */
+
+.homeHeroChassis::before {
+  position: absolute;
+  z-index: 0;
+
+  inset: 5px;
+
+  border:
+    1px
+    solid
+    rgba(188, 183, 173, 0.055);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.028),
+      transparent 22%,
+      transparent 72%,
+      rgba(0, 0, 0, 0.44)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(43, 42, 40, 0.4),
+      rgba(11, 12, 13, 0.95)
+    ),
+    rgba(8, 9, 10, 0.97);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.88),
+    inset 0 0 34px rgba(0, 0, 0, 0.72);
+
+  pointer-events: none;
+
+  content: "";
+}
+
+.homeHeroChassis::after {
+  position: absolute;
+  z-index: 1;
+
+  inset: 6px;
+
+  background-image:
+    url("/assets/materials/MAT-002_DocumentPatina.png"),
+    url("/assets/materials/MAT-003_MicroFractures.png"),
+    url("/assets/materials/MAT-004_DiffuseReflection.png");
+
+  background-repeat:
+    repeat,
+    repeat,
+    no-repeat;
+
+  background-position:
+    18% 26%,
+    82% 34%,
+    center;
+
+  background-size:
+    740px 740px,
+    980px 980px,
+    cover;
+
+  opacity: 0.07;
+
+  filter:
+    brightness(0.66)
+    contrast(1.08);
+
+  mix-blend-mode: screen;
+
+  pointer-events: none;
+
+  content: "";
+}
+
+/* =========================================================
+   PANNEAU FONCTIONNEL
+   ========================================================= */
+
+.homeHeroChassis .homeHero {
+  position: relative;
+  z-index: 5;
+
+  margin: 0;
+  overflow: hidden;
+
+  border:
+    1px
+    solid
+    rgba(177, 172, 162, 0.11);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(26, 24, 24, 0.97),
+      rgba(11, 12, 13, 0.99)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.78),
+    inset 0 0 72px rgba(0, 0, 0, 0.38),
+    0 12px 30px rgba(0, 0, 0, 0.34);
+}
+
+.homeHeroChassis .imPanel__material {
+  z-index: 0;
+
+  opacity: 0.24;
+
+  filter:
+    brightness(0.62)
+    contrast(1.04);
+}
+
+.homeHeroChassis .imPanel__material::before {
+  opacity: 0.12;
+}
+
+.homeHeroChassis .imPanel__material::after {
+  opacity: 0.08;
+}
+
+.homeHeroChassis .homeHero__artwork,
+.homeHeroChassis .homeHero__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   CADRE EXTÉRIEUR
+   ========================================================= */
+
+.homeHeroChassis__outerFrame {
+  position: absolute;
+  z-index: 8;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.homeHeroChassis__piece,
+.homeHeroChassis__railPiece {
+  display: block;
+  flex: 0 0 auto;
+
+  max-width: none;
+
+  pointer-events: none;
+  user-select: none;
+
+  filter:
+    brightness(0.72)
+    contrast(1.12)
+    saturate(0.7)
+    drop-shadow(
+      0
+      2px
+      4px
+      rgba(0, 0, 0, 0.82)
+    );
+}
+
+/* =========================================================
+   RAILS HORIZONTAUX
+   ========================================================= */
+
+.homeHeroChassis__rail {
+  position: absolute;
+
+  display: flex;
+  overflow: hidden;
+
+  pointer-events: none;
+
+  opacity: 0.78;
+}
+
+.homeHeroChassis__rail--top,
+.homeHeroChassis__rail--bottom {
+  right:
+    calc(
+      var(--hero-chassis-corner-size)
+      - 4px
+    );
+
+  left:
+    calc(
+      var(--hero-chassis-corner-size)
+      - 4px
+    );
+
+  height:
+    var(--hero-chassis-rail-thickness);
+
+  flex-direction: row;
+}
+
+.homeHeroChassis__rail--top {
+  top: 0;
+}
+
+.homeHeroChassis__rail--bottom {
+  bottom: 0;
+
+  transform:
+    rotate(180deg);
+}
+
+.homeHeroChassis__rail--top
+  .homeHeroChassis__railPiece,
+.homeHeroChassis__rail--bottom
+  .homeHeroChassis__railPiece {
+  width: 64px;
+  height:
+    var(--hero-chassis-rail-thickness);
+
+  object-fit: fill;
+}
+
+/* =========================================================
+   RAILS VERTICAUX
+   ========================================================= */
+
+.homeHeroChassis__rail--left,
+.homeHeroChassis__rail--right {
+  top:
+    calc(
+      var(--hero-chassis-corner-size)
+      - 4px
+    );
+
+  bottom:
+    calc(
+      var(--hero-chassis-corner-size)
+      - 4px
+    );
+
+  width:
+    var(--hero-chassis-rail-thickness);
+
+  flex-direction: column;
+}
+
+.homeHeroChassis__rail--left {
+  left: 0;
+}
+
+.homeHeroChassis__rail--right {
+  right: 0;
+
+  transform:
+    rotate(180deg);
+}
+
+.homeHeroChassis__rail--left
+  .homeHeroChassis__railPiece,
+.homeHeroChassis__rail--right
+  .homeHeroChassis__railPiece {
+  width:
+    var(--hero-chassis-rail-thickness);
+
+  height: 64px;
+
+  object-fit: fill;
+}
+
+/* =========================================================
+   COINS EXTÉRIEURS
+   ========================================================= */
+
+.homeHeroChassis__piece--cornerTopLeft,
+.homeHeroChassis__piece--cornerTopRight,
+.homeHeroChassis__piece--cornerBottomRight,
+.homeHeroChassis__piece--cornerBottomLeft {
+  position: absolute;
+  z-index: 4;
+
+  width:
+    var(--hero-chassis-corner-size);
+
+  height:
+    var(--hero-chassis-corner-size);
+
+  object-fit: contain;
+
+  opacity: 0.9;
+}
+
+.homeHeroChassis__piece--cornerTopLeft {
+  top: 0;
+  left: 0;
+}
+
+.homeHeroChassis__piece--cornerTopRight {
+  top: 0;
+  right: 0;
+
+  transform: rotate(90deg);
+}
+
+.homeHeroChassis__piece--cornerBottomRight {
+  right: 0;
+  bottom: 0;
+
+  transform: rotate(180deg);
+}
+
+.homeHeroChassis__piece--cornerBottomLeft {
+  bottom: 0;
+  left: 0;
+
+  transform: rotate(270deg);
+}
+
+/* =========================================================
+   COURONNEMENT ET SOCLE
+   ========================================================= */
+
+.homeHeroChassis__piece--crown {
+  position: absolute;
+  z-index: 7;
+
+  top: -2px;
+  left: 50%;
+
+  width:
+    var(--hero-chassis-crown-width);
+
+  height:
+    var(--hero-chassis-crown-height);
+
+  object-fit: fill;
+
+  transform:
+    translateX(-50%);
+
+  filter:
+    brightness(0.86)
+    contrast(1.18)
+    drop-shadow(
+      0
+      4px
+      6px
+      rgba(0, 0, 0, 0.82)
+    );
+}
+
+.homeHeroChassis__piece--base {
+  position: absolute;
+  z-index: 7;
+
+  bottom: -2px;
+  left: 50%;
+
+  width:
+    var(--hero-chassis-base-width);
+
+  height:
+    var(--hero-chassis-base-height);
+
+  object-fit: fill;
+
+  transform:
+    translateX(-50%);
+
+  filter:
+    brightness(0.82)
+    contrast(1.18)
+    drop-shadow(
+      0
+      -2px
+      4px
+      rgba(0, 0, 0, 0.58)
+    )
+    drop-shadow(
+      0
+      5px
+      7px
+      rgba(0, 0, 0, 0.82)
+    );
+}
+
+/* =========================================================
+   VENTILATION EXTÉRIEURE
+   ========================================================= */
+
+.homeHeroChassis__piece--ventilation {
+  position: absolute;
+  z-index: 6;
+
+  top: 50%;
+  right: 5px;
+
+  width: 18px;
+  height: 132px;
+
+  object-fit: fill;
+
+  opacity: 0.7;
+
+  transform:
+    translateY(-50%);
+
+  filter:
+    brightness(0.58)
+    contrast(1.2)
+    drop-shadow(
+      0
+      2px
+      5px
+      rgba(0, 0, 0, 0.82)
+    );
+}
+
+/* =========================================================
+   FIXATIONS EXTÉRIEURES
+   ========================================================= */
+
+.homeHeroChassis__piece--fastenerTopLeft,
+.homeHeroChassis__piece--fastenerTopRight,
+.homeHeroChassis__piece--fastenerBottomLeft,
+.homeHeroChassis__piece--fastenerBottomRight {
+  position: absolute;
+  z-index: 8;
+
+  width:
+    var(--hero-chassis-fastener-size);
+
+  height:
+    var(--hero-chassis-fastener-size);
+
+  object-fit: contain;
+
+  opacity: 0.68;
+
+  filter:
+    brightness(0.78)
+    contrast(1.12)
+    drop-shadow(
+      0
+      1px
+      2px
+      rgba(0, 0, 0, 0.92)
+    );
+}
+
+.homeHeroChassis__piece--fastenerTopLeft {
+  top: 7px;
+  left: 58px;
+}
+
+.homeHeroChassis__piece--fastenerTopRight {
+  top: 7px;
+  right: 58px;
+}
+
+.homeHeroChassis__piece--fastenerBottomLeft {
+  bottom: 7px;
+  left: 58px;
+}
+
+.homeHeroChassis__piece--fastenerBottomRight {
+  right: 58px;
+  bottom: 7px;
+}
+
+/* =========================================================
+   DÉTAILS MÉCANIQUES VISIBLES
+   ========================================================= */
+
+.homeHeroChassis__details {
+  position: absolute;
+  z-index: 9;
+
+  inset: 0;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.homeHeroChassis__detail {
+  position: absolute;
+
+  display: block;
+  max-width: none;
+
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+
+  filter:
+    brightness(0.62)
+    contrast(1.15)
+    saturate(0.58)
+    drop-shadow(
+      0
+      2px
+      4px
+      rgba(0, 0, 0, 0.88)
+    );
+}
+
+/* Bloc connectique dans la lèvre inférieure gauche */
+
+.homeHeroChassis__detail--connectorBlock {
+  bottom: 1px;
+  left: 78px;
+
+  width: 132px;
+  height: 25px;
+
+  object-fit: fill;
+
+  opacity: 0.56;
+}
+
+/* Bloc de ventilation dans le montant droit */
+
+.homeHeroChassis__detail--ventilationBlock {
+  top: 50%;
+  right: 1px;
+
+  width: 25px;
+  height: 122px;
+
+  object-fit: fill;
+
+  opacity: 0.52;
+
+  transform:
+    translateY(-50%);
+}
+
+/* Plaque centrale dans le socle */
+
+.homeHeroChassis__detail--lowerPlate {
+  bottom: 2px;
+  left: 50%;
+
+  width: 216px;
+  height: 22px;
+
+  object-fit: fill;
+
+  opacity: 0.38;
+
+  transform:
+    translateX(-50%);
+}
+
+/* Plaque verticale dans le montant gauche */
+
+.homeHeroChassis__detail--leftPlate {
+  top: 50%;
+  left: 2px;
+
+  width: 23px;
+  height: 88px;
+
+  object-fit: fill;
+
+  opacity: 0.32;
+
+  transform:
+    translateY(-50%);
+}
+
+/* Fixations secondaires du socle */
+
+.homeHeroChassis__detail--lowerFastenerLeft,
+.homeHeroChassis__detail--lowerFastenerRight {
+  bottom: 7px;
+
+  width: 22px;
+  height: 12px;
+
+  opacity: 0.52;
+}
+
+.homeHeroChassis__detail--lowerFastenerLeft {
+  left: 44px;
+}
+
+.homeHeroChassis__detail--lowerFastenerRight {
+  right: 44px;
+
+  transform:
+    scaleX(-1);
+}
+
+/* =========================================================
+   CONTENU DU HERO
+   ========================================================= */
+
+.homeHeroChassis .homeHero__artwork {
+  border-right-color:
+    rgba(190, 186, 176, 0.07);
+
+  box-shadow:
+    inset 0 0 24px rgba(0, 0, 0, 0.46);
+}
+
+.homeHeroChassis .homeHero__content {
+  padding:
+    24px
+    32px
+    22px;
+
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.012),
+    inset 22px 0 46px rgba(0, 0, 0, 0.16);
+}
+
+.homeHeroChassis .homeHero__topline,
+.homeHeroChassis .homeHero__id,
+.homeHeroChassis .homeHero__title,
+.homeHeroChassis .homeHero__description,
+.homeHeroChassis .homeHero__player,
+.homeHeroChassis .homeHero__footer {
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================================================
+   TABLETTE
+   ========================================================= */
+
+@media (max-width: 1180px) {
+  .homeHeroChassis {
+    --hero-chassis-rail-thickness: 22px;
+    --hero-chassis-corner-size: 42px;
+    --hero-chassis-crown-width: 142px;
+    --hero-chassis-crown-height: 25px;
+    --hero-chassis-base-width: 150px;
+    --hero-chassis-base-height: 27px;
+    --hero-chassis-fastener-size: 10px;
+  }
+
+  .homeHeroChassis__rail--top
+    .homeHeroChassis__railPiece,
+  .homeHeroChassis__rail--bottom
+    .homeHeroChassis__railPiece {
+    width: 54px;
+    height:
+      var(--hero-chassis-rail-thickness);
+  }
+
+  .homeHeroChassis__rail--left
+    .homeHeroChassis__railPiece,
+  .homeHeroChassis__rail--right
+    .homeHeroChassis__railPiece {
+    width:
+      var(--hero-chassis-rail-thickness);
+
+    height: 54px;
+  }
+
+  .homeHeroChassis__piece--fastenerTopLeft,
+  .homeHeroChassis__piece--fastenerBottomLeft {
+    left: 49px;
+  }
+
+  .homeHeroChassis__piece--fastenerTopRight,
+  .homeHeroChassis__piece--fastenerBottomRight {
+    right: 49px;
+  }
+
+  .homeHeroChassis__detail--connectorBlock {
+    left: 62px;
+
+    width: 108px;
+    height: 21px;
+  }
+
+  .homeHeroChassis__detail--ventilationBlock {
+    width: 20px;
+    height: 104px;
+  }
+
+  .homeHeroChassis__detail--lowerPlate {
+    width: 180px;
+    height: 19px;
+  }
+
+  .homeHeroChassis__detail--leftPlate {
+    width: 18px;
+    height: 72px;
+  }
+
+  .homeHeroChassis .homeHero__content {
+    padding:
+      23px
+      25px
+      21px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .homeMachine__hero {
+    margin-inline: 0;
+  }
+
+  .homeHeroChassis {
+    --hero-chassis-rail-thickness: 16px;
+    --hero-chassis-corner-size: 31px;
+    --hero-chassis-crown-width: 108px;
+    --hero-chassis-crown-height: 20px;
+    --hero-chassis-base-width: 116px;
+    --hero-chassis-base-height: 21px;
+    --hero-chassis-fastener-size: 8px;
+
+    margin-top: 26px;
+
+    filter:
+      drop-shadow(
+        0
+        12px
+        24px
+        rgba(0, 0, 0, 0.38)
+      );
+  }
+
+  .homeHeroChassis__rail--top
+    .homeHeroChassis__railPiece,
+  .homeHeroChassis__rail--bottom
+    .homeHeroChassis__railPiece {
+    width: 40px;
+    height:
+      var(--hero-chassis-rail-thickness);
+  }
+
+  .homeHeroChassis__rail--left
+    .homeHeroChassis__railPiece,
+  .homeHeroChassis__rail--right
+    .homeHeroChassis__railPiece {
+    width:
+      var(--hero-chassis-rail-thickness);
+
+    height: 40px;
+  }
+
+  .homeHeroChassis__piece--ventilation,
+  .homeHeroChassis__detail--connectorBlock,
+  .homeHeroChassis__detail--ventilationBlock,
+  .homeHeroChassis__detail--leftPlate {
+    display: none;
+  }
+
+  .homeHeroChassis__detail--lowerPlate {
+    width: 110px;
+    height: 15px;
+  }
+
+  .homeHeroChassis__detail--lowerFastenerLeft,
+  .homeHeroChassis__detail--lowerFastenerRight {
+    display: none;
+  }
+
+  .homeHeroChassis__piece--fastenerTopLeft,
+  .homeHeroChassis__piece--fastenerBottomLeft {
+    left: 36px;
+  }
+
+  .homeHeroChassis__piece--fastenerTopRight,
+  .homeHeroChassis__piece--fastenerBottomRight {
+    right: 36px;
+  }
+
+  .homeHeroChassis .homeHero__content {
+    padding:
+      22px
+      19px
+      19px;
+  }
+}
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+   ========================================================= */
+
+@media (max-width: 440px) {
+  .homeHeroChassis {
+    --hero-chassis-rail-thickness: 12px;
+    --hero-chassis-corner-size: 24px;
+    --hero-chassis-crown-width: 84px;
+    --hero-chassis-crown-height: 16px;
+    --hero-chassis-base-width: 90px;
+    --hero-chassis-base-height: 17px;
+
+    margin-top: 22px;
+  }
+
+  .homeHeroChassis__rail--top
+    .homeHeroChassis__railPiece,
+  .homeHeroChassis__rail--bottom
+    .homeHeroChassis__railPiece {
+    width: 32px;
+  }
+
+  .homeHeroChassis__rail--left
+    .homeHeroChassis__railPiece,
+  .homeHeroChassis__rail--right
+    .homeHeroChassis__railPiece {
+    height: 32px;
+  }
+
+  .homeHeroChassis__piece--fastenerTopLeft,
+  .homeHeroChassis__piece--fastenerTopRight,
+  .homeHeroChassis__piece--fastenerBottomLeft,
+  .homeHeroChassis__piece--fastenerBottomRight,
+  .homeHeroChassis__detail--lowerPlate {
+    display: none;
+  }
+}
+
+/* =========================================================
+   PASSE MATIÈRE — SURCHARGES FINALES
+   Métal moins uniforme, usure localisée et relief renforcé.
+   ========================================================= */
+
+.homeHeroChassis {
+  filter:
+    drop-shadow(0 8px 14px rgba(0, 0, 0, 0.56))
+    drop-shadow(0 20px 38px rgba(0, 0, 0, 0.38));
+}
+
+.homeHeroChassis::before {
+  inset: 4px;
+
+  border-color:
+    rgba(194, 188, 177, 0.1);
+
+  background:
+    radial-gradient(
+      ellipse at 16% 5%,
+      rgba(255, 255, 255, 0.075),
+      transparent 23%
+    ),
+    radial-gradient(
+      ellipse at 84% 96%,
+      rgba(104, 84, 69, 0.09),
+      transparent 29%
+    ),
+    linear-gradient(
+      112deg,
+      rgba(255, 255, 255, 0.052),
+      transparent 17%,
+      transparent 64%,
+      rgba(0, 0, 0, 0.38)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(62, 59, 54, 0.58),
+      rgba(24, 24, 23, 0.9) 22%,
+      rgba(9, 10, 11, 0.98) 78%,
+      rgba(3, 4, 5, 0.99)
+    ),
+    #08090a;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.085),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.96),
+    inset 1px 0 0 rgba(255, 255, 255, 0.024),
+    inset -1px 0 0 rgba(0, 0, 0, 0.86),
+    inset 0 0 30px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(0, 0, 0, 0.72);
+}
+
+.homeHeroChassis::after {
+  inset: 5px;
+
+  background-position:
+    12% 18%,
+    78% 32%,
+    58% 4%;
+
+  background-size:
+    660px 660px,
+    900px 900px,
+    112% 112%;
+
+  background-blend-mode:
+    soft-light,
+    screen,
+    screen;
+
+  opacity: 0.17;
+
+  filter:
+    brightness(0.74)
+    contrast(1.14);
+}
+
+.homeHeroChassis .homeHero {
+  border-color:
+    rgba(188, 181, 169, 0.16);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.042),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.88),
+    inset 1px 0 0 rgba(255, 255, 255, 0.016),
+    inset -1px 0 0 rgba(0, 0, 0, 0.72),
+    inset 0 0 76px rgba(0, 0, 0, 0.42),
+    0 8px 18px rgba(0, 0, 0, 0.48),
+    0 18px 34px rgba(0, 0, 0, 0.28);
+}
+
+.homeHeroChassis__outerFrame::before {
+  position: absolute;
+  z-index: 1;
+
+  top: 4px;
+  right: 52px;
+  left: 52px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(225, 216, 201, 0.12) 12%,
+      rgba(255, 255, 255, 0.035) 48%,
+      rgba(176, 135, 105, 0.08) 76%,
+      transparent
+    );
+
+  opacity: 0.72;
+
+  content: "";
+}
+
+.homeHeroChassis__outerFrame::after {
+  position: absolute;
+  z-index: 1;
+
+  right: 58px;
+  bottom: 5px;
+  left: 58px;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 0, 0, 0.84) 14%,
+      rgba(119, 97, 81, 0.08) 52%,
+      rgba(0, 0, 0, 0.9) 86%,
+      transparent
+    );
+
+  opacity: 0.86;
+
+  content: "";
+}
+
+.homeHeroChassis__piece,
+.homeHeroChassis__railPiece {
+  filter:
+    brightness(0.8)
+    contrast(1.18)
+    saturate(0.62)
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.025))
+    drop-shadow(0 3px 5px rgba(0, 0, 0, 0.88));
+}
+
+.homeHeroChassis__rail {
+  opacity: 0.9;
+}
+
+.homeHeroChassis__rail--top {
+  filter:
+    brightness(1.02)
+    contrast(1.08);
+}
+
+.homeHeroChassis__rail--bottom {
+  opacity: 0.82;
+
+  filter:
+    brightness(0.78)
+    contrast(1.14);
+}
+
+.homeHeroChassis__rail--left {
+  opacity: 0.86;
+
+  filter:
+    brightness(0.86)
+    contrast(1.14);
+}
+
+.homeHeroChassis__rail--right {
+  opacity: 0.86;
+
+  filter:
+    brightness(0.72)
+    contrast(1.18);
+}
+
+.homeHeroChassis__piece--cornerTopLeft,
+.homeHeroChassis__piece--cornerTopRight,
+.homeHeroChassis__piece--cornerBottomRight,
+.homeHeroChassis__piece--cornerBottomLeft {
+  opacity: 0.96;
+
+  filter:
+    brightness(0.88)
+    contrast(1.2)
+    saturate(0.58)
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.03))
+    drop-shadow(0 4px 6px rgba(0, 0, 0, 0.9));
+}
+
+.homeHeroChassis__piece--crown {
+  filter:
+    brightness(0.96)
+    contrast(1.24)
+    saturate(0.58)
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.04))
+    drop-shadow(0 5px 7px rgba(0, 0, 0, 0.9));
+}
+
+.homeHeroChassis__piece--base {
+  filter:
+    brightness(0.82)
+    contrast(1.22)
+    saturate(0.55)
+    drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.018))
+    drop-shadow(0 5px 8px rgba(0, 0, 0, 0.92));
+}
+
+.homeHeroChassis__piece--ventilation {
+  opacity: 0.78;
+
+  filter:
+    brightness(0.68)
+    contrast(1.28)
+    saturate(0.45)
+    drop-shadow(0 2px 5px rgba(0, 0, 0, 0.9));
+}
+
+.homeHeroChassis__piece--fastenerTopLeft,
+.homeHeroChassis__piece--fastenerTopRight,
+.homeHeroChassis__piece--fastenerBottomLeft,
+.homeHeroChassis__piece--fastenerBottomRight {
+  opacity: 0.82;
+
+  filter:
+    brightness(0.94)
+    contrast(1.22)
+    saturate(0.5)
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.94));
+}
+
+.homeHeroChassis__detail {
+  filter:
+    brightness(0.74)
+    contrast(1.22)
+    saturate(0.48)
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.018))
+    drop-shadow(0 3px 5px rgba(0, 0, 0, 0.92));
+}
+
+.homeHeroChassis__detail--connectorBlock {
+  opacity: 0.72;
+}
+
+.homeHeroChassis__detail--ventilationBlock {
+  opacity: 0.7;
+}
+
+.homeHeroChassis__detail--lowerPlate {
+  opacity: 0.56;
+}
+
+.homeHeroChassis__detail--leftPlate {
+  opacity: 0.5;
+}
+
+.homeHeroChassis__detail--lowerFastenerLeft,
+.homeHeroChassis__detail--lowerFastenerRight {
+  opacity: 0.68;
+}
+
+.homeHeroChassis .homeHero__artwork {
+  border-right-color:
+    rgba(201, 192, 178, 0.11);
+
+  background:
+    radial-gradient(
+      circle at 50% 46%,
+      rgba(200, 49, 31, 0.055),
+      transparent 58%
+    ),
+    #010202;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.018),
+    inset -1px 0 0 rgba(0, 0, 0, 0.82),
+    inset 0 0 32px rgba(0, 0, 0, 0.52);
+}
+
+.homeHeroChassis .homeHero__content {
+  background:
+    radial-gradient(
+      circle at 68% 16%,
+      rgba(200, 49, 31, 0.085),
+      transparent 34%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(111, 87, 76, 0.055),
+      transparent 20%,
+      transparent 74%,
+      rgba(0, 0, 0, 0.13)
+    ),
+    rgba(8, 8, 9, 0.18);
+
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.022),
+    inset 20px 0 48px rgba(0, 0, 0, 0.18),
+    inset -16px 0 38px rgba(0, 0, 0, 0.18);
+}

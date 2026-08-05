@@ -1,0 +1,175 @@
+/* =========================================================
+   HEADER — POSITIONNEMENT PAR COORDONNÉES
+   Le PNG du header est le référentiel.
+   Les réglages sont dans site-settings.css.
+   ========================================================= */
+
+.siteHeader {
+  position: relative;
+  z-index: var(--header-z);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: var(--header-opacity);
+  transform:
+    translate(var(--header-x), var(--header-y))
+    rotate(var(--header-rotation))
+    scale(var(--header-scale));
+  transform-origin: var(--header-transform-origin);
+  background: transparent;
+}
+
+.siteHeader__frame {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, var(--header-max-width));
+  margin-inline: auto;
+}
+
+.siteHeader__panel {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.siteHeader__surface {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: visible;
+  container-type: inline-size;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.siteHeader__logoLink {
+  position: absolute;
+  z-index: var(--header-logo-z);
+  top: var(--header-logo-top);
+  left: var(--header-logo-left);
+  width: var(--header-logo-width-percent);
+  opacity: var(--header-logo-opacity);
+  transform:
+    translate(var(--header-logo-x), var(--header-logo-y))
+    rotate(var(--header-logo-rotation))
+    scale(var(--header-logo-scale));
+  transform-origin: var(--header-logo-transform-origin);
+  color: inherit;
+  text-decoration: none;
+}
+
+.siteHeader__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =========================================================
+   BASELINE
+   ========================================================= */
+
+.siteHeader__baseline {
+  position: absolute;
+  z-index: var(--header-baseline-z);
+  top: var(--header-baseline-top);
+  left: var(--header-baseline-left);
+  width: var(--header-baseline-width);
+  opacity: var(--header-baseline-opacity);
+  transform:
+    translate(var(--header-baseline-x), var(--header-baseline-y))
+    rotate(var(--header-baseline-rotation))
+    scale(var(--header-baseline-scale));
+  transform-origin: var(--header-baseline-transform-origin);
+  font-family: var(--font-mono);
+  font-size: var(--header-baseline-size-proportional);
+  line-height: 1.45;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(237, 232, 222, 0.46);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.siteHeader__navigation {
+  position: absolute;
+  z-index: var(--header-nav-z);
+  top: var(--header-navigation-top);
+  left: var(--header-navigation-left);
+  width: var(--header-navigation-width);
+  opacity: var(--header-nav-opacity);
+  transform:
+    translate(var(--header-nav-x), var(--header-nav-y))
+    rotate(var(--header-nav-rotation))
+    scale(var(--header-nav-scale));
+  transform-origin: var(--header-nav-transform-origin);
+}
+
+.mainNav {
+  position: relative;
+  width: 100%;
+}
+
+.mainNav__list {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: var(--header-navigation-justify);
+  gap: var(--header-nav-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mainNav__link {
+  position: relative;
+  display: inline-flex;
+  padding: var(--header-nav-link-padding-y) 0;
+  font-family: var(--font-mono);
+  font-size: var(--header-nav-size-proportional);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(237, 232, 222, 0.68);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.mainNav__link::after {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--color-transmission);
+  transform: translateX(-50%);
+  transition: width 150ms ease;
+  content: '';
+}
+
+.mainNav__link:hover,
+.mainNav__link:focus-visible,
+.mainNav__link--active {
+  color: var(--color-transmission);
+}
+
+.mainNav__link:hover::after,
+.mainNav__link:focus-visible::after,
+.mainNav__link--active::after {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainNav__link,
+  .mainNav__link::after {
+    transition: none;
+  }
+}

@@ -1,0 +1,1377 @@
+/* =========================================================
+   INTERFÉRENCE MÉTALICIELLE — PANNEAU DE CONTRÔLE UNIQUE
+   Modifie uniquement ce fichier.
+   ========================================================= */
+
+:root {
+  /* GLOBAL */
+  --site-reference-width: 1520px;
+  --site-chassis-max-width: 1520px;
+  --home-max-width: 1520px;
+  --header-max-width: 1520px;
+  --footer-max-width: 1520px;
+
+  --site-scale: 1;
+  --site-x: 0px;
+  --site-y: 0px;
+  --site-opacity: 1;
+  --site-transform-origin: top center;
+
+  --site-header-z-index: 30;
+  --site-main-z-index: 2;
+  --site-footer-z-index: 20;
+
+  /* HEADER */
+  --header-scale: 1;
+  --header-x: 0px;
+  --header-y: 0px;
+  --header-rotation: 0deg;
+  --header-opacity: 1;
+  --header-z: 20;
+  --header-transform-origin: top center;
+
+  --header-content-top: 0%;
+  --header-content-right: 0%;
+  --header-content-bottom: 0%;
+  --header-content-left: 0%;
+  --header-padding-left: 5.65%;
+  --header-padding-right: 5.65%;
+
+  --header-brand-scale: 1;
+  --header-brand-x: 0px;
+  --header-brand-y: 0px;
+  --header-brand-rotation: 0deg;
+  --header-brand-opacity: 1;
+  --header-brand-z: 2;
+  --header-brand-transform-origin: center left;
+  --header-brand-width: 31%;
+  --header-brand-gap: clamp(8px, 1.05vw, 16px);
+  --header-logo-width: clamp(90px, 9.87vw, 150px);
+  --header-baseline-size: clamp(0.43rem, 0.58vw, 0.56rem);
+
+  --header-nav-scale: 1;
+  --header-nav-x: 0px;
+  --header-nav-y: 0px;
+  --header-nav-rotation: 0deg;
+  --header-nav-opacity: 1;
+  --header-nav-z: 3;
+  --header-nav-transform-origin: center;
+  --header-nav-top: 50%;
+  --header-nav-left: 50%;
+  --header-nav-gap: clamp(18px, 2.76vw, 42px);
+  --header-nav-size: clamp(0.62rem, 0.79vw, 0.76rem);
+
+  /* RAIL GAUCHE — 16/1520 */
+  --rail-left-scale: 1;
+  --rail-left-width: 1.053%;
+  --rail-left-height: 100%;
+  --rail-left-x: 0px;
+  --rail-left-y: 0px;
+  --rail-left-rotation: 0deg;
+  --rail-left-opacity: 1;
+  --rail-left-z-index: 40;
+  --rail-left-transform-origin: top left;
+  --rail-left-background-size: 100% auto;
+  --rail-left-background-position: top center;
+
+  /* RAIL DROIT — 17/1520 */
+  --rail-right-scale: 1;
+  --rail-right-width: 1.118%;
+  --rail-right-height: 100%;
+  --rail-right-x: 0px;
+  --rail-right-y: 0px;
+  --rail-right-rotation: 0deg;
+  --rail-right-opacity: 1;
+  --rail-right-z-index: 40;
+  --rail-right-transform-origin: top right;
+  --rail-right-background-size: 100% auto;
+  --rail-right-background-position: top center;
+
+  /* CONNECTEUR HAUT */
+  --connector-top-scale: 1;
+  --connector-top-x: 0px;
+  --connector-top-y: 0px;
+  --connector-top-rotation: 0deg;
+  --connector-top-opacity: 1;
+  --connector-top-z: 3;
+  --connector-top-transform-origin: top center;
+  --home-connector-top-width: 100%;
+  --home-connector-top-margin-top: -6.1%;
+  --home-connector-top-margin-bottom: 0;
+
+  /* HERO */
+  --hero-scale: 1;
+  --hero-x: 0px;
+  --hero-y: 0px;
+  --hero-rotation: 0deg;
+  --hero-opacity: 1;
+  --hero-z: 2;
+  --hero-transform-origin: top center;
+
+  --hero-title-scale: 1;
+  --hero-title-x: 0px;
+  --hero-title-y: 0px;
+  --hero-title-rotation: 0deg;
+  --hero-title-opacity: 1;
+  --hero-title-z: 4;
+  --hero-title-transform-origin: top left;
+  --home-title-top: 4.5%;
+  --home-title-left: 5.2%;
+  --home-title-width: 50%;
+
+  --hero-content-scale: 1;
+  --hero-content-x: 0px;
+  --hero-content-y: 0px;
+  --hero-content-rotation: 0deg;
+  --hero-content-opacity: 1;
+  --hero-content-z: 1;
+  --hero-content-transform-origin: center;
+  --home-hero-content-top: 11.5%;
+  --home-hero-content-right: 8.6%;
+  --home-hero-content-bottom: 12.5%;
+  --home-hero-content-left: 8.6%;
+
+  /* CONNECTEUR MILIEU */
+  --connector-middle-scale: 1;
+  --connector-middle-x: 0px;
+  --connector-middle-y: 0px;
+  --connector-middle-rotation: 0deg;
+  --connector-middle-opacity: 1;
+  --connector-middle-z: 3;
+  --connector-middle-transform-origin: top center;
+  --home-connector-middle-width: 100%;
+  --home-connector-middle-margin-top: -7%;
+  --home-connector-middle-margin-bottom: 0;
+
+  /* MODULES */
+  --modules-scale: 1;
+  --modules-x: 0px;
+  --modules-y: 0px;
+  --modules-rotation: 0deg;
+  --modules-opacity: 1;
+  --modules-z: 2;
+  --modules-transform-origin: top center;
+
+  --modules-content-scale: 1;
+  --modules-content-x: 0px;
+  --modules-content-y: 0px;
+  --modules-content-rotation: 0deg;
+  --modules-content-opacity: 1;
+  --modules-content-z: 1;
+  --modules-content-transform-origin: center;
+  --home-modules-content-top: 9.5%;
+  --home-modules-content-right: 6.4%;
+  --home-modules-content-bottom: 12%;
+  --home-modules-content-left: 6.4%;
+  --home-modules-gap: 2.4%;
+
+  /* CONNECTEUR BAS */
+  --connector-bottom-scale: 1;
+  --connector-bottom-x: 0px;
+  --connector-bottom-y: 0px;
+  --connector-bottom-rotation: 0deg;
+  --connector-bottom-opacity: 1;
+  --connector-bottom-z: 3;
+  --connector-bottom-transform-origin: top center;
+  --home-connector-bottom-width: 100%;
+  --home-connector-bottom-margin-top: -1.7%;
+  --home-connector-bottom-margin-bottom: 0;
+
+  /* FOOTER */
+  --footer-scale: 1;
+  --footer-x: 0px;
+  --footer-y: 0px;
+  --footer-rotation: 0deg;
+  --footer-opacity: 1;
+  --footer-z: 20;
+  --footer-transform-origin: bottom center;
+
+  --footer-content-width: 91.58%;
+  --footer-padding-top: 5.06%;
+  --footer-padding-bottom: 2.53%;
+  --footer-col-brand: 10%;
+  --footer-col-status: 30%;
+  --footer-col-broadcast: 40%;
+  --footer-col-nav: 20%;
+
+  --footer-brand-scale: 1;
+  --footer-brand-x: 0px;
+  --footer-brand-y: 0px;
+  --footer-brand-rotation: 0deg;
+  --footer-brand-opacity: 1;
+  --footer-brand-z: 2;
+  --footer-brand-transform-origin: center;
+  --footer-logo-width: clamp(62px, 6.05vw, 92px);
+  --footer-baseline-size: clamp(0.4rem, 0.52vw, 0.5rem);
+
+  --footer-status-scale: 1;
+  --footer-status-x: 0px;
+  --footer-status-y: 0px;
+  --footer-status-rotation: 0deg;
+  --footer-status-shift-x: 13.16vw;
+
+  --footer-broadcast-scale: 1;
+  --footer-broadcast-x: 0px;
+  --footer-broadcast-y: 0px;
+  --footer-broadcast-rotation: 0deg;
+  --footer-broadcast-shift-x: 7.89vw;
+
+  --footer-navigation-scale: 1;
+  --footer-navigation-x: 0px;
+  --footer-navigation-y: 0px;
+  --footer-navigation-rotation: 0deg;
+  --footer-navigation-opacity: 1;
+  --footer-navigation-z: 2;
+  --footer-navigation-transform-origin: center right;
+
+  --footer-label-size: clamp(0.42rem, 0.54vw, 0.52rem);
+  --footer-small-size: clamp(0.36rem, 0.47vw, 0.45rem);
+  --footer-text-size: clamp(0.54rem, 0.71vw, 0.68rem);
+  --footer-bottom-width: 91.58%;
+  --footer-bottom-padding-top: 1.5%;
+  --footer-bottom-padding-bottom: 3.8%;
+}
+
+@media (max-width: 1050px) {
+  :root {
+    --footer-content-width: 88%;
+    --footer-status-shift-x: 0px;
+    --footer-broadcast-shift-x: 0px;
+  }
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --home-title-top: 4%;
+    --home-title-left: 5%;
+    --home-title-width: 62%;
+    --home-modules-content-top: 8%;
+    --home-modules-content-right: 6.5%;
+    --home-modules-content-bottom: 11%;
+    --home-modules-content-left: 6.5%;
+    --home-modules-gap: 1.8%;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --header-brand-width: auto;
+    --header-nav-gap: 18px;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --home-title-width: 72%;
+    --footer-content-width: 84%;
+    --footer-bottom-width: 84%;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-padding-left: 4%;
+    --header-padding-right: 4%;
+    --header-logo-width: 74px;
+    --header-nav-gap: 10px;
+    --header-nav-size: 0.52rem;
+  }
+}
+
+
+/* =========================================================
+   LIVRABLE 3A — HEADER PILOTÉ PAR COORDONNÉES
+
+   Toutes les positions sont calculées par rapport au PNG
+   site-header-shell.png.
+
+   Pour déplacer un élément :
+   - top augmente   => descend
+   - top diminue    => monte
+   - left augmente  => va vers la droite
+   - left diminue   => va vers la gauche
+   ========================================================= */
+
+:root {
+  /* LOGO */
+  --header-logo-top: 27%;
+  --header-logo-left: 3.85%;
+  --header-logo-width-percent: 7.87%;
+
+  --header-logo-scale: 1;
+  --header-logo-x: 0px;
+  --header-logo-y: 0px;
+  --header-logo-rotation: 0deg;
+  --header-logo-opacity: 1;
+  --header-logo-z: 3;
+  --header-logo-transform-origin: center;
+
+  /* BASELINE */
+  --header-baseline-top: 48%;
+  --header-baseline-left: 13.6%;
+  --header-baseline-width: 20%;
+
+  --header-baseline-scale: 1;
+  --header-baseline-x: 0px;
+  --header-baseline-y: 0px;
+  --header-baseline-rotation: 0deg;
+  --header-baseline-opacity: 1;
+  --header-baseline-z: 3;
+  --header-baseline-transform-origin: left center;
+
+  /* NAVIGATION */
+  --header-navigation-top: 37%;
+  --header-navigation-left: 32%;
+  --header-navigation-width: 43%;
+  --header-navigation-justify: center;
+
+  --header-nav-link-padding-y: 0.92vw;
+}
+
+
+/* =========================================================
+   LIVRABLE 3A.1 — TAILLE DES TEXTES DU HEADER PROPORTIONNELLE
+
+   1cqw = 1 % de la largeur réelle du PNG du header.
+   Modifie uniquement ces deux valeurs pour ajuster les textes.
+   ========================================================= */
+
+:root {
+  --header-baseline-size-proportional: 0.72cqw;
+  --header-nav-size-proportional: 0.92cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE 3B — FOOTER PILOTÉ PAR COORDONNÉES
+
+   Toutes les positions sont calculées par rapport au PNG
+   site-footer-shell.png.
+   Les tailles de texte utilisent cqw et suivent donc le PNG.
+   ========================================================= */
+
+:root {
+  /* LOGO + BASELINE */
+  --footer-logo-top: 10%;
+  --footer-logo-left: 6%;
+  --footer-logo-zone-width: 12%;
+  --footer-logo-width-percent: 43%;
+  --footer-baseline-margin-top: 0.02cqw;
+
+  --footer-brand-scale: 1;
+  --footer-brand-x: 0px;
+  --footer-brand-y: 0px;
+  --footer-brand-rotation: 0deg;
+  --footer-brand-opacity: 1;
+  --footer-brand-z: 3;
+  --footer-brand-transform-origin: center;
+
+  /* ÉTAT DU RÉSEAU */
+  --footer-status-top: 16%;
+  --footer-status-left: 27%;
+  --footer-status-width: 10%;
+
+  --footer-status-scale: 1;
+  --footer-status-x: 0px;
+  --footer-status-y: 0px;
+  --footer-status-rotation: 0deg;
+  --footer-status-opacity: 1;
+  --footer-status-z: 3;
+  --footer-status-transform-origin: top left;
+
+  /* DIFFUSION */
+  --footer-broadcast-top: 25%;
+  --footer-broadcast-left: 49%;
+  --footer-broadcast-width: 15%;
+
+  --footer-broadcast-scale: 1;
+  --footer-broadcast-x: 0px;
+  --footer-broadcast-y: 0px;
+  --footer-broadcast-rotation: 0deg;
+  --footer-broadcast-opacity: 1;
+  --footer-broadcast-z: 3;
+  --footer-broadcast-transform-origin: top left;
+
+  /* ACCÈS */
+  --footer-access-top: 8%;
+  --footer-access-left: 88%;
+  --footer-access-width: 14%;
+
+  --footer-navigation-scale: 1;
+  --footer-navigation-x: 0px;
+  --footer-navigation-y: 0px;
+  --footer-navigation-rotation: 0deg;
+  --footer-navigation-opacity: 1;
+  --footer-navigation-z: 3;
+  --footer-navigation-transform-origin: top left;
+
+  /* LIGNE BASSE */
+  --footer-bottom-top: 80%;
+  --footer-bottom-left: 4.2%;
+  --footer-bottom-width-coordinates: 91.6%;
+
+  --footer-bottom-scale: 1;
+  --footer-bottom-x: 0px;
+  --footer-bottom-y: 0px;
+  --footer-bottom-rotation: 0deg;
+  --footer-bottom-opacity: 1;
+  --footer-bottom-z: 3;
+  --footer-bottom-transform-origin: center;
+
+  /* TAILLES DE TEXTE PROPORTIONNELLES */
+  --footer-baseline-size-proportional: 0.52cqw;
+  --footer-label-size-proportional: 0.54cqw;
+  --footer-small-size-proportional: 0.47cqw;
+  --footer-text-size-proportional: 0.71cqw;
+
+  /* ESPACEMENTS PROPORTIONNELS */
+  --footer-section-label-gap: 0.53cqw;
+  --footer-status-list-gap: 0.08cqw;
+  --footer-status-list-margin-top: 0.62cqw;
+  --footer-status-item-padding-left: 0.66cqw;
+  --footer-status-value-margin-top: 0.13cqw;
+
+  --footer-broadcast-text-margin-top: 0.72cqw;
+
+  --footer-access-list-gap: 0.05cqw;
+  --footer-access-list-margin-top: 0.72cqw;
+  --footer-access-dash-gap: 0.53cqw;
+
+  --footer-bottom-gap: 1.58cqw;
+  --footer-bottom-padding-top-coordinate: 0.99cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE 3B.1 — TYPOGRAPHIE DU FOOTER PROPORTIONNELLE
+
+   Ces valeurs complètent les réglages du Footer sans modifier
+   les positions déjà validées.
+   ========================================================= */
+
+:root {
+  /* INTERLIGNES */
+  --footer-baseline-line-height: 1.5;
+  --footer-section-label-line-height: 1.2;
+  --footer-status-label-line-height: 1.15;
+  --footer-status-value-line-height: 1.2;
+  --footer-broadcast-line-height: 1.5;
+  --footer-access-line-height: 2.4;
+  --footer-bottom-line-height: 1.2;
+
+  /* APPROCHE DES LETTRES */
+  --footer-baseline-letter-spacing: 0.13em;
+  --footer-label-letter-spacing: 0.15em;
+  --footer-small-letter-spacing: 0.10em;
+  --footer-status-value-letter-spacing: 0.07em;
+  --footer-text-letter-spacing: 0em;
+  --footer-access-letter-spacing: 0.10em;
+  --footer-bottom-letter-spacing: 0.11em;
+
+  /* VOYANT ET TIRETS */
+  --footer-status-led-scale: 0.75;
+  --footer-access-dash-size: 0.54cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE 4A — HERO PILOTÉ PAR COORDONNÉES
+
+   Le PNG home-hero-shell.png est le référentiel.
+   Les tailles de texte utilisent cqw et suivent donc le shell.
+   ========================================================= */
+
+:root {
+  /* ILLUSTRATION */
+  --hero-image-top: 0%;
+  --hero-image-left: 0%;
+  --hero-image-width: 50%;
+  --hero-image-height: 100%;
+
+  --hero-image-scale: 1;
+  --hero-image-x: 0px;
+  --hero-image-y: 0px;
+  --hero-image-rotation: 0deg;
+  --hero-image-opacity: 1;
+  --hero-image-z: 1;
+  --hero-image-transform-origin: center;
+  --hero-image-object-fit: contain;
+  --hero-image-object-position: center;
+
+  /* TOPLINE */
+  --hero-topline-top: 6%;
+  --hero-topline-left: 52%;
+  --hero-topline-width: 38%;
+
+  --hero-topline-scale: 4;
+  --hero-topline-x: 0px;
+  --hero-topline-y: 0px;
+  --hero-topline-rotation: 0deg;
+  --hero-topline-opacity: 1;
+  --hero-topline-z: 3;
+  --hero-topline-transform-origin: top left;
+
+  --hero-topline-size-proportional: 0.58cqw;
+  --hero-topline-line-height: 1.2;
+  --hero-topline-letter-spacing: 0.20em;
+  --hero-topline-gap: 0.92cqw;
+
+  --hero-identifier-padding-y: 0.33cqw;
+  --hero-identifier-padding-x: 0.53cqw;
+
+  /* IDENTIFIANT PRINCIPAL */
+  --hero-id-top: 19%;
+  --hero-id-left: 52%;
+  --hero-id-width: 20%;
+
+  --hero-id-scale: 2;
+  --hero-id-x: 0px;
+  --hero-id-y: 0px;
+  --hero-id-rotation: 0deg;
+  --hero-id-opacity: 1;
+  --hero-id-z: 3;
+  --hero-id-transform-origin: top left;
+
+  --hero-id-size-proportional: 0.80cqw;
+  --hero-id-line-height: 1.2;
+  --hero-id-letter-spacing: 0.18em;
+
+  /* TITRE */
+  --hero-emission-title-top: 27%;
+  --hero-emission-title-left: 52%;
+  --hero-emission-title-width: 38%;
+
+  --hero-emission-title-scale: 1;
+  --hero-emission-title-x: 0px;
+  --hero-emission-title-y: 0px;
+  --hero-emission-title-rotation: 0deg;
+  --hero-emission-title-opacity: 1;
+  --hero-emission-title-z: 3;
+  --hero-emission-title-transform-origin: top left;
+
+  --hero-emission-title-size-proportional: 3.05cqw;
+  --hero-emission-title-line-height: 0.92;
+  --hero-emission-title-letter-spacing: -0.045em;
+
+  /* DESCRIPTION */
+  --hero-description-top: 35%;
+  --hero-description-left: 52%;
+  --hero-description-width: 38%;
+
+  --hero-description-scale: 2;
+  --hero-description-x: 0px;
+  --hero-description-y: 0px;
+  --hero-description-rotation: 0deg;
+  --hero-description-opacity: 1;
+  --hero-description-z: 3;
+  --hero-description-transform-origin: top left;
+
+  --hero-description-size-proportional: 0.72cqw;
+  --hero-description-line-height: 1.4;
+  --hero-description-letter-spacing: 0em;
+  --hero-description-lines: 3;
+}
+
+
+/* =========================================================
+   LIVRABLE 4C — TITRES GAUCHE DU HERO
+
+   Ces deux textes sont maintenant totalement indépendants.
+   Le PNG home-hero-shell.png est leur référentiel.
+   ========================================================= */
+
+:root {
+  /* MÉMOIRE ACTIVE DU RÉSEAU */
+  --home-eyebrow-top: 8.5%;
+  --home-eyebrow-left: 10.2%;
+  --home-eyebrow-width: 36%;
+
+  --home-eyebrow-scale: 1;
+  --home-eyebrow-x: 0px;
+  --home-eyebrow-y: 0px;
+  --home-eyebrow-rotation: 0deg;
+  --home-eyebrow-opacity: 1;
+  --home-eyebrow-z: 5;
+  --home-eyebrow-transform-origin: top left;
+
+  --home-eyebrow-size-proportional: 0.92cqw;
+  --home-eyebrow-line-height: 1.2;
+  --home-eyebrow-letter-spacing: 0.18em;
+
+  /* INTERFÉRENCE METALICIELLE */
+  --home-main-title-top: 12.2%;
+  --home-main-title-left: 8.2%;
+  --home-main-title-width: 42%;
+
+  --home-main-title-scale: 1;
+  --home-main-title-x: 0px;
+  --home-main-title-y: 0px;
+  --home-main-title-rotation: 0deg;
+  --home-main-title-opacity: 1;
+  --home-main-title-z: 5;
+  --home-main-title-transform-origin: top left;
+
+  --home-main-title-size-proportional: 3.15cqw;
+  --home-main-title-line-height: 0.95;
+  --home-main-title-letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   LIVRABLE 4D — CONSOLIDATION DÉFINITIVE DU HERO
+   ========================================================= */
+
+:root {
+  /* LECTEUR — POSITION */
+  --hero-player-top: 49%;
+  --hero-player-left: 52%;
+  --hero-player-width: 48%;
+  --hero-player-height: 18%;
+
+  --hero-player-scale: 1;
+  --hero-player-x: 0px;
+  --hero-player-y: 0px;
+  --hero-player-rotation: 0deg;
+  --hero-player-opacity: 1;
+  --hero-player-z: 3;
+  --hero-player-transform-origin: top left;
+
+  /* LECTEUR — STRUCTURE */
+  --hero-player-toggle-column: 4.2cqw;
+  --hero-player-separator-width: 0.07cqw;
+  --hero-player-body-padding-top: 0.72cqw;
+  --hero-player-body-padding-x: 0.92cqw;
+  --hero-player-body-padding-bottom: 0.59cqw;
+  --hero-player-text-gap: 1.18cqw;
+
+  /* LECTEUR — BOUTON */
+  --hero-player-toggle-circle: 1.97cqw;
+  --hero-player-toggle-border-width: 0.07cqw;
+  --hero-player-toggle-shadow-inset: 0.79cqw;
+  --hero-player-toggle-shadow-outer: 0.79cqw;
+  --hero-player-toggle-hover-shadow: 1.18cqw;
+  --hero-player-focus-width: 0.07cqw;
+
+  --hero-player-play-offset: 0.20cqw;
+  --hero-player-play-half-height: 0.33cqw;
+  --hero-player-play-width: 0.53cqw;
+  --hero-player-pause-width: 0.59cqw;
+  --hero-player-pause-height: 0.72cqw;
+  --hero-player-pause-border: 0.13cqw;
+  --hero-player-icon-shadow: 0.33cqw;
+
+  /* LECTEUR — TEXTES */
+  --hero-player-header-size: 0.79cqw;
+  --hero-player-header-line-height: 1.2;
+  --hero-player-header-letter-spacing: 0.15em;
+  --hero-player-time-letter-spacing: 0.10em;
+  --hero-player-status-shadow: 0.53cqw;
+
+  --hero-player-footer-size: 0.51cqw;
+  --hero-player-footer-line-height: 1.2;
+  --hero-player-footer-letter-spacing: 0.12em;
+  --hero-player-footer-margin-top: 0.26cqw;
+
+  /* LECTEUR — BARRE */
+  --hero-player-track-height: 1.18cqw;
+  --hero-player-track-margin-top: 0.39cqw;
+  --hero-player-track-line-height: 0.07cqw;
+  --hero-player-grid-line: 0.07cqw;
+  --hero-player-grid-step: 0.53cqw;
+  --hero-player-progress-height: 0.20cqw;
+  --hero-player-progress-shadow: 0.53cqw;
+  --hero-player-progress-pattern-inset: 0.26cqw;
+  --hero-player-progress-pattern-a: 0.13cqw;
+  --hero-player-progress-pattern-b: 0.26cqw;
+  --hero-player-progress-pattern-c: 0.39cqw;
+
+  /* MÉTADONNÉES */
+  --hero-meta-top: 70%;
+  --hero-meta-left: 53%;
+  --hero-meta-width: 34%;
+
+  --hero-meta-scale: 1.7;
+  --hero-meta-x: 0px;
+  --hero-meta-y: 0px;
+  --hero-meta-rotation: 0deg;
+  --hero-meta-opacity: 1;
+  --hero-meta-z: 3;
+  --hero-meta-transform-origin: top left;
+
+  --hero-meta-columns-gap: 0.66cqw;
+  --hero-meta-item-padding-right: 0.66cqw;
+  --hero-meta-label-size: 0.48cqw;
+  --hero-meta-label-line-height: 1.2;
+  --hero-meta-label-letter-spacing: 0.12em;
+  --hero-meta-value-size: 0.54cqw;
+  --hero-meta-value-line-height: 1.2;
+  --hero-meta-value-letter-spacing: 0em;
+  --hero-meta-value-margin-top: 0.33cqw;
+
+  /* BOUTON ACCÉDER À IM */
+  --hero-button-top: 84%;
+  --hero-button-left: 72%;
+  --hero-button-width: 12%;
+
+  --hero-button-scale: 2;
+  --hero-button-x: 0px;
+  --hero-button-y: 0px;
+  --hero-button-rotation: 0deg;
+  --hero-button-opacity: 1;
+  --hero-button-z: 3;
+  --hero-button-transform-origin: top left;
+
+  --hero-button-gap: 1.18cqw;
+  --hero-button-border-width: 0.07cqw;
+  --hero-button-padding-y: 0.79cqw;
+  --hero-button-padding-x: 1.18cqw;
+  --hero-button-font-size: 0.58cqw;
+  --hero-button-line-height: 1.2;
+  --hero-button-letter-spacing: 0.16em;
+}
+
+
+
+/* =========================================================
+   LIVRABLE 5A — STRUCTURE COMMUNE DES MODULES
+
+   Chaque carte devient son propre conteneur proportionnel.
+   Les valeurs en cqw suivent donc la largeur réelle de la carte.
+   ========================================================= */
+
+:root {
+  /* SURFACE COMMUNE */
+  --modules-card-padding: 6.55cqw;
+
+  /* EN-TÊTE */
+  --modules-eyebrow-gap: 2.55cqw;
+  --modules-eyebrow-size: 2.66cqw;
+  --modules-eyebrow-line-height: 1.2;
+  --modules-eyebrow-letter-spacing: 0.19em;
+
+  --modules-title-margin-top: 3.24cqw;
+  --modules-title-size: 8.35cqw;
+  --modules-title-line-height: 1.08;
+  --modules-title-letter-spacing: -0.025em;
+
+  --modules-description-max-width: 100%;
+  --modules-description-margin-top: 2.78cqw;
+  --modules-description-size: 3.18cqw;
+  --modules-description-line-height: 1.75;
+  --modules-description-letter-spacing: 0em;
+
+  /* SÉPARATEUR ET CONTENU */
+  --modules-divider-height: 0.23cqw;
+  --modules-divider-margin-top: 6.48cqw;
+  --modules-content-margin-top: 4.63cqw;
+
+  --modules-content-title-size: 2.44cqw;
+  --modules-content-title-line-height: 1.2;
+  --modules-content-title-letter-spacing: 0.17em;
+
+  /* MINI-CARTES IM */
+  --modules-transmissions-gap: 2.31cqw;
+  --modules-transmissions-margin-top: 3.24cqw;
+  --modules-mini-card-padding: 1.62cqw;
+
+  --modules-mini-id-margin-top: 2.08cqw;
+  --modules-mini-id-size: 2.29cqw;
+  --modules-mini-id-line-height: 1.2;
+  --modules-mini-id-letter-spacing: 0.12em;
+
+  --modules-mini-title-margin-top: 1.16cqw;
+  --modules-mini-title-size: 2.73cqw;
+  --modules-mini-title-line-height: 1.45;
+  --modules-mini-title-letter-spacing: 0em;
+
+  /* CTA COMMUN */
+  --modules-cta-gap: 4.63cqw;
+  --modules-cta-margin-top: 6.48cqw;
+  --modules-cta-padding-y: 3.01cqw;
+  --modules-cta-padding-x: 3.70cqw;
+  --modules-cta-size: 2.48cqw;
+  --modules-cta-line-height: 1.2;
+  --modules-cta-letter-spacing: 0.16em;
+
+  /* PETITS ÉCRANS */
+  --modules-card-padding-mobile-y: 4.63cqw;
+  --modules-card-padding-mobile-x: 3.70cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE 5B — MODULE IM
+
+   Réglages spécifiques aux miniatures et au canal de diffusion.
+   Les valeurs en cqw suivent la largeur réelle de la carte IM.
+   ========================================================= */
+
+:root {
+  /* TITRES DES MINI-CARTES */
+  --im-mini-title-lines: 3;
+  --im-mini-title-margin-top: 1.16cqw;
+  --im-mini-title-line-height: 1.45;
+
+  /* CANAL DE DIFFUSION */
+  --im-broadcast-visual-width: 31.94cqw;
+  --im-broadcast-min-height: 32.87cqw;
+  --im-broadcast-margin-top: 5.09cqw;
+  --im-broadcast-inner-inset: 1.16cqw;
+
+  --im-broadcast-padding-top: 1.85cqw;
+  --im-broadcast-padding-x: 4.17cqw;
+  --im-broadcast-padding-bottom: 4.63cqw;
+
+  /* RADAR */
+  --im-radar-size: 21.76cqw;
+  --im-radar-padding-bottom: 2.78cqw;
+  --im-pulse-size: 13.43cqw;
+
+  /* TOPLINE ET ÉTAT */
+  --im-topline-gap: 1.85cqw;
+  --im-topline-size: 2.11cqw;
+  --im-topline-line-height: 1.2;
+  --im-topline-letter-spacing: 0.16em;
+
+  --im-status-dot-size: 0.93cqw;
+
+  --im-state-margin-top: 2.08cqw;
+  --im-state-size: 3.89cqw;
+  --im-state-line-height: 1.15;
+  --im-state-letter-spacing: 0.015em;
+
+  /* DESCRIPTION */
+  --im-description-max-width: 64.81cqw;
+  --im-description-margin-top: 1.62cqw;
+  --im-description-size: 2.78cqw;
+  --im-description-line-height: 1.55;
+  --im-description-letter-spacing: 0em;
+
+  /* CTA DU MODULE IM */
+  --im-cta-margin-top: 22.56cqw;
+
+  /* PETITS ÉCRANS */
+  --im-broadcast-visual-width-mobile: 24.07cqw;
+  --im-broadcast-min-height-mobile: 30.56cqw;
+  --im-radar-size-mobile: 18.52cqw;
+  --im-broadcast-padding-mobile-y: 3.47cqw;
+  --im-broadcast-padding-mobile-x: 3.24cqw;
+  --im-state-size-mobile: 3.41cqw;
+  --im-description-size-mobile: 2.59cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE 5C — MODULE NET + DÉPLACEMENT GLOBAL DES CARTES
+   ========================================================= */
+
+:root {
+  /* DÉPLACEMENT GLOBAL — IM */
+  --module-im-x: -10%;
+  --module-im-y: 0%;
+  --module-im-scale: 1;
+  --module-im-rotation: 0deg;
+  --module-im-opacity: 1;
+  --module-im-transform-origin: top left;
+
+  /* DÉPLACEMENT GLOBAL — NET */
+  --module-net-x: 0%;
+  --module-net-y: 0%;
+  --module-net-scale: 1;
+  --module-net-rotation: 0deg;
+  --module-net-opacity: 1;
+  --module-net-transform-origin: top left;
+
+  /* DÉPLACEMENT GLOBAL — YEM */
+  --module-yem-x: 10%;
+  --module-yem-y: 0%;
+  --module-yem-scale: 1;
+  --module-yem-rotation: 0deg;
+  --module-yem-opacity: 1;
+  --module-yem-transform-origin: top left;
+
+  /* NET — FENÊTRE DU RÉSEAU */
+  --net-signal-min-height: 34.72cqw;
+
+  /* NET — SYNCHRONISATION */
+  --net-sync-top: 2.31cqw;
+  --net-sync-left: 2.78cqw;
+  --net-sync-gap: 1.39cqw;
+  --net-sync-size: 1.99cqw;
+  --net-sync-line-height: 1.2;
+  --net-sync-letter-spacing: 0.13em;
+  --net-sync-dot-size: 0.69cqw;
+
+  /* NET — PAQUETS DE DONNÉES */
+  --net-packet-size: 0.93cqw;
+
+  /* NET — DÉCOR DES STATISTIQUES */
+  --net-stat-decoration-right: 2.78cqw;
+  --net-stat-decoration-bottom: 2.31cqw;
+  --net-stat-decoration-width: 3.24cqw;
+  --net-stat-decoration-height: 0.23cqw;
+
+  /* PETITS ÉCRANS */
+  --net-sync-size-mobile: 1.81cqw;
+  --net-packet-size-mobile: 0.69cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE 5D — MODULE YEM + CORRECTION DES CARTES
+
+   Le transform s'applique désormais à la carte complète.
+   Les overflow sont visibles afin d'éviter le découpage.
+   ========================================================= */
+
+:root {
+  /* YEM — FENÊTRE D'OBSERVATION */
+  --yem-observation-min-height: 66.20cqw;
+  --yem-observation-padding: 4.17cqw;
+
+  /* YEM — MATIÈRES */
+  --yem-material-size: 212.96cqw;
+  --yem-material-opacity: 0.028;
+  --yem-reflection-opacity: 0.075;
+  --yem-patina-size: 189.81cqw;
+  --yem-patina-opacity: 0.085;
+
+  /* YEM — BALAYAGE */
+  --yem-scan-top: -42%;
+  --yem-scan-height: 38%;
+
+  /* YEM — EN-TÊTE */
+  --yem-header-gap: 3.24cqw;
+  --yem-header-size: 2.19cqw;
+  --yem-header-line-height: 1.2;
+  --yem-header-letter-spacing: 0.15em;
+
+  /* YEM — STATUT */
+  --yem-status-gap: 1.62cqw;
+  --yem-status-dot-size: 0.69cqw;
+
+  /* YEM — IDENTITÉ */
+  --yem-identity-gap: 2.78cqw;
+  --yem-identity-margin-top: 4.17cqw;
+
+  --yem-id-size: 2.70cqw;
+  --yem-id-line-height: 1.2;
+  --yem-id-letter-spacing: 0.15em;
+
+  --yem-type-padding-y: 1.16cqw;
+  --yem-type-padding-x: 1.85cqw;
+  --yem-type-size: 2.00cqw;
+  --yem-type-line-height: 1.2;
+  --yem-type-letter-spacing: 0.12em;
+
+  /* YEM — TEXTE */
+  --yem-text-margin-top: 5.09cqw;
+  --yem-text-size: 3.33cqw;
+  --yem-text-line-height: 1.8;
+  --yem-text-letter-spacing: 0em;
+  --yem-quote-margin-right: 0.69cqw;
+  --yem-quote-size: 4.81cqw;
+
+  /* YEM — PIED DE L'OBSERVATION */
+  --yem-footer-gap: 4.17cqw;
+  --yem-footer-padding-top: 3.01cqw;
+
+  --yem-footer-label-size: 1.93cqw;
+  --yem-footer-label-line-height: 1.2;
+  --yem-footer-label-letter-spacing: 0.13em;
+
+  --yem-footer-title-max-width: 56%;
+  --yem-footer-title-size: 2.11cqw;
+  --yem-footer-title-line-height: 1.2;
+  --yem-footer-title-letter-spacing: 0.10em;
+
+  /* YEM — ÉTAT VIDE */
+  --yem-empty-size: 3.15cqw;
+  --yem-empty-line-height: 1.7;
+
+  /* YEM — PETITS ÉCRANS */
+  --yem-observation-min-height-mobile: 57.87cqw;
+  --yem-observation-padding-mobile: 3.70cqw;
+
+  --yem-material-size-mobile: 175.93cqw;
+  --yem-material-opacity-mobile: 0.022;
+  --yem-reflection-opacity-mobile: 0.055;
+  --yem-patina-size-mobile: 162.04cqw;
+  --yem-patina-opacity-mobile: 0.068;
+}
+
+
+/* =========================================================
+   LIVRABLE 5E — OFFSETS DE POSITION DES BLOCS
+
+   Ces variables déplacent les grands blocs sans modifier
+   leurs espacements internes.
+   Valeur négative = monte.
+   Valeur positive = descend.
+   ========================================================= */
+
+:root {
+  /* EN-TÊTES DES 3 CARTES */
+  --modules-header-offset-y: -8cqw;
+
+  /* CONTENU GLOBAL DES 3 CARTES */
+  --modules-content-offset-y: 4cqw;
+
+  /* IM — MINI-CARTES DERNIÈRES TRANSMISSIONS */
+  --im-transmissions-offset-y: 0cqw;
+
+  /* NET — PANNEAU SYNCHRONISATION ACTIVE */
+  --net-signal-offset-y: 0cqw;
+
+  /* YEM — CADRE DERNIÈRE OBSERVATION */
+  --yem-observation-offset-y: 0cqw;
+
+  /* CTA DES 3 CARTES */
+  --modules-cta-offset-y: 12cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE 5F — RESPONSIVE INTERNE DES MODULES
+
+   Ces valeurs s'appliquent automatiquement lorsque la largeur
+   d'une carte passe sous 340px.
+   ========================================================= */
+
+:root {
+  /* MODE COMPACT COMMUN */
+  --modules-card-padding-compact: 4.20cqw;
+  --modules-title-size-compact: 7.10cqw;
+  --modules-description-size-compact: 2.75cqw;
+  --modules-description-line-height-compact: 1.55;
+  --modules-divider-margin-top-compact: 4.20cqw;
+  --modules-content-margin-top-compact: 3.20cqw;
+
+  --modules-transmissions-gap-compact: 1.30cqw;
+  --modules-transmissions-margin-top-compact: 2.20cqw;
+  --modules-mini-card-padding-compact: 1.10cqw;
+
+  --modules-cta-padding-y-compact: 2.20cqw;
+  --modules-cta-padding-x-compact: 2.80cqw;
+  --modules-cta-size-compact: 2.15cqw;
+
+  /* IM COMPACT */
+  --im-mini-title-lines-compact: 2;
+  --im-mini-title-line-height-compact: 1.25;
+
+  --im-broadcast-visual-width-compact: 27cqw;
+  --im-broadcast-min-height-compact: 27cqw;
+  --im-broadcast-margin-top-compact: 3.50cqw;
+  --im-radar-size-compact: 17cqw;
+  --im-broadcast-padding-y-compact: 2.20cqw;
+  --im-broadcast-padding-x-compact: 2.60cqw;
+
+  /* NET — STATISTIQUES */
+  --net-stats-margin-top: 5.09cqw;
+  --net-stat-min-height: 21.30cqw;
+  --net-stat-padding: 4.17cqw;
+  --net-stat-dot-top: 3.94cqw;
+  --net-stat-dot-left: 2.08cqw;
+  --net-stat-dot-size: 0.46cqw;
+  --net-stat-value-size: 10.20cqw;
+  --net-stat-label-margin-top: 1.85cqw;
+  --net-stat-label-size: 2.26cqw;
+  --net-stat-label-line-height: 1.2;
+  --net-stat-label-letter-spacing: 0.14em;
+
+  --net-signal-min-height-compact: 27cqw;
+  --net-sync-size-compact: 1.65cqw;
+  --net-packet-size-compact: 0.60cqw;
+
+  --net-stat-min-height-compact: 17cqw;
+  --net-stat-padding-compact: 2.70cqw;
+  --net-stat-value-size-compact: 8.20cqw;
+  --net-stat-label-size-compact: 1.85cqw;
+
+  /* YEM COMPACT */
+  --yem-observation-min-height-compact: 53cqw;
+  --yem-observation-padding-compact: 3.20cqw;
+  --yem-material-size-compact: 155cqw;
+  --yem-material-opacity-compact: 0.020;
+  --yem-reflection-opacity-compact: 0.050;
+  --yem-patina-size-compact: 145cqw;
+  --yem-patina-opacity-compact: 0.060;
+}
+
+
+/* =========================================================
+   LIVRABLE 6 — OVERLAYS HERO + MODULES
+
+   Les PNG utilisent les mêmes dimensions que leurs shells.
+   Ils sont placés au-dessus des contenus sans bloquer les clics.
+   ========================================================= */
+
+:root {
+  /* OVERLAY HERO */
+  --hero-overlay-top: 0%;
+  --hero-overlay-left: 0%;
+  --hero-overlay-width: 100%;
+  --hero-overlay-height: 100%;
+  --hero-overlay-scale: 1;
+  --hero-overlay-x: 0px;
+  --hero-overlay-y: 0px;
+  --hero-overlay-rotation: 0deg;
+  --hero-overlay-opacity: 1;
+  --hero-overlay-z: 20;
+  --hero-overlay-transform-origin: center;
+  --hero-overlay-object-fit: fill;
+
+  /* OVERLAY MODULES */
+  --modules-overlay-top: 0%;
+  --modules-overlay-left: 0%;
+  --modules-overlay-width: 100%;
+  --modules-overlay-height: 100%;
+  --modules-overlay-scale: 1;
+  --modules-overlay-x: 0px;
+  --modules-overlay-y: 0px;
+  --modules-overlay-rotation: 0deg;
+  --modules-overlay-opacity: 1;
+  --modules-overlay-z: 20;
+  --modules-overlay-transform-origin: center;
+  --modules-overlay-object-fit: fill;
+}
+
+
+/* =========================================================
+   LIVRABLE IM FINAL — TYPOGRAPHIE RESPONSIVE DU LECTEUR
+
+   1cqw = 1 % de la largeur réelle du lecteur.
+   Toutes les tailles ci-dessous diminuent automatiquement
+   quand le lecteur rétrécit.
+   ========================================================= */
+
+:root {
+  /* VISUEL GAUCHE — HAUT */
+  --im-visual-title-size: 0.85cqw;
+  --im-visual-network-size: 0.78cqw;
+
+  /* VISUEL GAUCHE — BAS */
+  --im-visual-status-size: 0.92cqw;
+
+  /* INFORMATIONS PRINCIPALES */
+  --im-id-size: 0.92cqw;
+  --im-title-size: 2.35cqw;
+  --im-date-size: 0.82cqw;
+  --im-description-size: 0.90cqw;
+
+  /* MÉTADONNÉES */
+  --im-meta-title-size: 0.92cqw;
+  --im-meta-label-size: 0.80cqw;
+  --im-meta-value-size: 1.02cqw;
+
+  /* PLAYLIST */
+  --im-playlist-size: 1.5cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE IM 7.1 — PANNEAU DE CONTRÔLE COMPLET
+
+   RÈGLE SIMPLE :
+   - augmenter X / LEFT = déplacer vers la droite
+   - augmenter Y / TOP = déplacer vers le bas
+   - augmenter BOTTOM = déplacer vers le haut
+
+   Les variables de typographie responsive du livrable
+   précédent restent inchangées.
+   ========================================================= */
+
+:root {
+  /* FAÇADE ET OMBRES */
+  --im-machine-ratio: 1520 / 900;
+  --im-machine-shadow-opacity: 0.46;
+  --im-shadows-opacity: 0.72;
+
+  /* FENÊTRE DU VISUEL */
+  --im-visual-x: 3.9%;
+  --im-visual-y: 25.1%;
+  --im-visual-width: 29.5%;
+  --im-visual-height: 48.9%;
+
+  /* TEXTES DU VISUEL — HAUT */
+  --im-visual-labels-x: 4.2%;
+  --im-visual-labels-y: 7.7%;
+  --im-visual-labels-width: 28.8%;
+  --im-visual-labels-gap: 16px;
+  --im-visual-title-offset-x: 0px;
+  --im-visual-title-offset-y: 0px;
+  --im-visual-network-offset-x: 0px;
+  --im-visual-network-offset-y: 0px;
+
+  /* TEXTES DU VISUEL — BAS */
+  --im-visual-status-x: 4.2%;
+  --im-visual-status-bottom: 4.9%;
+  --im-visual-status-width: 29%;
+  --im-visual-status-gap: 3%;
+  --im-archive-status-offset-x: 0px;
+  --im-archive-status-offset-y: 0px;
+  --im-signal-status-offset-x: 0px;
+  --im-signal-status-offset-y: 0px;
+
+  /* BLOC CENTRAL — ID, TITRE, DATE, DESCRIPTION */
+  --im-main-x: 47.2%;
+  --im-main-y: 12.8%;
+  --im-main-width: 29.8%;
+  --im-main-height: 36.8%;
+  --im-title-margin-top: 2.8%;
+  --im-title-line-height: 0.98;
+  --im-date-margin-top: 2.2%;
+  --im-description-lines: 3;
+
+  /* PROGRESSION */
+  --im-progress-labels-x: 44.8%;
+  --im-progress-labels-y: 49.2%;
+  --im-progress-labels-width: 33.1%;
+  --im-progress-label-size-min: 0.42rem;
+  --im-progress-label-size-fluid: 0.50vw;
+  --im-progress-label-size-max: 0.60rem;
+  --im-progress-x: 44.45%;
+  --im-progress-y: 52.7%;
+  --im-progress-width: 33.5%;
+  --im-time-x: 44.8%;
+  --im-time-y: 59.3%;
+  --im-time-width: 33.1%;
+  --im-time-size-min: 0.42rem;
+  --im-time-size-fluid: 0.48vw;
+  --im-time-size-max: 0.57rem;
+
+  /* BOUTONS ET SÉLECTEUR */
+  --im-buttons-y: 71.9%;
+  --im-button-width: 5.15%;
+  --im-minus-x: 39.05%;
+  --im-plus-x: 70.35%;
+  --im-selector-x: 58.05%;
+  --im-selector-y: 68.9%;
+  --im-selector-width: 8.22%;
+
+  /* LED */
+  --im-led-y: 75.3%;
+  --im-led-width: 2.55%;
+  --im-led-wait-x: 56.7%;
+  --im-led-play-x: 67.3%;
+  --im-led-active-opacity: 1;
+  --im-led-inactive-opacity: 0.16;
+
+  /* SIGNAL ET VOLUME */
+  --im-signal-x: 44.8%;
+  --im-signal-bottom: 3.9%;
+  --im-signal-width: 33.1%;
+  --im-signal-gap: 2%;
+  --im-signal-size-min: 0.40rem;
+  --im-signal-size-fluid: 0.48vw;
+  --im-signal-size-max: 0.57rem;
+  --im-volume-value-size-min: 0.40rem;
+  --im-volume-value-size-fluid: 0.47vw;
+  --im-volume-value-size-max: 0.55rem;
+
+  /* MÉTADONNÉES — POSITION */
+  --im-meta-title-x: 80.6%;
+  --im-meta-title-y: 5.7%;
+  --im-meta-x: 80.8%;
+  --im-meta-y: 10%;
+  --im-meta-width: 14.6%;
+  --im-meta-height: 62%;
+  --im-meta-gap: 1.5%;
+
+  /* PLAYLIST — POSITION ET DIMENSIONS */
+  --im-playlist-x: 83.5%;
+  --im-playlist-bottom: 5.8%;
+  --im-playlist-width: 12.2%;
+  --im-playlist-height: 8.5%;
+
+  /* COULEURS ET LISIBILITÉ */
+  --im-signal-green: rgba(94, 196, 119, 0.86);
+  --im-text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.95),
+    0 0 4px rgba(0, 0, 0, 0.80);
+
+}
+
+/* =========================================================
+   LIVRABLE IM 7.2 — CORRECTION POSITION DU BLOC CENTRAL
+
+   Cette variable déplace directement le bloc ID + titre +
+   date + description, sans dépendre de --im-main-y.
+   Valeur positive = descend.
+   Valeur négative = monte.
+   ========================================================= */
+
+:root {
+  --im-main-offset-y: 0cqw;
+}
+
+
+/* =========================================================
+   LIVRABLE IM 7.3 — DÉCALAGE DU CONTENU CENTRAL
+
+   Déplace uniquement :
+   - le titre
+   - la date
+   - la description
+
+   Les textes du visuel gauche et l'identifiant IM-xxx restent fixes.
+
+   Valeur positive = descend.
+   Valeur négative = monte.
+   ========================================================= */
+
+:root {
+  --im-main-content-offset-y: 2cqw;
+}
+
+
+/* =========================================================
+   PAGE CONTACT — TRANSMISSION, AMIS ET PARTENAIRES
+   ========================================================= */
+
+:root {
+  --contact-max-width: 1320px;
+  --contact-padding-top: clamp(4rem, 8vw, 7.5rem);
+  --contact-padding-x: clamp(0.5rem, 2vw, 1.5rem);
+  --contact-padding-bottom: clamp(5rem, 9vw, 8rem);
+
+  --contact-status-gap: 0.7rem;
+  --contact-status-size: clamp(0.62rem, 0.82vw, 0.82rem);
+  --contact-status-letter-spacing: 0.18em;
+  --contact-status-led-size: 0.42rem;
+  --contact-status-led-glow: 0.5rem;
+
+  --contact-title-margin-top: clamp(1.2rem, 2.4vw, 2rem);
+  --contact-title-size: clamp(2.5rem, 6vw, 5.4rem);
+
+  --contact-email-margin-top: clamp(2rem, 4vw, 3.4rem);
+  --contact-email-size: clamp(1rem, 2vw, 1.7rem);
+  --contact-email-letter-spacing: 0.035em;
+
+  --contact-partners-margin-top: clamp(5rem, 10vw, 9rem);
+  --contact-heading-gap: clamp(1rem, 2vw, 2rem);
+  --contact-heading-size: clamp(0.66rem, 0.9vw, 0.88rem);
+  --contact-heading-letter-spacing: 0.18em;
+
+  --contact-grid-margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  --contact-partners-gap: clamp(1rem, 2vw, 1.8rem);
+
+  --contact-card-min-height: clamp(320px, 31vw, 440px);
+  --contact-card-min-height-mobile: clamp(280px, 75vw, 410px);
+  --contact-card-padding: clamp(1.2rem, 2.3vw, 2.2rem);
+  --contact-card-hover-y: -4px;
+  --contact-card-hover-scale: 1.015;
+
+  --contact-logo-max-width: 92%;
+  --contact-logo-max-height: 245px;
+  --contact-logo-max-width-mobile: 78%;
+
+  --contact-support-margin-bottom: clamp(1.2rem, 2.2vw, 2rem);
+  --contact-support-label-size: clamp(0.56rem, 0.72vw, 0.72rem);
+  --contact-support-label-spacing: 0.18em;
+  --contact-support-title-margin-top: 0.55rem;
+  --contact-support-title-size: clamp(1.25rem, 2vw, 1.9rem);
+
+  --contact-external-margin-top: clamp(1.3rem, 2vw, 2rem);
+  --contact-external-size: clamp(0.52rem, 0.66vw, 0.66rem);
+  --contact-external-letter-spacing: 0.14em;
+}

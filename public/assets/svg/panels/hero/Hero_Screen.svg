@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1090 392">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_239);
+        mix-blend-mode: screen;
+      }
+
+      .cls-1, .cls-2 {
+        opacity: .4;
+      }
+
+      .cls-3 {
+        isolation: isolate;
+      }
+
+      .cls-4 {
+        mix-blend-mode: soft-light;
+        opacity: .14;
+      }
+
+      .cls-2 {
+        fill: #090a0b;
+      }
+
+      .cls-5 {
+        fill: url(#Dégradé_sans_nom_160);
+      }
+    </style>
+    <linearGradient id="Dégradé_sans_nom_239" data-name="Dégradé sans nom 239" x1="18.57" y1="13.78" x2="1086.6" y2="383.47" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#dde7ec" stop-opacity="0"/>
+      <stop offset=".22" stop-color="#dde7ec" stop-opacity=".12"/>
+      <stop offset=".38" stop-color="#fff" stop-opacity=".04"/>
+      <stop offset=".57" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="Dégradé_sans_nom_160" data-name="Dégradé sans nom 160" x1="7.68" y1="8.92" x2="1087.29" y2="385.81" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#82807f" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".3"/>
+    </linearGradient>
+  </defs>
+  <g class="cls-3">
+    <g id="Ecran">
+      <polygon id="Vitre-ecran" class="cls-2" points="1058 389 32 389 5 371 5 20 33 2 1058 3 1086 21 1088 369 1058 389"/>
+      <polygon id="REFLET" class="cls-1" points="1058 389 32 389 5 371 5 20 33 2 1058 3 1086 21 1088 369 1058 389"/>
+      <g id="GRAIN1" class="cls-4">
+        <image class="cls-3" width="173" height="173" transform="translate(1.2387 -2.0004) scale(6.2885 2.2933)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKcAAAA+CAYAAABOfwtnAAAACXBIWXMAAAGxAAABsQFhmCgOAAAAmUlEQVR4nO3SsRGAMBDAMML+Oz8tDXXMRZrAha8LAAAAAAAAAIBfWrsD3mZmdjecbK2V+uHeHQBfzEmWOckyJ1nmJMucZJmTLHOSZU6yzEmWOckyJ1nmJMucZJmTLHOSZU6yzEmWOckyJ1nmJMucZJmTLHOSZU6yzEmWOckyJ1nmJMucZJmTLHOSZU6yzAkAAAAAAAAAAMAhHhL0BEaQVWWkAAAAAElFTkSuQmCC"/>
+      </g>
+      <path id="Relief-ecran" class="cls-5" d="M1089,19l-30-18L32,0,3,18l-2,2L0,372l31,20,1028-1,31-21-1-351ZM1058,389H32l-27-18V20L33,2l1025,1,28,18,2,348-30,20Z"/>
+    </g>
+  </g>
+</svg>

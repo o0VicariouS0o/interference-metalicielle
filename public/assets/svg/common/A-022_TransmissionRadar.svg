@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 26 43.91">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke-width: 2px;
+      }
+
+      .st0, .st1 {
+        fill: none;
+        stroke: #c8311f;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="Calque_1_-_copie_2">
+    <line class="st1" x1="5.24" y1="43.41" x2="13" y2="14.43"/>
+    <line class="st1" x1="20.76" y1="43.41" x2="13" y2="14.43"/>
+    <line class="st1" x1="5.24" y1="43.41" x2="13" y2="37.96"/>
+    <line class="st1" x1="20.76" y1="43.41" x2="13" y2="37.96"/>
+  </g>
+  <g id="Calque_2">
+    <circle class="st0" cx="13" cy="10.78" r="1"/>
+  </g>
+  <g id="Calque_4">
+    <path class="st1" d="M10.06,14.82c-1.25-.91-2.06-2.38-2.06-4.05s.84-3.19,2.13-4.1"/>
+    <path class="st1" d="M15.79,6.62c1.33.9,2.21,2.42,2.21,4.15s-.81,3.14-2.07,4.05"/>
+  </g>
+  <g id="Calque_4_-_copie">
+    <path class="st1" d="M8.7,16.92c-1.93-1.36-3.2-3.6-3.2-6.14s1.26-4.79,3.2-6.14"/>
+    <path class="st1" d="M17.3,4.63c1.93,1.36,3.2,3.6,3.2,6.14s-1.26,4.79-3.2,6.14"/>
+  </g>
+  <g id="Calque_4_-_copie_2">
+    <path class="st1" d="M18.74,2.58c2.58,1.81,4.26,4.8,4.26,8.19s-1.69,6.38-4.26,8.19"/>
+    <path class="st1" d="M7.23,18.94c-2.56-1.81-4.23-4.79-4.23-8.17s1.69-6.38,4.26-8.19"/>
+  </g>
+  <g id="Calque_7">
+    <path class="st1" d="M5.94,21.04C2.65,18.79.5,15.01.5,10.72S2.6,2.76,5.81.5"/>
+    <path class="st1" d="M20.19.5c3.21,2.26,5.31,6,5.31,10.22s-2.15,8.06-5.44,10.32"/>
+  </g>
+</svg>

@@ -1,0 +1,73 @@
+.statusLed {
+  position: relative;
+  display: inline-grid;
+  width: var(--status-led-size);
+  height: var(--status-led-size);
+  flex: 0 0 var(--status-led-size);
+  place-items: center;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.statusLed {
+  transform: translateY(1px);
+}
+
+.statusLed__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.statusLed::after {
+  content: "";
+  position: absolute;
+  inset: 24%;
+  border-radius: 50%;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.statusLed--red::after {
+  box-shadow: 0 0 8px rgba(200, 49, 31, 0.65);
+}
+
+.statusLed--blue::after {
+  box-shadow: 0 0 8px rgba(75, 155, 196, 0.65);
+}
+
+.statusLed--purple::after {
+  box-shadow: 0 0 8px rgba(107, 63, 160, 0.7);
+}
+
+.statusLed--yellow::after {
+  box-shadow: 0 0 8px rgba(200, 148, 56, 0.65);
+}
+
+.statusLed--green::after {
+  box-shadow: 0 0 8px rgba(82, 176, 111, 0.65);
+}
+
+.statusLed--animated {
+  animation: statusLedBreathing 4.8s ease-in-out infinite;
+}
+
+@keyframes statusLedBreathing {
+  0%,
+  100% {
+    opacity: 0.82;
+    filter: brightness(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    filter: brightness(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusLed--animated {
+    animation: none;
+  }
+}

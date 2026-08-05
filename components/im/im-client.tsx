@@ -25,6 +25,7 @@ type EmissionClient = {
 
 type Props = {
   emissions: EmissionClient[];
+  initialEmissionId?: string | null;
 };
 
 type TransmissionState = 'idle' | 'loading' | 'playing' | 'ended';
@@ -112,10 +113,21 @@ function savePosition(emissionId: string, seconds: number) {
   }
 }
 
-export function ImClient({ emissions }: Props) {
+export function ImClient({
+  emissions,
+  initialEmissionId,
+}: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const [activeId, setActiveId] = useState(emissions[0]?.id ?? null);
+ const validInitialEmissionId =
+  initialEmissionId &&
+  emissions.some((emission) => emission.id === initialEmissionId)
+    ? initialEmissionId
+    : emissions[0]?.id ?? null;
+
+const [activeId, setActiveId] = useState<string | null>(
+  validInitialEmissionId,
+); 
   const [isPlaying, setIsPlaying] = useState(false);
   const [transmissionState, setTransmissionState] =
     useState<TransmissionState>('idle');
@@ -332,35 +344,52 @@ export function ImClient({ emissions }: Props) {
         />
       </div>
 
-      {activeEmission.description_longue ? (
-        <section className="mt-8 border border-border p-6">
-          <h2 className="font-mono text-sm uppercase tracking-widest text-transmission">
-            Description de l'émission
-          </h2>
-          <div className="mt-6 whitespace-pre-line leading-7 text-muted">
-            {activeEmission.description_longue}
-          </div>
-        </section>
-      ) : null}
+      <div className="imArchiveSurface">
+        {activeEmission.description_longue ? (
+          <section className="imEditorialPanel imEditorialPanel--description">
+            <img
+              className="imEditorialPanel__decor"
+              src="/assets/im/panels/description-panel.png"
+              alt=""
+              aria-hidden="true"
+            />
 
-      {activeEmission.yem_observation ? (
-        <section className="mt-6 border border-border p-6">
-          <p className="font-mono text-sm uppercase tracking-widest text-transmission">
-            Observation YEM
-            {activeEmission.yem_type ? ` — ${activeEmission.yem_type}` : ''}
-          </p>
-          <blockquote className="mt-6 text-lg leading-8 text-muted">
-            {activeEmission.yem_observation}
-          </blockquote>
-        </section>
-      ) : null}
+            <div className="imEditorialPanel__content imEditorialPanel__content--description">
+              <div className="imEditorialPanel__body imEditorialPanel__body--description">
+                {activeEmission.description_longue}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
-      <section className="mt-12">
-        <h2 className="font-mono text-sm uppercase tracking-widest text-muted">
-          Archives
-        </h2>
+        {activeEmission.yem_observation ? (
+          <section className="imEditorialPanel imEditorialPanel--yem">
+            <img
+              className="imEditorialPanel__decor"
+              src="/assets/im/panels/yem-panel.png"
+              alt=""
+              aria-hidden="true"
+            />
 
-        <div className="mt-4 divide-y divide-border border-y border-border">
+            <div className="imEditorialPanel__content imEditorialPanel__content--yem">
+              <p className="imEditorialPanel__title imEditorialPanel__title--yem">
+                Observation de YEM
+                {activeEmission.yem_type
+                  ? ` — ${activeEmission.yem_type}`
+                  : ''}
+              </p>
+
+              <blockquote className="imEditorialPanel__quote">
+                {activeEmission.yem_observation}
+              </blockquote>
+            </div>
+          </section>
+        ) : null}
+
+        <section className="imArchives">
+          <h2 className="imArchives__title">Archives</h2>
+
+          <div className="imArchives__list">
           {emissions.map((emission) => {
             const visuel = imagePathForEmission(emission.id);
             const statsText = formatStats(emission.stats);
@@ -369,40 +398,38 @@ export function ImClient({ emissions }: Props) {
             return (
               <article
                 key={emission.id}
-                className={`flex items-center justify-between gap-6 py-5 ${
-                  isActive ? 'border-l-2 border-transmission pl-4' : ''
+                className={`imArchives__entry ${
+                  isActive ? 'is-active' : ''
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => handleSelectEmission(emission.id)}
-                  className="flex flex-1 items-center gap-4 text-left"
+                  className="imArchives__select"
                 >
                   {visuel ? (
                     <img
                       src={visuel}
                       alt={`Visuel ${emission.id}`}
-                      className="h-24 w-24 shrink-0 border border-border object-cover"
+                      className="imArchives__visual"
                     />
                   ) : null}
 
-                  <div>
-                    <p className="font-mono text-xs text-muted">
+                  <div className="imArchives__info">
+                    <p className="imArchives__id">
                       {emission.id}
                     </p>
 
-                    <h3 className="mt-1 font-display text-xl">
+                    <h3 className="imArchives__name">
                       {emission.titre}
                     </h3>
 
                     {statsText ? (
-                      <p className="mt-2 text-sm text-muted">{statsText}</p>
+                      <p className="imArchives__stats">{statsText}</p>
                     ) : null}
 
                     {isActive ? (
-                      <p className="mt-2 font-mono text-xs uppercase tracking-widest text-transmission">
-                        Transmission active
-                      </p>
+                      <p className="imArchives__active">Transmission active</p>
                     ) : null}
                   </div>
                 </button>
@@ -412,18 +439,19 @@ export function ImClient({ emissions }: Props) {
                     href={emission.playlist_pdf_path}
                     target="_blank"
                     rel="noreferrer"
-                    className="shrink-0 border border-border px-4 py-2 text-sm hover:border-transmission hover:text-transmission"
+                    className="imArchives__pdf"
                   >
-                    Playlist
+                    Archive PDF
                   </a>
                 ) : (
-                  <span className="text-sm text-muted">—</span>
+                  <span className="imArchives__empty">—</span>
                 )}
               </article>
             );
           })}
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

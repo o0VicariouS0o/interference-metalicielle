@@ -1,0 +1,79 @@
+/* =========================================================
+   CHÂSSIS GLOBAL — CSS TECHNIQUE
+   Les réglages sont centralisés dans site-settings.css.
+   ========================================================= */
+
+.siteChassis {
+  position: relative;
+  isolation: isolate;
+  opacity: var(--site-opacity);
+  transform: translate(var(--site-x), var(--site-y)) scale(var(--site-scale));
+  transform-origin: var(--site-transform-origin);
+  width: min(100%, var(--site-chassis-max-width));
+  min-height: 100vh;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.siteChassis > header {
+  position: relative;
+  z-index: var(--site-header-z-index);
+}
+
+.siteChassis > main {
+  position: relative;
+  z-index: var(--site-main-z-index);
+  min-width: 0;
+}
+
+.siteChassis > footer {
+  position: relative;
+  z-index: var(--site-footer-z-index);
+}
+
+.siteChassis__rail {
+  position: absolute;
+  background-repeat: repeat-y;
+  pointer-events: none;
+  user-select: none;
+}
+
+.siteChassis__rail--left {
+  top: 0;
+  left: 0;
+  transform: translate(var(--rail-left-x), var(--rail-left-y)) rotate(var(--rail-left-rotation)) scale(var(--rail-left-scale));
+  transform-origin: var(--rail-left-transform-origin);
+  z-index: var(--rail-left-z-index);
+  width: var(--rail-left-width);
+  height: var(--rail-left-height);
+  opacity: var(--rail-left-opacity);
+  background-image: url('/assets/chassis/global/site-rail-left.png');
+  background-size: var(--rail-left-background-size);
+  background-position: var(--rail-left-background-position);
+}
+
+.siteChassis__rail--right {
+  top: 0;
+  right: 0;
+  transform: translate(calc(var(--rail-right-x) * -1), var(--rail-right-y)) rotate(var(--rail-right-rotation)) scale(var(--rail-right-scale));
+  transform-origin: var(--rail-right-transform-origin);
+  z-index: var(--rail-right-z-index);
+  width: var(--rail-right-width);
+  height: var(--rail-right-height);
+  opacity: var(--rail-right-opacity);
+  background-image: url('/assets/chassis/global/site-rail-right.png');
+  background-size: var(--rail-right-background-size);
+  background-position: var(--rail-right-background-position);
+}
+
+
+
+@media (max-width: 720px) {
+  .siteChassis {
+    overflow: hidden;
+  }
+
+  .siteChassis__rail {
+    display: none;
+  }
+}

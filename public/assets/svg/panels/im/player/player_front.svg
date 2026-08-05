@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" preserveAspectRatio="none">
+<rect x="18" y="18" width="1364" height="564" fill="none" stroke="#fff" stroke-opacity=".03"/>
+<line x1="468" y1="40" x2="468" y2="560" stroke="#000" stroke-opacity=".8"/>
+<line x1="1090" y1="40" x2="1090" y2="560" stroke="#000" stroke-opacity=".8"/>
+<line x1="505" y1="338" x2="1059" y2="338" stroke="#fff" stroke-opacity=".08"/>
+<path d="M35 560H1365" stroke="#000" stroke-opacity=".9"/>
+<path d="M35 40H1365" stroke="#fff" stroke-opacity=".04"/>
+</svg>

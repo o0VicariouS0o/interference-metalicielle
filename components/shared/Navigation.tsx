@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const ENTRIES = [
   { href: '/', label: 'Accueil' },
@@ -8,17 +11,35 @@ const ENTRIES = [
   { href: '/contact', label: 'Contact' },
 ] as const;
 
+function isCurrentPath(pathname: string, href: string): boolean {
+  if (href === '/') {
+    return pathname === '/';
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Navigation() {
+  const pathname = usePathname();
+
   return (
-    <nav aria-label="Navigation principale">
-      <ul className="flex gap-6 text-sm uppercase tracking-wider">
-        {ENTRIES.map((entry) => (
-          <li key={entry.href}>
-            <Link href={entry.href} className="text-text transition-colors hover:text-transmission">
-              {entry.label}
-            </Link>
-          </li>
-        ))}
+    <nav className="mainNav" aria-label="Navigation principale">
+      <ul className="mainNav__list">
+        {ENTRIES.map((entry) => {
+          const isActive = isCurrentPath(pathname, entry.href);
+
+          return (
+            <li key={entry.href}>
+              <Link
+                href={entry.href}
+                className={`mainNav__link${isActive ? ' mainNav__link--active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {entry.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

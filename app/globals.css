@@ -1,5 +1,24 @@
 @import 'tailwindcss';
 
+/* Panneau de contrôle central du châssis */
+@import './styles/site-settings.css';
+
+@import './styles/ui.css';
+@import './styles/status-led.css';
+@import './styles/site-chassis.css';
+@import './styles/home.css';
+@import './styles/home-chassis.css';
+@import './styles/header.css';
+@import './styles/footer.css';
+@import './styles/net.css';
+@import './styles/yem.css';
+
+/* Réglages du lecteur */
+@import './styles/settings/im-player-settings.css';
+
+/* CSS technique du lecteur */
+@import './styles/im-player.css';
+
 @theme {
   --color-bg: #050505;
   --color-text: #e8e2d8;
@@ -24,26 +43,16 @@
 
 @layer base {
   html {
-    background:
-      radial-gradient(circle at 18% 12%, rgba(200, 49, 31, 0.08), transparent 28%),
-      radial-gradient(circle at 82% 4%, rgba(200, 148, 56, 0.05), transparent 26%),
-      #050505;
+    background: #050505;
   }
 
   body {
     min-height: 100vh;
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px),
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.035), transparent 35%),
-      var(--color-bg);
-    background-size:
-      64px 64px,
-      64px 64px,
-      auto,
-      auto;
+    background: transparent;
+
     color: var(--color-text);
     font-family: var(--font-body);
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -55,9 +64,13 @@
     inset: 0;
     z-index: 0;
     background:
-      radial-gradient(circle at 20% 20%, rgba(200, 49, 31, 0.05), transparent 18%),
-      radial-gradient(circle at 80% 10%, rgba(200, 148, 56, 0.04), transparent 20%),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.025), transparent 240px);
+  radial-gradient(circle at 18% 14%, rgba(200,49,31,.06), transparent 20%),
+  radial-gradient(circle at 84% 10%, rgba(107,63,160,.035), transparent 22%),
+  radial-gradient(circle at 50% -10%, rgba(255,255,255,.035), transparent 40%),
+  radial-gradient(circle at 50% 120%, rgba(0,0,0,.55), transparent 55%),
+  linear-gradient(to bottom,
+      rgba(255,255,255,.02),
+      transparent 220px);
     opacity: 0.75;
   }
 

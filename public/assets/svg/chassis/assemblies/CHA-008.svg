@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Construction" xmlns="http://www.w3.org/2000/svg" width="96" height="64" version="1.1" viewBox="0 0 96 64">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <path id="Encadrement" d="M88,0H8L0,8v48l8,8h80l8-8V8L88,0ZM88,48l-8,8H16l-8-8V16l8-8h64l8,8v32Z" fill="#20242a"/>
+  <circle id="Fixation_x5F_Haut_x5F_Gauche" cx="12" cy="12" r="2" fill="#20242a"/>
+  <circle id="Fixation_x5F_Haut_x5F_Droite" cx="84" cy="12" r="2" fill="#20242a"/>
+  <circle id="Fixation_x5F_Bas_x5F_Gauche" cx="12" cy="52" r="2" fill="#20242a"/>
+  <circle id="Fixation_x5F_Bas_x5F_Droite" cx="84" cy="52" r="2" fill="#20242a"/>
+</svg>

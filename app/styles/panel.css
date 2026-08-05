@@ -1,0 +1,34 @@
+/* =========================================================
+   PANNEAUX GÉNÉRIQUES
+   L'accueil PNG n'utilise plus imPanel ni ses matières.
+   Ce fichier reste disponible pour les autres pages.
+   ========================================================= */
+
+.imPanel {
+  position: relative;
+  isolation: isolate;
+}
+
+.imPanel__material {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Neutralisation stricte uniquement sur les cartes d'accueil. */
+.homeSectionCard.imPanel,
+.homeSectionCard.imPanel::before,
+.homeSectionCard.imPanel::after,
+.homeSectionCard.imPanel .imPanel__material {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+}
+
+.homeSectionCard.imPanel::before,
+.homeSectionCard.imPanel::after,
+.homeSectionCard.imPanel .imPanel__material {
+  display: none;
+  content: none;
+}

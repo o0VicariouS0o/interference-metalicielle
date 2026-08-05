@@ -1,4 +1,7 @@
-import type { ChangeEvent, MouseEvent } from 'react';
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import type { ChangeEvent, CSSProperties } from 'react';
 
 type TransmissionState = 'idle' | 'loading' | 'playing' | 'ended';
 
@@ -11,11 +14,7 @@ type EmissionMinimal = {
   audio_url?: string | null;
   playlist_pdf_path: string | null;
   type_libelle?: string | null;
-  stats?: {
-    titres: number;
-    groupes: number;
-    pays: number;
-  };
+  stats?: { titres: number; groupes: number; pays: number };
 };
 
 type Props = {
@@ -34,11 +33,59 @@ type Props = {
   onToggleMute: () => void;
 };
 
-function formatDateFr(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return iso;
+const PLAYER_ASSET = '/assets/im/player';
+const LED_ASSET = '/assets/ui/status-led';
 
-  return d.toLocaleDateString('fr-FR', {
+const SELECTOR_SOUND = '/assets/audio/clac.wav';
+
+type VisualEffect =
+  | 'noise'
+  | 'rgb'
+  | 'line'
+  | 'dust'
+  | 'flicker'
+  | 'scan'
+  | 'desync'
+  | 'flash'
+  | 'rolling'
+  | 'tear'
+  | 'static'
+  | 'blackout'
+  | 'reboot';
+
+const LIGHT_EFFECTS: VisualEffect[] = ['noise', 'rgb', 'line', 'dust', 'flicker'];
+const MEDIUM_EFFECTS: VisualEffect[] = ['scan', 'desync', 'flash', 'rolling', 'tear'];
+const HEAVY_EFFECTS: VisualEffect[] = ['static', 'blackout', 'reboot'];
+
+const EFFECT_DURATIONS: Record<VisualEffect, number> = {
+  noise: 900,
+  rgb: 700,
+  line: 850,
+  dust: 1200,
+  flicker: 650,
+  scan: 1500,
+  desync: 1100,
+  flash: 520,
+  rolling: 1800,
+  tear: 1200,
+  static: 2600,
+  blackout: 1050,
+  reboot: 3200,
+};
+
+function randomBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function pickRandom<T>(items: T[]): T {
+  return items[Math.floor(Math.random() * items.length)];
+}
+
+function formatDateFr(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+
+  return date.toLocaleDateString('fr-FR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -59,52 +106,110 @@ function formatTypeEmission(type: string | null | undefined): string {
 
 function imagePathForEmission(id: string): string | null {
   const match = id.match(/^IM-(\d{3})$/);
-
   if (match) return `/visuels/emissions/sans-titres/Episode ${match[1]}.jpg`;
   if (id === 'IM-HS001') return '/visuels/emissions/sans-titres/Episode HS001.jpg';
-
   return null;
 }
 
 function getTransmissionLabel(state: TransmissionState): string {
-  switch (state) {
-    case 'loading':
-      return 'Ouverture du canal';
-
-    case 'playing':
-      return 'Transmission active';
-
-    case 'ended':
-      return 'Transmission terminée';
-
-    default:
-      return 'Transmission en attente';
-  }
+  if (state === 'loading') return 'Ouverture du canal';
+  if (state === 'playing') return 'Lecture en cours';
+  if (state === 'ended') return 'Transmission terminée';
+  return 'Transmission en attente';
 }
 
-export function LecteurIM({
-  emission,
-  transmissionState,
-  currentTimeLabel,
-  durationLabel,
-  progressPercent,
-  volumePercent,
-  isMuted,
-  onTogglePlayback,
-  onSeekRelative,
-  onSeekToPercent,
-  onVolumeChange,
-  onToggleMute,
-}: Props) {
+function clampPercent(value: number): number {
+  return Math.min(100, Math.max(0, value));
+}
+
+export function LecteurIM(props: Props) {
+  const {
+    emission,
+    isPlaying,
+    transmissionState,
+    currentTimeLabel,
+    durationLabel,
+    progressPercent,
+    volumePercent,
+    isMuted,
+    onTogglePlayback,
+    onSeekRelative,
+    onSeekToPercent,
+    onVolumeChange,
+    onToggleMute,
+  } = props;
+
   const visuel = imagePathForEmission(emission.id);
   const transmissionLabel = getTransmissionLabel(transmissionState);
+  const safeProgress = clampPercent(progressPercent);
+  const safeVolume = clampPercent(volumePercent);
 
-  function handleProgressClick(event: MouseEvent<HTMLButtonElement>) {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const percent = (x / rect.width) * 100;
+  const [visualEffect, setVisualEffect] = useState<VisualEffect | null>(null);
+  const selectorSoundRef = useRef<HTMLAudioElement | null>(null);
+  const regularTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const heavyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const effectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const effectBusyRef = useRef(false);
 
-    onSeekToPercent(percent);
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    function stopEffect() {
+      setVisualEffect(null);
+      effectBusyRef.current = false;
+    }
+
+    function runEffect(effect: VisualEffect) {
+      if (effectBusyRef.current) return;
+
+      effectBusyRef.current = true;
+      setVisualEffect(effect);
+
+      if (effectTimerRef.current) clearTimeout(effectTimerRef.current);
+      effectTimerRef.current = setTimeout(stopEffect, EFFECT_DURATIONS[effect]);
+    }
+
+    function scheduleRegularEffect() {
+      regularTimerRef.current = setTimeout(() => {
+        const pool = Math.random() < 0.22 ? MEDIUM_EFFECTS : LIGHT_EFFECTS;
+        runEffect(pickRandom(pool));
+        scheduleRegularEffect();
+      }, randomBetween(30_000, 90_000));
+    }
+
+    function scheduleHeavyEffect() {
+      heavyTimerRef.current = setTimeout(() => {
+        runEffect(pickRandom(HEAVY_EFFECTS));
+        scheduleHeavyEffect();
+      }, randomBetween(10 * 60_000, 15 * 60_000));
+    }
+
+    scheduleRegularEffect();
+    scheduleHeavyEffect();
+
+    return () => {
+      if (regularTimerRef.current) clearTimeout(regularTimerRef.current);
+      if (heavyTimerRef.current) clearTimeout(heavyTimerRef.current);
+      if (effectTimerRef.current) clearTimeout(effectTimerRef.current);
+    };
+  }, [emission.id]);
+
+  function handleSelectorToggle() {
+    const selectorSound = selectorSoundRef.current;
+
+    if (selectorSound) {
+      selectorSound.currentTime = 0;
+      void selectorSound.play().catch(() => {
+        // Le lecteur reste utilisable si le navigateur refuse le son.
+      });
+    }
+
+    onTogglePlayback();
+  }
+
+  function handleProgressChange(event: ChangeEvent<HTMLInputElement>) {
+    onSeekToPercent(Number(event.target.value));
   }
 
   function handleVolumeChange(event: ChangeEvent<HTMLInputElement>) {
@@ -112,210 +217,219 @@ export function LecteurIM({
   }
 
   return (
-    <section
-      aria-label="Lecteur Interférence Métalicielle"
-      className="border border-border bg-black p-6"
-    >
-      <div className="grid gap-8 desktop:grid-cols-[320px_1fr_240px]">
-        <div className="aspect-square overflow-hidden border border-border bg-bg">
+    <section className="imPlayer" aria-label="Lecteur Interférence Métalicielle">
+      <div className="imPlayer__machine">
+        {/* Couche 1 : visuel derrière la façade */}
+        <div
+          className={`imPlayer__visualWindow ${
+            visualEffect ? `is-effect-${visualEffect}` : ''
+          }`}
+          data-effect={visualEffect ?? undefined}
+        >
           {visuel ? (
             <img
+              className="imPlayer__visualImage"
               src={visuel}
               alt={`Visuel de l'émission ${emission.titre}`}
-              className="h-full w-full object-cover"
             />
           ) : null}
+
+          <span className="imPlayer__videoNoise" aria-hidden="true" />
+          <span className="imPlayer__videoScan" aria-hidden="true" />
+          <span className="imPlayer__videoLine" aria-hidden="true" />
+          <span className="imPlayer__videoTear" aria-hidden="true" />
+          <span className="imPlayer__videoFlash" aria-hidden="true" />
+          <span className="imPlayer__videoBlackout" aria-hidden="true" />
+          <span className="imPlayer__videoReboot" aria-hidden="true">
+            RESTAURATION DU SIGNAL
+          </span>
         </div>
 
-        <div className="flex flex-col justify-between gap-8">
-          <div>
-            <p className="font-mono text-sm uppercase tracking-widest text-transmission">
-              {emission.id}
-            </p>
+        {/* Couche 2 : façade complète */}
+        <img
+          className="imPlayer__background"
+          src={`${PLAYER_ASSET}/player-background.png`}
+          alt=""
+          aria-hidden="true"
+        />
 
-            <h2 className="mt-3 font-display text-3xl">{emission.titre}</h2>
+        {/* Couche 3 : informations HTML */}
+        <div className="imPlayer__content">
+          <div className="imPlayer__visualLabels">
+            <strong>Visuel de la transmission</strong>
+            <span>Archives du réseau IM</span>
+          </div>
 
-            <p className="mt-3 text-sm text-muted">
-              {formatDateFr(emission.date_diffusion)}
-            </p>
+          <div className="imPlayer__visualStatus">
+            <span>Archive restaurée</span>
+            <span>Signal stable</span>
+          </div>
 
+          <div className="imPlayer__mainInfo">
+            <p className="imPlayer__id">{emission.id}</p>
+            <h2 className="imPlayer__title">{emission.titre}</h2>
+            <p className="imPlayer__date">{formatDateFr(emission.date_diffusion)}</p>
             {emission.description_courte ? (
-              <p className="mt-6 max-w-2xl leading-7 text-muted">
-                {emission.description_courte}
-              </p>
+              <p className="imPlayer__description">{emission.description_courte}</p>
             ) : null}
           </div>
 
-          <div className="border-t border-border pt-6">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                  Canal
-                </p>
-                <p className="mt-2 font-mono text-sm text-transmission">
-                  Canal {emission.id}
-                </p>
-              </div>
-
-              <div className="text-right">
-                <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                  Statut
-                </p>
-                <p className="mt-2 font-mono text-sm">
-                  {transmissionLabel}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <div className="flex justify-between font-mono text-xs text-muted">
-                <span>{currentTimeLabel}</span>
-                <span>{durationLabel}</span>
-              </div>
-
-              <button
-                type="button"
-                onClick={handleProgressClick}
-                aria-label="Déplacer la tête de lecture"
-                className="mt-3 block h-3 w-full cursor-pointer border border-border bg-bg text-left"
-              >
-                <span
-                  className="block h-full bg-transmission"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </button>
-
-              <div className="mt-5 grid grid-cols-[1fr_1.5fr_1fr] items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => onSeekRelative(-30)}
-                  className="border border-border px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-transmission hover:text-transmission"
-                >
-                  -30 sec
-                </button>
-
-                <button
-                  type="button"
-                  onClick={onTogglePlayback}
-                  className="border border-transmission px-4 py-3 font-mono text-xs uppercase tracking-widest text-transmission hover:bg-transmission hover:text-black"
-                >
-                  {transmissionLabel}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => onSeekRelative(30)}
-                  className="border border-border px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-transmission hover:text-transmission"
-                >
-                  +30 sec
-                </button>
-              </div>
-
-              <div className="mt-5 border-t border-border pt-4">
-                <div className="flex items-center justify-between gap-4">
-                  <button
-                    type="button"
-                    onClick={onToggleMute}
-                    className="border border-border px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-transmission hover:text-transmission"
-                  >
-                    {isMuted ? 'Muet' : 'Signal'}
-                  </button>
-
-                  <label className="flex flex-1 items-center gap-3">
-                    <span className="font-mono text-xs uppercase tracking-widest text-muted">
-                      Niveau
-                    </span>
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={volumePercent}
-                      onChange={handleVolumeChange}
-                      className="w-full accent-red-700"
-                      aria-label="Niveau du signal audio"
-                    />
-                    <span className="w-10 text-right font-mono text-xs text-muted">
-                      {volumePercent}
-                    </span>
-                  </label>
-                </div>
-              </div>
-
-              <p className="mt-3 font-mono text-xs uppercase tracking-widest text-muted">
-                Jauge documentaire — transmission réelle
-              </p>
-            </div>
+          <div className="imPlayer__progressLabels">
+            <span>Progression de la transmission</span>
+            <strong>{safeProgress.toFixed(1)}%</strong>
           </div>
+
+          <div className="imPlayer__timeRow">
+            <span>{currentTimeLabel}</span>
+            <span>{durationLabel}</span>
+          </div>
+
+          <div className="imPlayer__signalControls">
+            <button
+              type="button"
+              className={`imPlayer__signalButton ${isMuted ? 'is-muted' : ''}`}
+              onClick={onToggleMute}
+              aria-pressed={isMuted}
+            >
+              {isMuted ? 'Signal coupé' : 'Signal actif'}
+            </button>
+
+            <input
+              className="imPlayer__volume"
+              type="range"
+              min="0"
+              max="100"
+              value={safeVolume}
+              onChange={handleVolumeChange}
+              aria-label="Niveau du signal audio"
+            />
+
+            <span>{safeVolume}%</span>
+          </div>
+
+          <div className="imPlayer__metaTitle">Métadonnées</div>
+
+          <dl className="imPlayer__metaList">
+            <div>
+              <dt>Durée totale</dt>
+              <dd>{emission.duree ?? '—'}</dd>
+            </div>
+            <div>
+              <dt>Type de transmission</dt>
+              <dd>{formatTypeEmission(emission.type_libelle)}</dd>
+            </div>
+            <div>
+              <dt>Nombre de titres</dt>
+              <dd>{emission.stats?.titres ?? '—'}</dd>
+            </div>
+            <div>
+              <dt>Nombre de groupes</dt>
+              <dd>{emission.stats?.groupes ?? '—'}</dd>
+            </div>
+            <div>
+              <dt>Pays représentés</dt>
+              <dd>{emission.stats?.pays ?? '—'}</dd>
+            </div>
+          </dl>
+
+          {emission.playlist_pdf_path ? (
+            <a
+              className="imPlayer__playlist"
+              href={emission.playlist_pdf_path}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Playlist
+            </a>
+          ) : null}
         </div>
 
-        <aside className="border-l border-border pl-6">
-          <p className="font-mono text-xs uppercase tracking-widest text-transmission">
-            Métadonnées
-          </p>
+        {/* Barre active placée dans son ouverture */}
+        <div
+          className="imPlayer__progress"
+          style={{ '--progress': `${safeProgress}%` } as CSSProperties}
+        >
+          <img
+            className="imPlayer__progressBase"
+            src={`${PLAYER_ASSET}/progress.png`}
+            alt=""
+            aria-hidden="true"
+          />
+          <span className="imPlayer__progressFill" aria-hidden="true">
+            <img src={`${PLAYER_ASSET}/progress.png`} alt="" />
+          </span>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="0.1"
+            value={safeProgress}
+            onChange={handleProgressChange}
+            aria-label="Position dans la transmission"
+          />
+        </div>
 
-          <div className="mt-6 space-y-5">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                Durée
-              </p>
-              <p className="mt-2 font-mono text-sm">{emission.duree ?? '—'}</p>
-            </div>
+        {/* Couche 4 : ombres et profondeur */}
+        <img
+          className="imPlayer__shadows"
+          src={`${PLAYER_ASSET}/player-shadows.png`}
+          alt=""
+          aria-hidden="true"
+        />
 
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                Type
-              </p>
-              <p className="mt-2 font-mono text-sm">
-                {formatTypeEmission(emission.type_libelle)}
-              </p>
-            </div>
+        {/* Couche 5 : pièces mobiles et voyants */}
+        <button
+          type="button"
+          className="imPlayer__skip imPlayer__skip--minus"
+          onClick={() => onSeekRelative(-30)}
+          aria-label="Reculer de 30 secondes"
+        >
+          <img src={`${PLAYER_ASSET}/button-minus30.png`} alt="" aria-hidden="true" />
+        </button>
 
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                Titres
-              </p>
-              <p className="mt-2 font-mono text-sm">
-                {emission.stats?.titres ?? '—'}
-              </p>
-            </div>
+        <button
+          type="button"
+          className="imPlayer__selector"
+          onClick={handleSelectorToggle}
+          aria-label={isPlaying ? 'Mettre la transmission en pause' : 'Lire la transmission'}
+          aria-pressed={isPlaying}
+        >
+          <img
+            src={`${PLAYER_ASSET}/${isPlaying ? 'selector-play.png' : 'selector-wait.png'}`}
+            alt=""
+            aria-hidden="true"
+          />
+        </button>
 
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                Groupes
-              </p>
-              <p className="mt-2 font-mono text-sm">
-                {emission.stats?.groupes ?? '—'}
-              </p>
-            </div>
+        <button
+          type="button"
+          className="imPlayer__skip imPlayer__skip--plus"
+          onClick={() => onSeekRelative(30)}
+          aria-label="Avancer de 30 secondes"
+        >
+          <img src={`${PLAYER_ASSET}/button-plus30.png`} alt="" aria-hidden="true" />
+        </button>
 
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                Pays
-              </p>
-              <p className="mt-2 font-mono text-sm">
-                {emission.stats?.pays ?? '—'}
-              </p>
-            </div>
+        <img
+          className={`imPlayer__led imPlayer__led--wait ${isPlaying ? 'is-inactive' : 'is-active'}`}
+          src={`${LED_ASSET}/${isPlaying ? 'status-led-red1.png' : 'status-led-red1.png'}`}
+          alt=""
+          aria-hidden="true"
+        />
 
-            <div className="border-t border-border pt-5">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                Playlist
-              </p>
-              {emission.playlist_pdf_path ? (
-                <a
-                  href={emission.playlist_pdf_path}
-                  className="mt-2 inline-block text-sm text-transmission hover:underline"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Télécharger PDF
-                </a>
-              ) : (
-                <p className="mt-2 text-sm text-muted">—</p>
-              )}
-            </div>
-          </div>
-        </aside>
+        <img
+          className={`imPlayer__led imPlayer__led--play ${isPlaying ? 'is-active' : 'is-inactive'}`}
+          src={`${LED_ASSET}/${isPlaying ? 'status-led-green1.png' : 'status-led-green1.png'}`}
+          alt=""
+          aria-hidden="true"
+        />
+
+        <audio
+          ref={selectorSoundRef}
+          src={SELECTOR_SOUND}
+          preload="auto"
+          aria-hidden="true"
+        />
       </div>
     </section>
   );

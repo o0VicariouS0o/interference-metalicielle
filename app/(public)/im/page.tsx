@@ -21,7 +21,14 @@ type TypeEmission = {
   libelle: string;
 };
 
+type ImPageProps = {
+  searchParams: Promise<{
+    e?: string | string[];
+  }>;
+};
+
 export default async function ImPage() {
+  
   const { data, error } = await supabase
     .from('emissions')
     .select(
@@ -35,7 +42,7 @@ export default async function ImPage() {
 
   if (error) {
     return (
-      <section className="mx-auto max-w-(--breakpoint-desktop) px-6 py-16">
+      <section className="mx-auto w-full max-w-[1440px] px-4 py-12 tablet:px-6 desktop:px-8">
         <h1 className="font-display text-3xl">IM</h1>
         <p className="mt-8 border border-transmission p-4 text-sm text-transmission">
           Erreur de chargement des émissions : {error.message}
@@ -129,18 +136,24 @@ export default async function ImPage() {
   });
 
   return (
-    <section className="mx-auto max-w-(--breakpoint-desktop) px-6 py-16">
-      <header>
-        <p className="font-mono text-sm uppercase tracking-widest text-transmission">
-          Transmissions
-        </p>
-        <h1 className="mt-3 font-display text-3xl">Interférence Métalicielle</h1>
-        <p className="mt-4 text-muted">
-          {emissions.length} émissions importées depuis les archives.
-        </p>
-      </header>
+    <section className="mx-auto w-full max-w-[1440px] px-4 py-12 tablet:px-6 desktop:px-8">
+    <header>
+  <p className="font-mono text-sm uppercase tracking-widest text-transmission">
+    Transmissions
+  </p>
 
-      <ImClient emissions={clientEmissions} />
+  <h1 className="mt-3 font-display text-3xl">
+    Bibliothèque des transmissions
+  </h1>
+
+  <p className="mt-4 text-muted">
+    {emissions.length} transmissions conservées dans les archives.
+  </p>
+</header>  
+
+      <ImClient
+  emissions={clientEmissions}
+  />
     </section>
   );
 }

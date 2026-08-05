@@ -1,0 +1,466 @@
+/* =========================================================
+   ACCUEIL — CARTE NET
+   Réseau actif et circulation documentaire
+   ========================================================= */
+
+/* =========================================================
+   SURFACE DU SCHÉMA
+   ========================================================= */
+
+.homeSectionCard--net .homeNetSignal {
+  min-height: var(--net-signal-min-height);
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(75, 155, 196, 0.08),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(75, 155, 196, 0.02),
+      transparent 56%
+    ),
+    rgba(0, 0, 0, 0.34);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.018),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.58),
+    inset 0 0 32px rgba(0, 0, 0, 0.48),
+    0 0 18px rgba(75, 155, 196, 0.025);
+}
+
+/*
+ * Très léger reflet transversal.
+ * Il reste presque immobile et sert uniquement à donner
+ * une sensation de vitre technique.
+ */
+
+.homeSectionCard--net .homeNetSignal::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      112deg,
+      transparent 10%,
+      rgba(255, 255, 255, 0.014) 38%,
+      rgba(111, 183, 216, 0.018) 48%,
+      transparent 67%
+    );
+
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* =========================================================
+   GRILLE
+   ========================================================= */
+
+.homeSectionCard--net .homeNetSignal__grid {
+  opacity: 0.36;
+
+  mask-image:
+    radial-gradient(
+      circle at center,
+      black 12%,
+      rgba(0, 0, 0, 0.72) 48%,
+      transparent 91%
+    );
+}
+
+/* =========================================================
+   LIAISONS
+   ========================================================= */
+
+.homeSectionCard--net .homeNetSignal__line {
+  overflow: visible;
+
+  opacity: 0.58;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(111, 183, 216, 0.7),
+      rgba(111, 183, 216, 0.09)
+    );
+
+  animation: homeNetLineBreath 7.6s ease-in-out infinite;
+}
+
+.homeSectionCard--net .homeNetSignal__line--two {
+  animation-delay: -1.9s;
+}
+
+.homeSectionCard--net .homeNetSignal__line--three {
+  animation-delay: -3.8s;
+}
+
+.homeSectionCard--net .homeNetSignal__line--four {
+  animation-delay: -5.7s;
+}
+
+/* =========================================================
+   IMPULSIONS DE DONNÉES
+   ========================================================= */
+
+.homeNetSignal__packet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  width: var(--net-packet-size);
+  height: var(--net-packet-size);
+
+  border-radius: 50%;
+
+  background: rgba(151, 215, 239, 0.9);
+
+  box-shadow:
+    0 0 5px rgba(111, 183, 216, 0.72),
+    0 0 11px rgba(75, 155, 196, 0.28);
+
+  opacity: 0;
+
+  transform: translate(-50%, -50%);
+
+  animation: homeNetPacketTravel 10.4s linear infinite;
+}
+
+.homeNetSignal__packet--one {
+  animation-delay: -0.8s;
+}
+
+.homeNetSignal__packet--two {
+  animation-delay: -3.4s;
+}
+
+.homeNetSignal__packet--three {
+  animation-delay: -6s;
+}
+
+.homeNetSignal__packet--four {
+  animation-delay: -8.6s;
+}
+
+/* =========================================================
+   NŒUD CENTRAL
+   ========================================================= */
+
+.homeSectionCard--net .homeNetSignal__node--main {
+  animation: homeNetMainNodeRefined 6.2s ease-in-out infinite;
+}
+
+/* =========================================================
+   SATELLITES
+   ========================================================= */
+
+.homeSectionCard--net .homeNetSignal__node--north {
+  animation: homeNetSatelliteRefined 6.8s ease-in-out infinite;
+  animation-delay: -0.7s;
+}
+
+.homeSectionCard--net .homeNetSignal__node--east {
+  animation: homeNetSatelliteRefined 7.3s ease-in-out infinite;
+  animation-delay: -2.2s;
+}
+
+.homeSectionCard--net .homeNetSignal__node--south {
+  animation: homeNetSatelliteRefined 6.5s ease-in-out infinite;
+  animation-delay: -4.1s;
+}
+
+.homeSectionCard--net .homeNetSignal__node--west {
+  animation: homeNetSatelliteRefined 7.6s ease-in-out infinite;
+  animation-delay: -5.4s;
+}
+
+/* =========================================================
+   SYNCHRONISATION
+   ========================================================= */
+
+.homeNetSignal__sync {
+  position: absolute;
+  z-index: 4;
+  top: var(--net-sync-top);
+  left: var(--net-sync-left);
+
+  display: flex;
+  align-items: center;
+  gap: var(--net-sync-gap);
+
+  font-family: var(--font-mono);
+  font-size: var(--net-sync-size);
+  line-height: var(--net-sync-line-height);
+  letter-spacing: var(--net-sync-letter-spacing);
+  text-transform: uppercase;
+
+  color: rgba(111, 183, 216, 0.3);
+}
+
+.homeNetSignal__syncDot {
+  width: var(--net-sync-dot-size);
+  height: var(--net-sync-dot-size);
+
+  border-radius: 50%;
+
+  background: rgba(111, 183, 216, 0.68);
+
+  box-shadow:
+    0 0 4px rgba(75, 155, 196, 0.45),
+    0 0 9px rgba(75, 155, 196, 0.16);
+
+  animation: homeNetSyncDot 4.4s ease-in-out infinite;
+}
+
+/* =========================================================
+   STATISTIQUES
+   ========================================================= */
+
+.homeSectionCard--net .homeNetworkStats {
+  position: relative;
+  isolation: isolate;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 3px,
+      rgba(255, 255, 255, 0.009) 3px,
+      rgba(255, 255, 255, 0.009) 4px
+    ),
+    linear-gradient(
+      145deg,
+      rgba(111, 183, 216, 0.018),
+      transparent 42%
+    ),
+    rgba(0, 0, 0, 0.34);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.015),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.52),
+    inset 0 0 28px rgba(0, 0, 0, 0.28);
+}
+
+/*
+ * Balayage lent sur les quatre compteurs.
+ * Il reste sous les textes.
+ */
+
+.homeSectionCard--net .homeNetworkStats::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -55%;
+  right: 0;
+  left: 0;
+
+  height: 38%;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(111, 183, 216, 0.02),
+      rgba(111, 183, 216, 0.045),
+      transparent
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation: homeNetStatsScan 13s linear infinite;
+}
+
+.homeSectionCard--net .homeNetworkStat {
+  z-index: 1;
+}
+
+.homeSectionCard--net .homeNetworkStat::after {
+  content: "";
+  position: absolute;
+  right: var(--net-stat-decoration-right);
+  bottom: var(--net-stat-decoration-bottom);
+
+  width: var(--net-stat-decoration-width);
+  height: var(--net-stat-decoration-height);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(111, 183, 216, 0.2)
+    );
+
+  opacity: 0.6;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes homeNetLineBreath {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+
+  50% {
+    opacity: 0.68;
+  }
+}
+
+@keyframes homeNetPacketTravel {
+  0%,
+  60% {
+    left: 3%;
+    opacity: 0;
+  }
+
+  64% {
+    opacity: 0.82;
+  }
+
+  78% {
+    opacity: 0.72;
+  }
+
+  88% {
+    left: 96%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 96%;
+    opacity: 0;
+  }
+}
+
+@keyframes homeNetMainNodeRefined {
+  0%,
+  100% {
+    opacity: 0.7;
+
+    filter:
+      brightness(0.88)
+      drop-shadow(0 0 4px rgba(75, 155, 196, 0.2));
+  }
+
+  50% {
+    opacity: 0.96;
+
+    filter:
+      brightness(1.04)
+      drop-shadow(0 0 8px rgba(75, 155, 196, 0.36));
+  }
+}
+
+@keyframes homeNetSatelliteRefined {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+
+  46% {
+    opacity: 0.7;
+  }
+
+  58% {
+    opacity: 0.82;
+  }
+}
+
+@keyframes homeNetSyncDot {
+  0%,
+  100% {
+    opacity: 0.34;
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+}
+
+@keyframes homeNetStatsScan {
+  0%,
+  50% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  54% {
+    opacity: 0.42;
+  }
+
+  82% {
+    opacity: 0.18;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(420%);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .homeNetSignal__sync {
+    font-size: var(--net-sync-size-mobile);
+  }
+
+  .homeNetSignal__packet {
+    width: var(--net-packet-size-mobile);
+    height: var(--net-packet-size-mobile);
+  }
+}
+
+/* =========================================================
+   RÉDUCTION DES MOUVEMENTS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .homeSectionCard--net .homeNetSignal__line,
+  .homeNetSignal__packet,
+  .homeSectionCard--net .homeNetSignal__node,
+  .homeNetSignal__syncDot,
+  .homeSectionCard--net .homeNetworkStats::after {
+    animation: none;
+  }
+
+  .homeSectionCard--net .homeNetSignal__line {
+    opacity: 0.5;
+  }
+
+  .homeSectionCard--net .homeNetSignal__node--main {
+    opacity: 0.82;
+  }
+
+  .homeNetSignal__packet {
+    display: none;
+  }
+
+  .homeNetSignal__syncDot {
+    opacity: 0.72;
+  }
+}
+
+@container (max-width: 340px) {
+  .homeSectionCard--net .homeNetSignal {
+    min-height: var(--net-signal-min-height-compact);
+  }
+
+  .homeNetSignal__sync {
+    font-size: var(--net-sync-size-compact);
+  }
+
+  .homeNetSignal__packet {
+    width: var(--net-packet-size-compact);
+    height: var(--net-packet-size-compact);
+  }
+}

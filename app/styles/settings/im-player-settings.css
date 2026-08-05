@@ -1,0 +1,229 @@
+/* =========================================================
+   RÉGLAGES VISUELS — LECTEUR IM
+   Façade de référence : 1520 × 900
+
+   RÈGLE SIMPLE :
+   - augmenter X / LEFT  = déplacer vers la droite
+   - diminuer X / LEFT  = déplacer vers la gauche
+   - augmenter Y / TOP   = déplacer vers le bas
+   - diminuer Y / TOP    = déplacer vers le haut
+   - augmenter BOTTOM    = déplacer vers le haut
+   - diminuer BOTTOM     = déplacer vers le bas
+
+   Pour les réglages visuels, modifie uniquement ce fichier.
+   ========================================================= */
+
+:root {
+  /* =======================================================
+     FAÇADE ET OMBRES
+     ======================================================= */
+
+  --im-machine-ratio: 1520 / 900;
+  --im-machine-shadow-opacity: 0.46;
+  --im-shadows-opacity: 0.72;
+
+  /* =======================================================
+     PARTIE GAUCHE — FENÊTRE DU VISUEL
+     ======================================================= */
+
+  --im-visual-x: 3.9%;
+  --im-visual-y: 25.1%;
+  --im-visual-width: 29.5%;
+  --im-visual-height: 48.9%;
+
+  /* =======================================================
+     PARTIE GAUCHE — TEXTES
+
+     “VISUEL DE LA TRANSMISSION”
+     “ARCHIVES DU RÉSEAU IM”
+     “ARCHIVE RESTAURÉE”
+     “SIGNAL STABLE”
+     ======================================================= */
+
+  --im-visual-labels-x: 7.1%;
+  --im-visual-labels-y: 2.5%;
+  --im-visual-labels-width: 24.8%;
+  --im-visual-labels-gap: 16px;
+
+  --im-visual-title-size-min: 0.42rem;
+  --im-visual-title-size-fluid: 0.52vw;
+  --im-visual-title-size-max: 0.62rem;
+
+  --im-visual-title-offset-x: 0px;
+  --im-visual-title-offset-y: 0px;
+
+  --im-visual-network-size-min: 0.42rem;
+  --im-visual-network-size-fluid: 0.52vw;
+  --im-visual-network-size-max: 0.62rem;
+
+  --im-visual-network-offset-x: 0px;
+  --im-visual-network-offset-y: 50px;
+
+  --im-visual-status-x: 7.2%;
+  --im-visual-status-bottom: 15.9%;
+  --im-visual-status-width: 29%;
+  --im-visual-status-gap: 3%;
+
+  --im-visual-status-size-min: 0.80rem;
+  --im-visual-status-size-fluid: 0.48vw;
+  --im-visual-status-size-max: 0.57rem;
+
+  --im-archive-status-offset-x: 0px;
+  --im-archive-status-offset-y: 0px;
+
+  --im-signal-status-offset-x: 0px;
+  --im-signal-status-offset-y: 0px;
+
+  /* =======================================================
+     BLOC CENTRAL : TITRE, DATE, DESCRIPTION
+     ======================================================= */
+
+  --im-main-x: 40.2%;
+  --im-main-y: 2.5%;
+  --im-main-width: 29.8%;
+  --im-main-height: 36.8%;
+
+  --im-id-size-min: 0.62rem;
+  --im-id-size-fluid: 0.78vw;
+  --im-id-size-max: 0.92rem;
+
+  --im-title-size-min: 1.55rem;
+  --im-title-size-fluid: 2.7vw;
+  --im-title-size-max: 3.05rem;
+
+  --im-title-margin-top: 14.8%;
+  --im-title-line-height: 1.98;
+
+  --im-date-size-min: 0.62rem;
+  --im-date-size-fluid: 0.78vw;
+  --im-date-size-max: 0.90rem;
+  --im-date-margin-top: 2.2%;
+
+  --im-description-size-min: 0.68rem;
+  --im-description-size-fluid: 0.84vw;
+  --im-description-size-max: 0.98rem;
+  --im-description-margin-top: 4%;
+  --im-description-line-height: 1.55;
+  --im-description-max-width: 48ch;
+  --im-description-lines: 3;
+
+  /* =======================================================
+     PROGRESSION
+     ======================================================= */
+
+  --im-progress-labels-x: 38.4%;
+  --im-progress-labels-y: 58.2%;
+  --im-progress-labels-width: 38.1%;
+
+  --im-progress-label-size-min: 0.42rem;
+  --im-progress-label-size-fluid: 0.50vw;
+  --im-progress-label-size-max: 0.60rem;
+
+  --im-progress-x: 38.30%;
+  --im-progress-y: 59.8%;
+  --im-progress-width: 37.8%;
+
+  --im-time-x: 38.3%;
+  --im-time-y: 67.3%;
+  --im-time-width: 38.1%;
+
+  --im-time-size-min: 0.42rem;
+  --im-time-size-fluid: 0.48vw;
+  --im-time-size-max: 0.57rem;
+
+  /* =======================================================
+     BOUTONS ET SÉLECTEUR
+     ======================================================= */
+
+  --im-buttons-y: 73.5%;
+  --im-button-width: 5.70%;
+
+  --im-minus-x: 37.80%;
+  --im-plus-x: 71.27%;
+
+  --im-selector-x: 53.40%;
+  --im-selector-y: 71.50%;
+  --im-selector-width: 8.22%;
+
+  /* =======================================================
+     LED
+     ======================================================= */
+
+  --im-led-y: 76.80%;
+  --im-led-width: 1.30%;
+
+  --im-led-wait-x: 52.00%;
+  --im-led-play-x: 61.6%;
+
+  --im-led-active-opacity: 1;
+  --im-led-inactive-opacity: 0.16;
+
+  /* =======================================================
+     SIGNAL ET VOLUME
+     ======================================================= */
+
+  --im-signal-x: 39.8%;
+  --im-signal-bottom: 1.9%;
+  --im-signal-width: 33.1%;
+  --im-signal-gap: 1%;
+
+  --im-signal-size-min: 0.50rem;
+  --im-signal-size-fluid: 0.48vw;
+  --im-signal-size-max: 0.57rem;
+
+  --im-volume-value-size-min: 1.40rem;
+  --im-volume-value-size-fluid: 0.47vw;
+  --im-volume-value-size-max: 0.55rem;
+
+  /* =======================================================
+     MÉTADONNÉES
+     ======================================================= */
+
+  --im-meta-title-x: 83.6%;
+  --im-meta-title-y: 2.5%;
+
+  --im-meta-title-size-min: 0.85rem;
+  --im-meta-title-size-fluid: 0.48vw;
+  --im-meta-title-size-max: 0.57rem;
+
+  --im-meta-x: 80.8%;
+  --im-meta-y: 10%;
+  --im-meta-width: 14.6%;
+  --im-meta-height: 62%;
+  --im-meta-gap: 1.5%;
+
+  --im-meta-label-size-min: 0.36rem;
+  --im-meta-label-size-fluid: 0.42vw;
+  --im-meta-label-size-max: 0.50rem;
+
+  --im-meta-value-size-min: 0.48rem;
+  --im-meta-value-size-fluid: 0.61vw;
+  --im-meta-value-size-max: 0.72rem;
+
+  /* =======================================================
+     PLAYLIST
+     ======================================================= */
+
+  --im-playlist-x: 79.60%;
+  --im-playlist-bottom: 15.8%;
+  --im-playlist-width: 15.2%;
+  --im-playlist-height: 8.5%;
+
+  --im-playlist-size-min: 1.46rem;
+  --im-playlist-size-fluid: 0.58vw;
+  --im-playlist-size-max: 1.28rem;
+
+  /* =======================================================
+     COULEURS ET LISIBILITÉ
+     ======================================================= */
+
+  --im-text-light: rgba(242, 238, 230, 0.82);
+  --im-text-medium: rgba(242, 238, 230, 0.72);
+  --im-text-soft: rgba(242, 238, 230, 0.65);
+  --im-text-strong: rgba(246, 242, 234, 0.94);
+  --im-signal-green: rgba(94, 196, 119, 0.86);
+
+  --im-text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.95),
+    0 0 4px rgba(0, 0, 0, 0.80);
+}

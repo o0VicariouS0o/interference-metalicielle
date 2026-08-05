@@ -1,0 +1,721 @@
+/* =========================================================
+   IM PLAYER — FAÇADE INDUSTRIELLE PNG
+   Référence graphique : 1520 × 900
+   ========================================================= */
+
+.imPlayer {
+  width: 100%;
+  min-width: 0;
+}
+
+.imPlayer__machine {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  aspect-ratio: 1520 / 900;
+
+  overflow: hidden;
+
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.46));
+}
+
+/* =========================================================
+   COUCHES GÉNÉRALES
+   ========================================================= */
+
+.imPlayer__background,
+.imPlayer__shadows {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.imPlayer__background {
+  z-index: 2;
+}
+
+.imPlayer__content {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+.imPlayer__shadows {
+  z-index: 3;
+  opacity: 0.72;
+}
+
+/* =========================================================
+   VISUEL — COUCHE 1
+   ========================================================= */
+
+.imPlayer__visualWindow {
+  position: absolute;
+
+  left: 3.9%;
+  top: 25.1%;
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  width: 29.5%;
+  height: 48.9%;
+
+  background: #020202;
+}
+
+.imPlayer__visualWindow img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* =========================================================
+   TEXTES DU VISUEL
+   ========================================================= */
+
+.imPlayer__visualLabels {
+  position: absolute;
+
+  left: 4.2%;
+  top: 7.7%;
+
+  display: flex;
+
+  width: 28.8%;
+
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.42rem, 0.52vw, 0.62rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(242, 238, 230, 0.72);
+}
+
+.imPlayer__visualLabels strong {
+  color: var(--color-transmission);
+  font-weight: 500;
+}
+
+.imPlayer__visualStatus {
+  position: absolute;
+
+  left: 4.2%;
+  bottom: 4.9%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3%;
+
+  width: 29%;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.4rem, 0.48vw, 0.57rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: rgba(242, 238, 230, 0.76);
+}
+
+.imPlayer__visualStatus span:last-child {
+  color: rgba(94, 196, 119, 0.86);
+}
+
+/* =========================================================
+   INFORMATIONS CENTRALES
+   ========================================================= */
+
+.imPlayer__mainInfo {
+  position: absolute;
+
+  left: 47.2%;
+  top: 12.8%;
+
+  width: 29.8%;
+  height: 36.8%;
+
+  overflow: hidden;
+}
+
+.imPlayer__id {
+  margin: 0;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 0.78vw, 0.92rem);
+  letter-spacing: 0.13em;
+
+  color: var(--color-transmission);
+}
+
+.imPlayer__title {
+  margin: 1.8% 0 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.1vw, 3.4rem);
+  font-weight: 500;
+  line-height: 0.98;
+
+  text-wrap: balance;
+}
+
+.imPlayer__date {
+  margin: 2.2% 0 0;
+
+  font-size: clamp(0.62rem, 0.78vw, 0.9rem);
+
+  color: rgba(242, 238, 230, 0.72);
+}
+
+.imPlayer__description {
+  display: -webkit-box;
+
+  overflow: hidden;
+
+  max-width: 54ch;
+
+  margin: 4% 0 0;
+
+  font-size: clamp(0.68rem, 0.84vw, 0.98rem);
+  line-height: 1.55;
+
+  color: rgba(242, 238, 230, 0.82);
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.imPlayer__progressLabels {
+  position: absolute;
+
+  left: 44.8%;
+  top: 49.2%;
+
+  display: flex;
+
+  width: 33.1%;
+
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.42rem, 0.5vw, 0.6rem);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  color: rgba(242, 238, 230, 0.68);
+}
+
+.imPlayer__progressLabels strong {
+  color: var(--color-transmission);
+  font-weight: 500;
+}
+
+.imPlayer__timeRow {
+  position: absolute;
+
+  left: 44.8%;
+  top: 59.3%;
+
+  display: flex;
+
+  width: 33.1%;
+
+  justify-content: space-between;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.42rem, 0.48vw, 0.57rem);
+  letter-spacing: 0.08em;
+
+  color: rgba(242, 238, 230, 0.65);
+}
+
+.imPlayer__selectorLabel { display: none; }
+
+/* =========================================================
+   PROGRESSION
+   ========================================================= */
+
+.imPlayer__progress {
+  position: absolute;
+
+  left: 44.45%;
+  top: 52.7%;
+
+  z-index: 5;
+
+  width: 33.5%;
+  aspect-ratio: 580 / 60;
+
+  overflow: hidden;
+}
+
+.imPlayer__progressBase,
+.imPlayer__progressFill,
+.imPlayer__progressFill img {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  pointer-events: none;
+}
+
+.imPlayer__progressBase {
+  filter: grayscale(0.9) brightness(0.28) saturate(0.42);
+  opacity: 0.88;
+}
+
+.imPlayer__progressFill {
+  overflow: hidden;
+
+  clip-path: inset(0 calc(100% - var(--progress, 0%)) 0 0);
+}
+
+.imPlayer__progress input {
+  position: absolute;
+  inset: 25% 5%;
+
+  z-index: 2;
+
+  width: 90%;
+  height: 50%;
+
+  margin: 0;
+
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* =========================================================
+   COMMANDES ET PIÈCES MOBILES
+   ========================================================= */
+
+.imPlayer__skip,
+.imPlayer__selector {
+  position: absolute;
+  z-index: 6;
+
+  display: block;
+
+  border: 0;
+  padding: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.imPlayer__skip {
+  top: 71.9%;
+
+  width: 5.15%;
+  aspect-ratio: 84 / 77;
+}
+
+.imPlayer__skip--minus {
+  left: 39.05%;
+}
+
+.imPlayer__skip--plus {
+  left: 70.35%;
+}
+
+.imPlayer__selector {
+  left: 58.05%;
+  top: 68.9%;
+
+  width: 8.22%;
+  aspect-ratio: 1 / 1;
+}
+
+.imPlayer__skip img,
+.imPlayer__selector img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+
+  transition:
+    transform 100ms ease,
+    filter 140ms ease,
+    opacity 100ms ease;
+}
+
+.imPlayer__skip:hover img,
+.imPlayer__skip:focus-visible img,
+.imPlayer__selector:hover img,
+.imPlayer__selector:focus-visible img {
+  filter: brightness(1.12);
+}
+
+.imPlayer__skip:active img,
+.imPlayer__selector:active img {
+  transform: translateY(1px) scale(0.985);
+}
+
+.imPlayer__skip:focus-visible,
+.imPlayer__selector:focus-visible,
+.imPlayer__signalButton:focus-visible,
+.imPlayer__volume:focus-visible,
+.imPlayer__progress input:focus-visible {
+  outline: 1px solid var(--color-transmission);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   LED
+   ========================================================= */
+
+.imPlayer__led {
+  position: absolute;
+  z-index: 6;
+
+  top: 75.3%;
+
+  width: 2.55%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+
+  transition:
+    opacity 120ms ease,
+    filter 120ms ease;
+}
+
+.imPlayer__led--wait {
+  left: 56.7%;
+}
+
+.imPlayer__led--play {
+  left: 67.3%;
+}
+
+/* =========================================================
+   SIGNAL ET VOLUME
+   ========================================================= */
+
+.imPlayer__signalControls {
+  position: absolute;
+
+  left: 44.8%;
+  bottom: 3.9%;
+
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+
+  width: 33.1%;
+
+  align-items: center;
+  gap: 2%;
+
+  pointer-events: auto;
+}
+
+.imPlayer__signalButton {
+  border: 0;
+  padding: 5px 6px;
+
+  background: transparent;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.4rem, 0.48vw, 0.57rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: rgba(94, 196, 119, 0.84);
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.imPlayer__signalButton.is-muted {
+  color: var(--color-transmission);
+}
+
+.imPlayer__volume {
+  width: 100%;
+  min-width: 0;
+
+  accent-color: #c8311f;
+
+  cursor: pointer;
+}
+
+.imPlayer__signalControls > span {
+  min-width: 3em;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.4rem, 0.47vw, 0.55rem);
+  text-align: right;
+
+  color: rgba(232, 226, 216, 0.62);
+}
+
+/* =========================================================
+   MÉTADONNÉES
+   ========================================================= */
+
+.imPlayer__metaTitle {
+  position: absolute;
+
+  left: 80.6%;
+  top: 5.7%;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.4rem, 0.48vw, 0.57rem);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  color: var(--color-transmission);
+}
+
+.imPlayer__metaList {
+  position: absolute;
+
+  left: 80.8%;
+  top: 10%;
+
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1.5%;
+
+  width: 14.6%;
+  height: 62%;
+
+  margin: 0;
+}
+
+.imPlayer__metaList > div {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+
+  padding: 5% 7%;
+}
+
+.imPlayer__metaList dt {
+  font-family: var(--font-mono);
+  font-size: clamp(0.36rem, 0.42vw, 0.5rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: rgba(232, 226, 216, 0.42);
+}
+
+.imPlayer__metaList dd {
+  overflow-wrap: anywhere;
+
+  margin: 5% 0 0;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.48rem, 0.61vw, 0.72rem);
+  line-height: 1.35;
+
+  color: rgba(232, 226, 216, 0.76);
+}
+
+.imPlayer__playlist {
+  position: absolute;
+
+  left: 80.8%;
+  bottom: 5.8%;
+
+  display: flex;
+
+  width: 14.6%;
+  height: 8.5%;
+
+  align-items: center;
+
+  padding: 0 7%;
+
+  pointer-events: auto;
+
+  font-family: var(--font-mono);
+  font-size: clamp(0.46rem, 0.58vw, 0.68rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: rgba(232, 226, 216, 0.78);
+
+  text-decoration: none;
+}
+
+.imPlayer__playlist::after {
+  margin-left: auto;
+
+  font-size: 1.5em;
+
+  color: var(--color-transmission);
+
+  content: "›";
+}
+
+.imPlayer__playlist:hover,
+.imPlayer__playlist:focus-visible {
+  color: var(--color-transmission);
+}
+
+/* =========================================================
+   TABLETTE ET MOBILE
+   Le lecteur conserve la géométrie de la façade.
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .imPlayer {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .imPlayer__machine {
+    min-width: 760px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imPlayer__skip img,
+  .imPlayer__selector img,
+  .imPlayer__led {
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   CALAGE V2 — LISIBILITÉ SUR FAÇADE TEXTURÉE
+   ========================================================= */
+
+.imPlayer__visualLabels,
+.imPlayer__visualStatus,
+.imPlayer__mainInfo,
+.imPlayer__progressLabels,
+.imPlayer__timeRow,
+.imPlayer__metaTitle,
+.imPlayer__metaList,
+.imPlayer__playlist,
+.imPlayer__signalControls {
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.95),
+    0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.imPlayer__title {
+  color: rgba(246, 242, 234, 0.94);
+  text-shadow:
+    0 2px 2px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(0, 0, 0, 0.65);
+}
+
+.imPlayer__id,
+.imPlayer__progressLabels strong,
+.imPlayer__metaTitle {
+  text-shadow:
+    0 1px 1px #000,
+    0 0 6px rgba(180, 35, 20, 0.32);
+}
+
+.imPlayer__metaList dt {
+  color: rgba(238, 233, 224, 0.62);
+}
+
+.imPlayer__metaList dd {
+  color: rgba(248, 245, 238, 0.9);
+}
+
+.imPlayer__led.is-active {
+  opacity: 1;
+  filter: brightness(1.06);
+}
+
+.imPlayer__led.is-inactive {
+  opacity: 0.16;
+  filter: grayscale(0.8) brightness(0.45);
+}
+
+.imPlayer__playlist {
+  left: 83.5%;
+  width: 12.2%;
+  justify-content: center;
+  padding-inline: 4%;
+}
+
+.imPlayer__playlist::after {
+  position: absolute;
+  right: 8%;
+}
+
+.imPlayer__progress {
+  height: auto;
+}
+
+.imPlayer__progressLabels {
+  z-index: 1;
+}
+
+
+/* =========================================================
+   CALAGE V3 — AJUSTEMENTS DE POSITION
+   ========================================================= */
+
+.imPlayer__title {
+  font-size: clamp(1.55rem, 2.7vw, 3.05rem);
+}
+
+.imPlayer__description {
+  max-width: 48ch;
+  -webkit-line-clamp: 3;
+}
+
+.imPlayer__progressLabels,
+.imPlayer__timeRow {
+  padding-inline: 1.2%;
+}
+
+.imPlayer__progressLabels strong {
+  transform: translateY(-1px);
+}
+
+.imPlayer__skip img {
+  object-fit: contain;
+}
+
+.imPlayer__skip:active img {
+  transform: translateY(2px) scale(0.97);
+}

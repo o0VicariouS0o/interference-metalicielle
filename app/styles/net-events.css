@@ -1,0 +1,294 @@
+/* NET — PHASE 3 : VIE AUTONOME DU RÉSEAU */
+
+.netNetworkLife {
+  position: absolute;
+  inset: 0;
+  z-index: 22;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.netNetworkLife__scan,
+.netNetworkLife__flash,
+.netNetworkLife__noise {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.netImpact.is-event-target {
+  z-index: 9;
+}
+
+.netImpact.is-event-pulse .netImpactEnergy,
+.netImpact.is-event-twin .netImpactEnergy,
+.netImpact.is-event-collective .netImpactEnergy {
+  animation: net-event-impact-pulse 3s ease-in-out both;
+}
+
+.netImpact.is-event-scan .netImpactEnergy__ring--outer {
+  border-style: solid;
+  animation:
+    net-energy-spin 1.25s linear infinite,
+    net-event-ring-scan 3.4s ease-in-out both;
+}
+
+.netImpact.is-event-scan .netImpactEnergy__halo {
+  animation-duration: 1.4s;
+}
+
+.netImpact.is-event-surge .netImpactEnergy__core {
+  animation: net-event-core-surge 2.2s ease-in-out both;
+}
+
+.netImpact.is-event-surge .netImpactEnergy__halo {
+  animation: net-event-halo-surge 2.2s ease-in-out both;
+}
+
+.netImpact.is-event-flash .netImpactEnergy__core {
+  animation: net-event-core-flash 1.8s steps(1, end) both;
+}
+
+.netMap.has-network-event--scan .netNetworkLife__scan,
+.netMap.has-network-event--collective .netNetworkLife__scan {
+  left: -15%;
+  top: 0;
+  width: 9%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 121, 78, 0.08),
+    rgba(255, 200, 163, 0.24),
+    rgba(255, 121, 78, 0.08),
+    transparent
+  );
+  filter: blur(2px);
+  animation: net-event-global-scan 3.4s ease-in-out both;
+}
+
+.netMap.has-network-event--collective .netNetworkLife__scan {
+  animation-duration: 4.8s;
+}
+
+.netMap.has-network-event--flash .netNetworkLife__flash {
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 230, 211, 0.26),
+    rgba(212, 63, 34, 0.14) 34%,
+    transparent 72%
+  );
+  animation: net-event-global-flash 1.8s steps(1, end) both;
+}
+
+.netMap.has-network-event--collective .netNetworkLife__noise,
+.netMap.has-network-event--flash .netNetworkLife__noise {
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.035) 0,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: screen;
+  animation: net-event-noise 900ms steps(2, end) 2 both;
+}
+
+@keyframes net-event-impact-pulse {
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(var(--net-impact-counter-scale));
+  }
+
+  28% {
+    filter: brightness(1.9);
+    transform: scale(calc(var(--net-impact-counter-scale) * 1.32));
+  }
+
+  52% {
+    filter: brightness(1.18);
+    transform: scale(calc(var(--net-impact-counter-scale) * 0.94));
+  }
+
+  72% {
+    filter: brightness(1.55);
+    transform: scale(calc(var(--net-impact-counter-scale) * 1.16));
+  }
+}
+
+@keyframes net-event-ring-scan {
+  0%,
+  100% {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+
+  35%,
+  70% {
+    opacity: 1;
+    box-shadow:
+      0 0 8px rgba(255, 168, 117, 0.85),
+      0 0 19px rgba(200, 49, 31, 0.58);
+  }
+}
+
+@keyframes net-event-core-surge {
+  0%,
+  100% {
+    filter: brightness(0.9);
+    transform: scale(0.88);
+  }
+
+  22% {
+    filter: brightness(2.4);
+    transform: scale(1.42);
+  }
+
+  42% {
+    filter: brightness(1.1);
+    transform: scale(0.78);
+  }
+
+  64% {
+    filter: brightness(1.85);
+    transform: scale(1.2);
+  }
+}
+
+@keyframes net-event-halo-surge {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(0.9);
+  }
+
+  32% {
+    opacity: 1;
+    transform: scale(1.52);
+  }
+
+  58% {
+    opacity: 0.24;
+    transform: scale(0.78);
+  }
+}
+
+@keyframes net-event-core-flash {
+  0%,
+  18%,
+  38%,
+  100% {
+    filter: brightness(0.8);
+    opacity: 0.78;
+  }
+
+  19%,
+  23%,
+  39%,
+  47%,
+  62%,
+  67% {
+    filter: brightness(2.8);
+    opacity: 1;
+  }
+
+  24%,
+  37%,
+  48%,
+  61%,
+  68%,
+  82% {
+    filter: brightness(0.35);
+    opacity: 0.42;
+  }
+}
+
+@keyframes net-event-global-scan {
+  0% {
+    left: -15%;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.85;
+  }
+
+  82% {
+    opacity: 0.68;
+  }
+
+  100% {
+    left: 108%;
+    opacity: 0;
+  }
+}
+
+@keyframes net-event-global-flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  12%,
+  17% {
+    opacity: 0.78;
+  }
+
+  18%,
+  34% {
+    opacity: 0.08;
+  }
+
+  35%,
+  40% {
+    opacity: 0.58;
+  }
+
+  41%,
+  72% {
+    opacity: 0.04;
+  }
+
+  73%,
+  78% {
+    opacity: 0.32;
+  }
+}
+
+@keyframes net-event-noise {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  25% {
+    opacity: 0.24;
+    transform: translateY(-2px);
+  }
+
+  50% {
+    opacity: 0.12;
+    transform: translateY(2px);
+  }
+
+  75% {
+    opacity: 0.2;
+    transform: translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .netImpact.is-event-target .netImpactEnergy,
+  .netImpact.is-event-target .netImpactEnergy__halo,
+  .netImpact.is-event-target .netImpactEnergy__ring,
+  .netImpact.is-event-target .netImpactEnergy__core,
+  .netNetworkLife__scan,
+  .netNetworkLife__flash,
+  .netNetworkLife__noise {
+    animation: none !important;
+  }
+}
