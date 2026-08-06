@@ -436,7 +436,7 @@ const [activeId, setActiveId] = useState<string | null>(
 
                 {emission.playlist_pdf_path ? (
                   <a
-                    href={emission.playlist_pdf_path}
+                    href={`/playlists/${emission.playlist_pdf_path}`}
                     target="_blank"
                     rel="noreferrer"
                     className="imArchives__pdf"
