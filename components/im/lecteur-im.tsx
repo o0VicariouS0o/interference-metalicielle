@@ -333,15 +333,15 @@ export function LecteurIM(props: Props) {
           </dl>
 
           {emission.playlist_pdf_path ? (
-            <a
-              className="imPlayer__playlist"
-              href={emission.playlist_pdf_path}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Playlist
-            </a>
-          ) : null}
+  <a
+    className="imPlayer__playlist"
+    href={`/playlists/${emission.playlist_pdf_path}`}
+    target="_blank"
+    rel="noreferrer"
+  >
+    Playlist
+  </a>
+) : null}
         </div>
 
         {/* Barre active placée dans son ouverture */}
