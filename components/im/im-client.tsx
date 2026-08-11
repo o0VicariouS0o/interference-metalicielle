@@ -25,7 +25,6 @@ type EmissionClient = {
 
 type Props = {
   emissions: EmissionClient[];
-  initialEmissionId?: string | null;
 };
 
 type TransmissionState = 'idle' | 'loading' | 'playing' | 'ended';
@@ -115,19 +114,12 @@ function savePosition(emissionId: string, seconds: number) {
 
 export function ImClient({
   emissions,
-  initialEmissionId,
 }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
- const validInitialEmissionId =
-  initialEmissionId &&
-  emissions.some((emission) => emission.id === initialEmissionId)
-    ? initialEmissionId
-    : emissions[0]?.id ?? null;
-
-const [activeId, setActiveId] = useState<string | null>(
-  validInitialEmissionId,
-); 
+  const [activeId, setActiveId] = useState<string | null>(
+    emissions[0]?.id ?? null,
+  );
   const [isPlaying, setIsPlaying] = useState(false);
   const [transmissionState, setTransmissionState] =
     useState<TransmissionState>('idle');
@@ -150,6 +142,18 @@ const [activeId, setActiveId] = useState<string | null>(
 
   const progressPercent =
     duration > 0 ? Math.min(100, Math.max(0, (currentTime / duration) * 100)) : 0;
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requestedEmissionId = params.get('e');
+
+    if (
+      requestedEmissionId &&
+      emissions.some((emission) => emission.id === requestedEmissionId)
+    ) {
+      setActiveId(requestedEmissionId);
+    }
+  }, [emissions]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -204,6 +208,10 @@ const [activeId, setActiveId] = useState<string | null>(
     setTransmissionState('loading');
     setActiveId(id);
     setShouldAutoplay(true);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('e', id);
+    window.history.replaceState({}, '', url.toString());
   }
 
   function handleTogglePlayback() {

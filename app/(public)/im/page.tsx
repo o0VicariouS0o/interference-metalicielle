@@ -21,11 +21,6 @@ type TypeEmission = {
   libelle: string;
 };
 
-type ImPageProps = {
-  searchParams: Promise<{
-    e?: string | string[];
-  }>;
-};
 
 export default async function ImPage() {
   
