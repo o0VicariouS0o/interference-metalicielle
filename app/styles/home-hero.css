@@ -179,6 +179,9 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--hero-description-lines);
   line-clamp: var(--hero-description-lines);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 /* =========================================================

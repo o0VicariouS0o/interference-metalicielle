@@ -265,6 +265,31 @@
     --home-title-width: 72%;
     --footer-content-width: 84%;
     --footer-bottom-width: 84%;
+
+    --home-main-title-width: 72%;
+    --home-main-title-size-proportional: clamp(1.3rem, 6.2vw, 2.4rem);
+    --home-eyebrow-size-proportional: clamp(0.48rem, 1.7vw, 0.72rem);
+
+    --hero-description-width: 36%;
+    --hero-description-size-proportional: clamp(0.58rem, 1.85vw, 0.86rem);
+    --hero-description-lines: 4;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --home-main-title-left: 7.2%;
+    --home-main-title-width: 76%;
+    --home-main-title-size-proportional: clamp(1.05rem, 5.8vw, 1.8rem);
+
+    --home-eyebrow-left: 9%;
+    --home-eyebrow-width: 42%;
+    --home-eyebrow-size-proportional: clamp(0.42rem, 1.55vw, 0.62rem);
+
+    --hero-description-width: 37%;
+    --hero-description-size-proportional: clamp(0.48rem, 1.6vw, 0.72rem);
+    --hero-description-line-height: 1.35;
+    --hero-description-lines: 4;
   }
 }
 
@@ -556,9 +581,9 @@
   /* DESCRIPTION */
   --hero-description-top: 35%;
   --hero-description-left: 52%;
-  --hero-description-width: 38%;
+  --hero-description-width: 34%;
 
-  --hero-description-scale: 2;
+  --hero-description-scale: 1;
   --hero-description-x: 0px;
   --hero-description-y: 0px;
   --hero-description-rotation: 0deg;
@@ -566,7 +591,7 @@
   --hero-description-z: 3;
   --hero-description-transform-origin: top left;
 
-  --hero-description-size-proportional: 0.72cqw;
+  --hero-description-size-proportional: 1.05cqw;
   --hero-description-line-height: 1.4;
   --hero-description-letter-spacing: 0em;
   --hero-description-lines: 3;
@@ -611,7 +636,7 @@
   --home-main-title-z: 5;
   --home-main-title-transform-origin: top left;
 
-  --home-main-title-size-proportional: 3.15cqw;
+  --home-main-title-size-proportional: clamp(1.65rem, 3.15cqw, 3.35rem);
   --home-main-title-line-height: 0.95;
   --home-main-title-letter-spacing: -0.035em;
 }
