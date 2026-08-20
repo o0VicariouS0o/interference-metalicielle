@@ -28,24 +28,33 @@ export default function ContactPage() {
       <section className="contactSignal" aria-labelledby="contact-title">
         <p className="contactSignal__status">
           <span className="contactSignal__led" aria-hidden="true" />
-          Canal de transmission temporairement indisponible
+          Canal de transmission disponible
         </p>
 
         <h1 id="contact-title" className="contactSignal__title">
-          Initialisation du relais de communication en cours
+          Transmettre un signal
         </h1>
 
         <a
-          href="mailto:interferencemetalicielle@gmail.com"
+          href="mailto:yem@interference-metalicielle.fr"
           className="contactSignal__email"
         >
-          interferencemetalicielle@gmail.com
+          yem@interference-metalicielle.fr
         </a>
 
-        <p className="contactSignal__notice">
-          Si vous avez tenté une transmission récemment sans réponse, pendant, et depuis le FESTIVAL 666,
-          merci de renouveler votre message via ce canal temporaire.
-        </p>
+        <a
+          href="https://www.instagram.com/i.m._yem/"
+          target="_blank"
+          rel="noreferrer"
+          className="contactSignal__instagram"
+          aria-label="Ouvrir l’Instagram de YEM"
+        >
+          <img
+            src="/assets/contact/instagram.png"
+            alt="Instagram de YEM — @i.m._yem"
+            className="contactSignal__instagramImage"
+          />
+        </a>
       </section>
 
       <section className="contactPartners" aria-labelledby="contact-partners-title">

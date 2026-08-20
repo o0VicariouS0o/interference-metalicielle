@@ -67,6 +67,43 @@
   text-shadow: 0 0 14px rgba(200, 49, 31, 0.36);
 }
 
+.contactSignal__instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 260px);
+  margin-top: clamp(1.6rem, 3vw, 2.5rem);
+  border: 1px solid rgba(216, 198, 173, 0.12);
+  padding: clamp(0.5rem, 1vw, 0.8rem);
+  background: linear-gradient(145deg, rgba(28, 24, 19, 0.42), rgba(5, 7, 9, 0.66));
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.24),
+    inset 0 0 22px rgba(255, 255, 255, 0.014);
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.contactSignal__instagram:hover,
+.contactSignal__instagram:focus-visible {
+  transform: translateY(-3px) scale(1.015);
+  border-color: rgba(150, 84, 135, 0.42);
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.3),
+    0 0 22px rgba(150, 84, 135, 0.12);
+  filter: brightness(1.06);
+}
+
+.contactSignal__instagramImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .contactPartners {
   margin-top: var(--contact-partners-margin-top);
 }
@@ -257,6 +294,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .contactSignal__email,
+  .contactSignal__instagram,
   .contactPartner,
   .contactPartner::before,
   .contactPartner__external {
