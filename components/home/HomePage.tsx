@@ -4,11 +4,6 @@ import { HomeSectionCardNET } from '@/components/home/HomeSectionCardNET';
 import { HomeSectionCardYEM } from '@/components/home/HomeSectionCardYEM';
 import { supabase } from '@/lib/supabase';
 
-type FeaturedResult = {
-  emission_id: string;
-  source: string;
-};
-
 type Emission = {
   id: string;
   titre: string;
@@ -24,30 +19,7 @@ type YemEmission = {
   yem_observation: string | null;
 };
 
-function imagePathForEmission(
-  id: string,
-): string | null {
-  const match = id.match(/^IM-(\d{3})$/);
-
-  if (match) {
-    return `/visuels/emissions/paysage/AC Episode ${match[1]}.jpg`;
-  }
-
-  if (id === 'IM-HS001') {
-    return '/visuels/emissions/paysage/AC Episode HS001.jpg';
-  }
-
-  return null;
-}
-
 export async function HomePage() {
-  const {
-    data: featuredData,
-    error: featuredError,
-  } = await supabase.rpc(
-    'get_home_featured_emission',
-  );
-
   const { data: recentEmissionsData } =
     await supabase
       .from('emissions')
@@ -103,60 +75,11 @@ export async function HomePage() {
     .limit(1)
     .maybeSingle();
 
-  if (
-    featuredError ||
-    !featuredData?.length
-  ) {
-    return (
-      <section className="mx-auto max-w-[1440px] px-6 py-16">
-        <h1 className="font-display text-3xl">
-          Interférence Metalicielle
-        </h1>
-
-        <p className="mt-6 text-transmission">
-          Impossible de déterminer l&apos;émission mise en avant.
-        </p>
-      </section>
-    );
-  }
-
-  const featured =
-    featuredData[0] as FeaturedResult;
-
-  const { data: emissionData } =
-    await supabase
-      .from('emissions')
-      .select(
-        'id, titre, description_courte, duree, audio_url',
-      )
-      .eq('id', featured.emission_id)
-      .single();
-
-  const emission =
-    emissionData as Emission | null;
-
   const recentEmissions =
     (recentEmissionsData ?? []) as Emission[];
 
   const yem =
     yemData as YemEmission | null;
-
-  if (!emission) {
-    return (
-      <section className="mx-auto max-w-[1440px] px-6 py-16">
-        <h1 className="font-display text-3xl">
-          Interférence Metalicielle
-        </h1>
-
-        <p className="mt-6 text-transmission">
-          Émission mise en avant introuvable.
-        </p>
-      </section>
-    );
-  }
-
-  const visuel =
-    imagePathForEmission(emission.id);
 
   return (
     <section className="homePngMachine">
@@ -184,7 +107,7 @@ export async function HomePage() {
         </header>
 
         <div className="homePngModule__content homePngModule__content--hero">
-          <HomeHero emission={emission} visuel={visuel} />
+          <HomeHero />
         </div>
 
         <img
