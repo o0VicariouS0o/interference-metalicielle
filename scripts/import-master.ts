@@ -271,7 +271,7 @@ function buildMorceaux(
     const artistId  = int(r.artist_id);
     const albumId   = int(r.album_id);
     const extraitRaw = r.est_extrait;
-    const extraitText = trim(extraitRaw).toLowerCase();
+    const extraitText = (trim(extraitRaw) ?? '').toLowerCase();
     const estExtrait =
       extraitRaw === true ||
       extraitRaw === 1 ||
