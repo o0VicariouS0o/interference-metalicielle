@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { LecteurIM } from '@/components/im/lecteur-im';
+import { PlaylistIM, type PlaylistTrack } from '@/components/im/playlist-im';
 
 type EmissionClient = {
   id: string;
@@ -16,6 +17,7 @@ type EmissionClient = {
   audio_url: string | null;
   playlist_pdf_path: string | null;
   type_libelle: string | null;
+  playlist: PlaylistTrack[];
   stats?: {
     titres: number;
     groupes: number;
@@ -33,9 +35,12 @@ const STORAGE_KEY = 'im-playback-positions';
 
 function imagePathForEmission(id: string): string | null {
   const match = id.match(/^IM-(\d{3})$/);
-
   if (match) return `/visuels/emissions/avec-titres/Episode ${match[1]}.jpg`;
-  if (id === 'IM-HS001') return '/visuels/emissions/avec-titres/Episode HS001.jpg';
+
+  const horsSerieMatch = id.match(/^IM-HS(\d{3})$/);
+  if (horsSerieMatch) {
+    return `/visuels/emissions/avec-titres/Episode HS${horsSerieMatch[1]}.jpg`;
+  }
 
   return null;
 }
@@ -129,6 +134,7 @@ export function ImClient({
   const [volume, setVolume] = useState(0.85);
   const [lastVolume, setLastVolume] = useState(0.85);
   const [isMuted, setIsMuted] = useState(false);
+  const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
 
   const activeEmission =
     emissions.find((emission) => emission.id === activeId) ?? emissions[0];
@@ -205,6 +211,7 @@ export function ImClient({
   }
 
   function handleSelectEmission(id: string) {
+    setIsPlaylistOpen(false);
     setTransmissionState('loading');
     setActiveId(id);
     setShouldAutoplay(true);
@@ -349,8 +356,22 @@ export function ImClient({
           onSeekToPercent={handleSeekToPercent}
           onVolumeChange={(percent) => handleVolumeChange(percent / 100)}
           onToggleMute={handleToggleMute}
+          hasPlaylist={activeEmission.playlist.length > 0}
+          onOpenPlaylist={() => setIsPlaylistOpen(true)}
         />
       </div>
+
+      {isPlaylistOpen ? (
+        <PlaylistIM
+          emissionId={activeEmission.id}
+          emissionTitre={activeEmission.titre}
+          emissionType={activeEmission.type_libelle}
+          emissionDate={activeEmission.date_diffusion}
+          yemType={activeEmission.yem_type}
+          tracks={activeEmission.playlist}
+          onClose={() => setIsPlaylistOpen(false)}
+        />
+      ) : null}
 
       <div className="imArchiveSurface">
         {activeEmission.description_longue ? (
@@ -442,18 +463,6 @@ export function ImClient({
                   </div>
                 </button>
 
-                {emission.playlist_pdf_path ? (
-                  <a
-                    href={`/playlists/${emission.playlist_pdf_path}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="imArchives__pdf"
-                  >
-                    Archive PDF
-                  </a>
-                ) : (
-                  <span className="imArchives__empty">—</span>
-                )}
               </article>
             );
           })}

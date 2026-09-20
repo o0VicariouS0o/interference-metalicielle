@@ -20,7 +20,10 @@ type FeaturedResult = {
 function imagePathForEmission(id: string): string | null {
   const match = id.match(/^IM-(\d{3})$/);
   if (match) return `/visuels/emissions/paysage/AC Episode ${match[1]}.jpg`;
-  if (id === 'IM-HS001') return '/visuels/emissions/paysage/AC Episode HS001.jpg';
+  const horsSerieMatch = id.match(/^IM-HS(\d{3})$/);
+  if (horsSerieMatch) {
+    return `/visuels/emissions/paysage/AC Episode HS${horsSerieMatch[1]}.jpg`;
+  }
   return null;
 }
 

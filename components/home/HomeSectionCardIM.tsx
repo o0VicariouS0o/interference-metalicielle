@@ -18,8 +18,10 @@ function squareImagePathForEmission(id: string): string | null {
     return `/visuels/emissions/avec-titres/Episode ${standardMatch[1]}.jpg`;
   }
 
-  if (id === 'IM-HS001') {
-    return '/visuels/emissions/avec-titres/Episode HS001.jpg';
+  const horsSerieMatch = id.match(/^IM-HS(\d{3})$/);
+
+  if (horsSerieMatch) {
+    return `/visuels/emissions/avec-titres/Episode HS${horsSerieMatch[1]}.jpg`;
   }
 
   return null;

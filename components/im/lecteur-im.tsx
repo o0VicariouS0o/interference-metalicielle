@@ -31,6 +31,8 @@ type Props = {
   onSeekToPercent: (percent: number) => void;
   onVolumeChange: (percent: number) => void;
   onToggleMute: () => void;
+  hasPlaylist: boolean;
+  onOpenPlaylist: () => void;
 };
 
 const PLAYER_ASSET = '/assets/im/player';
@@ -107,7 +109,12 @@ function formatTypeEmission(type: string | null | undefined): string {
 function imagePathForEmission(id: string): string | null {
   const match = id.match(/^IM-(\d{3})$/);
   if (match) return `/visuels/emissions/sans-titres/Episode ${match[1]}.jpg`;
-  if (id === 'IM-HS001') return '/visuels/emissions/sans-titres/Episode HS001.jpg';
+
+  const horsSerieMatch = id.match(/^IM-HS(\d{3})$/);
+  if (horsSerieMatch) {
+    return `/visuels/emissions/sans-titres/Episode HS${horsSerieMatch[1]}.jpg`;
+  }
+
   return null;
 }
 
@@ -137,6 +144,8 @@ export function LecteurIM(props: Props) {
     onSeekToPercent,
     onVolumeChange,
     onToggleMute,
+    hasPlaylist,
+    onOpenPlaylist,
   } = props;
 
   const visuel = imagePathForEmission(emission.id);
@@ -332,16 +341,15 @@ export function LecteurIM(props: Props) {
             </div>
           </dl>
 
-          {emission.playlist_pdf_path ? (
-  <a
-    className="imPlayer__playlist"
-    href={`/playlists/${emission.playlist_pdf_path}`}
-    target="_blank"
-    rel="noreferrer"
-  >
-    Playlist
-  </a>
-) : null}
+          {hasPlaylist ? (
+            <button
+              type="button"
+              className="imPlayer__playlist"
+              onClick={onOpenPlaylist}
+            >
+              Playlist
+            </button>
+          ) : null}
         </div>
 
         {/* Barre active placée dans son ouverture */}

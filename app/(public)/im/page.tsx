@@ -21,6 +21,22 @@ type TypeEmission = {
   libelle: string;
 };
 
+type Morceau = {
+  id: number;
+  emission_id: string;
+  position: number;
+  titre: string;
+  artiste_id: number;
+  album_id: number | null;
+  annee: number | null;
+  est_extrait: boolean;
+  youtube_url: string | null;
+  youtube_type: string | null;
+};
+
+type Artiste = { id: number; nom: string; pays_id: number | null };
+type Album = { id: number; titre: string; annee: number | null };
+
 
 export default async function ImPage() {
   
@@ -54,17 +70,17 @@ export default async function ImPage() {
 
   const { data: morceauxPage1 } = await supabase
     .from('morceaux')
-    .select('emission_id, artiste_id')
+    .select('id, emission_id, position, titre, artiste_id, album_id, annee, est_extrait, youtube_url, youtube_type')
     .in('emission_id', emissionIds)
     .range(0, 999);
 
   const { data: morceauxPage2 } = await supabase
     .from('morceaux')
-    .select('emission_id, artiste_id')
+    .select('id, emission_id, position, titre, artiste_id, album_id, annee, est_extrait, youtube_url, youtube_type')
     .in('emission_id', emissionIds)
     .range(1000, 1999);
 
-  const morceauxData = [...(morceauxPage1 ?? []), ...(morceauxPage2 ?? [])];
+  const morceauxData = [...(morceauxPage1 ?? []), ...(morceauxPage2 ?? [])] as Morceau[];
 
   const artisteIds = Array.from(
     new Set(
@@ -76,14 +92,27 @@ export default async function ImPage() {
 
   const { data: artistesData } = await supabase
     .from('artistes')
-    .select('id, pays_id')
+    .select('id, nom, pays_id')
     .in('id', artisteIds);
 
-  const paysByArtiste = new Map<number, number | null>();
+  const artistes = (artistesData ?? []) as Artiste[];
+  const artistesById = new Map(artistes.map((artiste) => [artiste.id, artiste]));
 
-  for (const artiste of artistesData ?? []) {
-    paysByArtiste.set(artiste.id, artiste.pays_id);
-  }
+  const albumIds = Array.from(
+    new Set(
+      morceauxData
+        .map((morceau) => morceau.album_id)
+        .filter((id): id is number => id !== null),
+    ),
+  );
+
+  const { data: albumsData } = await supabase
+    .from('albums')
+    .select('id, titre, annee')
+    .in('id', albumIds);
+
+  const albums = (albumsData ?? []) as Album[];
+  const albumsById = new Map(albums.map((album) => [album.id, album]));
 
   const statsByEmission = new Map<
     string,
@@ -102,7 +131,7 @@ export default async function ImPage() {
     if (morceau.artiste_id !== null) {
       current.artistes.add(morceau.artiste_id);
 
-      const paysId = paysByArtiste.get(morceau.artiste_id);
+      const paysId = artistesById.get(morceau.artiste_id)?.pays_id;
       if (paysId !== null && paysId !== undefined) {
         current.pays.add(paysId);
       }
@@ -111,8 +140,34 @@ export default async function ImPage() {
     statsByEmission.set(morceau.emission_id, current);
   }
 
+  const morceauxByEmission = new Map<string, Morceau[]>();
+
+  for (const morceau of morceauxData) {
+    const liste = morceauxByEmission.get(morceau.emission_id) ?? [];
+    liste.push(morceau);
+    morceauxByEmission.set(morceau.emission_id, liste);
+  }
+
   const clientEmissions = emissions.map((emission) => {
     const stats = statsByEmission.get(emission.id);
+    const playlist = (morceauxByEmission.get(emission.id) ?? [])
+      .sort((a, b) => a.position - b.position)
+      .map((morceau) => {
+        const artiste = artistesById.get(morceau.artiste_id);
+        const album = morceau.album_id !== null ? albumsById.get(morceau.album_id) : undefined;
+
+        return {
+          id: morceau.id,
+          position: morceau.position,
+          titre: morceau.titre,
+          artiste: artiste?.nom ?? 'Artiste inconnu',
+          album: album?.titre ?? null,
+          annee: morceau.annee ?? album?.annee ?? null,
+          est_extrait: morceau.est_extrait,
+          youtube_url: morceau.youtube_url,
+          youtube_type: morceau.youtube_type,
+        };
+      });
 
     return {
       ...emission,
@@ -127,6 +182,7 @@ export default async function ImPage() {
             pays: stats.pays.size,
           }
         : undefined,
+      playlist,
     };
   });
 

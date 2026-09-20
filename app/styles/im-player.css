@@ -1222,3 +1222,835 @@
   .imPlayer__videoReboot,
   .imPlayer__visualImage { animation:none !important; }
 }
+
+
+/* =========================================================
+   PLAYLIST — CHÂSSIS V4
+   Géométrie et typographie pilotées par site-settings.css
+   ========================================================= */
+
+.imPlaylist--chassis {
+  width: 100%;
+  min-width: 0;
+  margin-top: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.imPlaylist__machine {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: var(--playlist-machine-ratio, 1024 / 1456);
+  container-type: inline-size;
+  overflow: hidden;
+  filter: drop-shadow(0 20px 36px rgba(0,0,0,var(--playlist-shadow-opacity,.48)));
+}
+
+.imPlaylist__chassis {
+  position:absolute; inset:0; z-index:1; display:block;
+  width:100%; height:100%; object-fit:fill;
+  pointer-events:none; user-select:none;
+}
+
+.imPlaylist__overlay {
+  position:absolute; inset:0; z-index:10;
+  font-family:var(--font-mono);
+  color:rgba(231,221,213,.88);
+  text-shadow:0 1px 1px #000,0 0 5px rgba(0,0,0,.8);
+  pointer-events:none;
+}
+
+.imPlaylist__archiveCode {
+  position:absolute;
+  left:var(--playlist-archive-id-left);
+  top:var(--playlist-archive-id-top);
+  width:var(--playlist-archive-id-width);
+  overflow:hidden;
+  font-family:var(--font-display);
+  font-size:var(--playlist-archive-id-size);
+  font-weight:500;
+  line-height:var(--playlist-archive-id-line-height);
+  letter-spacing:var(--playlist-archive-id-letter-spacing);
+  color:rgba(174,119,207,.9);
+  white-space:nowrap;
+}
+
+.imPlaylist__metaValues {
+  position:absolute;
+  left:var(--playlist-info-left);
+  top:var(--playlist-info-top);
+  display:grid;
+  grid-template-rows:repeat(5,1fr);
+  width:var(--playlist-info-width);
+  height:var(--playlist-info-height);
+  align-items:center;
+}
+
+.imPlaylist__metaValues span {
+  overflow:hidden;
+  font-size:var(--playlist-info-size);
+  line-height:var(--playlist-info-line-height);
+  letter-spacing:var(--playlist-info-letter-spacing);
+  text-transform:uppercase;
+  color:rgba(217,201,225,.82);
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.imPlaylist__metaValues span:nth-child(1) {
+  transform:translate(var(--playlist-info-type-x), var(--playlist-info-type-y));
+}
+.imPlaylist__metaValues span:nth-child(2) {
+  transform:translate(var(--playlist-info-status-x), var(--playlist-info-status-y));
+}
+.imPlaylist__metaValues span:nth-child(3) {
+  transform:translate(var(--playlist-info-date-x), var(--playlist-info-date-y));
+}
+.imPlaylist__metaValues span:nth-child(4) {
+  transform:translate(var(--playlist-info-operator-x), var(--playlist-info-operator-y));
+}
+.imPlaylist__metaValues span:nth-child(5) {
+  transform:translate(var(--playlist-info-source-x), var(--playlist-info-source-y));
+}
+
+.imPlaylist__emissionTitle {
+  position:absolute;
+  left:var(--playlist-title-left);
+  top:var(--playlist-title-top);
+  display:flex;
+  width:var(--playlist-title-width);
+  height:var(--playlist-title-height);
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+  box-sizing:border-box;
+  padding:0 var(--playlist-title-padding-x);
+  text-align:center;
+}
+
+.imPlaylist__emissionTitle strong {
+  display:block;
+  width:100%;
+  margin:0;
+  padding:0.12em 0 0.20em;
+  overflow:visible;
+  font-family:var(--font-display);
+  font-size:var(--playlist-title-size);
+  font-weight:500;
+  line-height:var(--playlist-title-line-height);
+  letter-spacing:var(--playlist-title-letter-spacing);
+  color:rgba(240,232,224,.94);
+  text-align:center;
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+}
+
+.imPlaylist__trackCount {
+  position:absolute;
+  right:var(--playlist-count-right);
+  top:var(--playlist-count-top);
+  font-size:var(--playlist-count-size);
+  font-weight:400;
+  letter-spacing:var(--playlist-count-letter-spacing);
+  color:rgba(184,139,210,.86);
+}
+
+.imPlaylist__close {
+  position:absolute;
+  left:var(--playlist-close-left);
+  top:var(--playlist-close-top);
+  z-index:40;
+  width:var(--playlist-close-width);
+  height:var(--playlist-close-height);
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+  transform:none;
+}
+
+.imPlaylist__close img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:brightness(var(--playlist-close-brightness));
+  transition:filter 140ms ease,transform 140ms ease;
+}
+
+.imPlaylist__close:hover img,
+.imPlaylist__close:focus-visible img {
+  filter:brightness(var(--playlist-close-hover-brightness));
+  transform:scale(var(--playlist-close-hover-scale));
+}
+
+.imPlaylist__close:focus-visible {
+  outline:none;
+}
+
+.imPlaylist__close:active img {
+  transform:scale(.94);
+}
+
+/* En-têtes ARTISTES / TITRES intégrés au châssis PNG. */
+.imPlaylist__tracksWindow {
+  position:absolute;
+  left:var(--playlist-list-left);
+  top:var(--playlist-list-top);
+  width:var(--playlist-list-width);
+  height:var(--playlist-list-height);
+  overflow:visible;
+}
+
+.imPlaylist__tracks {
+  display:grid;
+  grid-template-rows:repeat(20,minmax(0,1fr));
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  list-style:none;
+}
+
+.imPlaylist__track {
+  display:grid;
+  grid-template-columns:
+    var(--playlist-col-number)
+    var(--playlist-col-artist)
+    minmax(0,1fr)
+    var(--playlist-col-signal);
+  min-width:0;
+  min-height:0;
+  align-items:center;
+  border-bottom:1px solid rgba(165,132,185,var(--playlist-row-border-opacity,.07));
+}
+
+.imPlaylist__position {
+  padding-left:4%;
+  font-size:var(--playlist-position-size);
+  letter-spacing:var(--playlist-position-letter-spacing);
+  color:rgba(182,139,207,.78);
+  white-space:nowrap;
+}
+
+.imPlaylist__artist {
+  overflow:hidden;
+  padding:0 5%;
+  font-family:var(--font-display);
+  font-size:var(--playlist-artist-size);
+  font-weight:600;
+  color:rgba(241,235,227,.92);
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.imPlaylist__trackInfo {
+  display:flex;
+  min-width:0;
+  align-items:center;
+  padding:0 3%;
+}
+
+.imPlaylist__trackTitle {
+  overflow:hidden;
+  min-width:0;
+  width:100%;
+  font-size:var(--playlist-track-size);
+  color:rgba(229,219,209,.88);
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* Indicateur discret pour les morceaux diffusés en extrait */
+.imPlaylist__excerpt {
+  flex:0 0 auto;
+  margin-right:.55em;
+  font-size:calc(var(--playlist-track-size) * .78);
+  font-style:italic;
+  font-weight:400;
+  color:rgba(184,139,210,.62);
+  white-space:nowrap;
+}
+
+.imPlaylist__youtubeAvailable {
+  justify-self:center;
+  z-index:25;
+  display:block;
+  width:var(--playlist-signal-width);
+  max-width:var(--playlist-signal-max-width);
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+}
+
+.imPlaylist__youtubeAvailable img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  pointer-events:none;
+  transition:filter 120ms ease,transform 100ms ease;
+}
+
+.imPlaylist__youtubeAvailable:hover img,
+.imPlaylist__youtubeAvailable:focus-visible img { filter:brightness(1.22); }
+
+.imPlaylist__youtubeAvailable:active img { transform:translateY(1px) scale(.97); }
+
+.imPlaylist__youtubeAvailable:focus-visible {
+  outline:1px solid rgba(183,132,214,.75);
+  outline-offset:2px;
+}
+
+.imPlaylist__youtubeUnavailable { display:block; }
+
+/* Type de l'observation YEM dans NOTES D'ARCHIVISTE */
+.imPlaylist__archivistNote {
+  position:absolute;
+  z-index:20;
+  left:var(--playlist-archivist-note-left);
+  top:var(--playlist-archivist-note-top);
+  width:var(--playlist-archivist-note-width);
+  overflow:hidden;
+  font-size:var(--playlist-archivist-note-size);
+  line-height:var(--playlist-archivist-note-line-height);
+  letter-spacing:var(--playlist-archivist-note-letter-spacing);
+  text-align:center;
+  text-transform:uppercase;
+  color:rgba(240,232,224,.94) !important;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.imPlaylist__pagination {
+  position:absolute;
+  left:var(--playlist-pagination-left);
+  top:var(--playlist-pagination-top);
+  z-index:30;
+  display:flex;
+  width:var(--playlist-pagination-width);
+  align-items:center;
+  justify-content:center;
+  gap:var(--playlist-pagination-gap);
+  pointer-events:auto;
+  transform:translateY(-50%);
+}
+
+.imPlaylist__pagination button {
+  display:grid;
+  place-items:center;
+  width:var(--playlist-pagination-button-size);
+  height:var(--playlist-pagination-button-size);
+  border:0;
+  padding:0;
+  background:transparent;
+  font-family:var(--font-mono);
+  font-size:var(--playlist-pagination-arrow-size);
+  line-height:1;
+  color:rgba(190,151,211,.68);
+  text-shadow:0 0 5px rgba(147,84,184,.24);
+  cursor:pointer;
+  transition:color 140ms ease,text-shadow 140ms ease,transform 140ms ease;
+}
+
+.imPlaylist__pagination button:hover,
+.imPlaylist__pagination button:focus-visible {
+  color:rgba(239,226,245,.98);
+  text-shadow:0 0 7px rgba(177,102,220,.58);
+  transform:scale(1.08);
+  outline:none;
+}
+
+.imPlaylist__pagination button:disabled {
+  opacity:.14;
+  cursor:default;
+  transform:none;
+}
+
+.imPlaylist__pageStatus {
+  font-size:var(--playlist-pagination-size);
+  letter-spacing:.10em;
+  color:rgba(190,159,207,.76);
+  white-space:nowrap;
+}
+
+.imPlaylist__empty {
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  margin:0;
+  font-size:var(--playlist-track-size);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:rgba(188,153,207,.6);
+}
+
+@media (max-width:900px) {
+  .imPlaylist--chassis { overflow-x:auto; padding-bottom:8px; }
+  .imPlaylist__machine { min-width:760px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .imPlaylist__youtubeAvailable img { transition:none; }
+}
+
+/* =========================================================
+   PLAYLIST — OSCILLOSCOPE NIVEAU SIGNAL
+   Géométrie pilotée par site-settings.css
+   ========================================================= */
+
+.imPlaylist__oscilloscope {
+  position:absolute;
+  left:var(--playlist-scope-left);
+  top:var(--playlist-scope-top);
+  z-index:20;
+  width:var(--playlist-scope-width);
+  height:var(--playlist-scope-height);
+  overflow:hidden;
+  opacity:var(--playlist-scope-opacity);
+  pointer-events:none;
+}
+
+.imPlaylist__oscilloscopeSvg {
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+
+.imPlaylist__oscilloscopeTrace {
+  fill:none;
+  vector-effect:non-scaling-stroke;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.imPlaylist__oscilloscopeTrace--ghost {
+  stroke:rgba(177,102,220,.22);
+  stroke-width:3.2;
+  opacity:.48;
+}
+
+.imPlaylist__oscilloscopeTrace--main {
+  stroke:rgba(199,132,235,.92);
+  stroke-width:1.35;
+  stroke-dasharray:9 4 18 3 6 5 24 4;
+  animation:
+    im-playlist-scope-flow var(--playlist-scope-speed) linear infinite,
+    im-playlist-scope-breathe calc(var(--playlist-scope-speed) * 1.7) ease-in-out infinite;
+}
+
+@keyframes im-playlist-scope-flow {
+  from { stroke-dashoffset:0; }
+  to { stroke-dashoffset:-69; }
+}
+
+@keyframes im-playlist-scope-breathe {
+  0%,100% { opacity:.62; }
+  37% { opacity:1; }
+  71% { opacity:.76; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .imPlaylist__oscilloscopeTrace--main {
+    animation:none;
+  }
+}
+
+/* =========================================================
+   PLAYLIST — LED D'ÉTAT
+   Positions et dimensions pilotées par site-settings.css
+   ========================================================= */
+
+.imPlaylist__statusLeds {
+  position:absolute;
+  inset:0;
+  z-index:21;
+  pointer-events:none;
+}
+
+.imPlaylist__statusLed {
+  position:absolute;
+  display:block;
+  width:var(--playlist-led-size);
+  height:var(--playlist-led-size);
+  object-fit:contain;
+  pointer-events:none;
+  user-select:none;
+}
+
+/* SYNC */
+.imPlaylist__statusLed--1 {
+  left:var(--playlist-led-sync-left);
+  top:var(--playlist-led-sync-top);
+}
+
+/* NOISE */
+.imPlaylist__statusLed--2 {
+  left:var(--playlist-led-noise-left);
+  top:var(--playlist-led-noise-top);
+}
+
+/* LINK */
+.imPlaylist__statusLed--3 {
+  left:var(--playlist-led-link-left);
+  top:var(--playlist-led-link-top);
+}
+
+/* IM-RÉSEAU */
+.imPlaylist__statusLed--4 {
+  left:var(--playlist-led-network-left);
+  top:var(--playlist-led-network-top);
+}
+
+/* =========================================================
+   PLAYLIST — VIE DES LED D'ÉTAT — V2
+   Variations plus visibles, toujours désynchronisées.
+   Aucun réglage de géométrie n'est modifié.
+   ========================================================= */
+
+.imPlaylist__statusLed {
+  will-change: opacity, filter;
+}
+
+.imPlaylist__statusLed--1 {
+  animation: im-playlist-led-breathe-a 4.2s ease-in-out infinite;
+}
+
+.imPlaylist__statusLed--2 {
+  animation: im-playlist-led-breathe-b 5.6s ease-in-out -1.7s infinite;
+}
+
+.imPlaylist__statusLed--3 {
+  animation: im-playlist-led-breathe-c 4.8s ease-in-out -3.1s infinite;
+}
+
+.imPlaylist__statusLed--4 {
+  animation: im-playlist-led-breathe-d 6.4s ease-in-out -4.3s infinite;
+}
+
+@keyframes im-playlist-led-breathe-a {
+  0%,100% { opacity:.52; filter:brightness(.65) saturate(.85) drop-shadow(0 0 1px currentColor); }
+  24% { opacity:1; filter:brightness(1.55) saturate(1.30) drop-shadow(0 0 5px currentColor); }
+  56% { opacity:.76; filter:brightness(.95) saturate(1.00) drop-shadow(0 0 2px currentColor); }
+  62% { opacity:.38; filter:brightness(.52) saturate(.75) drop-shadow(0 0 0 currentColor); }
+  69% { opacity:.88; filter:brightness(1.18) saturate(1.12) drop-shadow(0 0 3px currentColor); }
+}
+
+@keyframes im-playlist-led-breathe-b {
+  0%,100% { opacity:.88; filter:brightness(1.10) saturate(1.08) drop-shadow(0 0 3px currentColor); }
+  31% { opacity:.46; filter:brightness(.60) saturate(.82) drop-shadow(0 0 1px currentColor); }
+  38% { opacity:.34; filter:brightness(.48) saturate(.72) drop-shadow(0 0 0 currentColor); }
+  45% { opacity:.92; filter:brightness(1.34) saturate(1.18) drop-shadow(0 0 4px currentColor); }
+  78% { opacity:1; filter:brightness(1.55) saturate(1.30) drop-shadow(0 0 5px currentColor); }
+}
+
+@keyframes im-playlist-led-breathe-c {
+  0%,100% { opacity:.62; filter:brightness(.76) saturate(.90) drop-shadow(0 0 1px currentColor); }
+  20% { opacity:1; filter:brightness(1.48) saturate(1.26) drop-shadow(0 0 5px currentColor); }
+  48% { opacity:.80; filter:brightness(1.04) saturate(1.02) drop-shadow(0 0 3px currentColor); }
+  73% { opacity:.40; filter:brightness(.54) saturate(.76) drop-shadow(0 0 0 currentColor); }
+  80% { opacity:.94; filter:brightness(1.28) saturate(1.16) drop-shadow(0 0 4px currentColor); }
+}
+
+@keyframes im-playlist-led-breathe-d {
+  0%,100% { opacity:.92; filter:brightness(1.16) saturate(1.10) drop-shadow(0 0 3px currentColor); }
+  27% { opacity:.58; filter:brightness(.72) saturate(.88) drop-shadow(0 0 1px currentColor); }
+  54% { opacity:1; filter:brightness(1.58) saturate(1.32) drop-shadow(0 0 5px currentColor); }
+  79% { opacity:.70; filter:brightness(.88) saturate(.96) drop-shadow(0 0 2px currentColor); }
+  84% { opacity:.36; filter:brightness(.50) saturate(.72) drop-shadow(0 0 0 currentColor); }
+  90% { opacity:.90; filter:brightness(1.20) saturate(1.12) drop-shadow(0 0 3px currentColor); }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .imPlaylist__statusLed {
+    animation:none;
+  }
+}
+
+/* =========================================================
+   TRANSMISSION EXTERNE — CHÂSSIS VIDÉO
+   Géométrie pilotée par site-settings.css.
+   ========================================================= */
+
+.imTransmission {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  width: 100vw;
+  height: 100dvh;
+  min-width: 0;
+
+  padding: clamp(12px, 2vw, 32px);
+  box-sizing: border-box;
+
+  overflow: auto;
+
+  background: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.imTransmission__machine {
+  position: relative;
+  isolation: isolate;
+
+  width: min(96vw, 1536px);
+  max-height: calc(100dvh - clamp(24px, 4vw, 64px));
+  aspect-ratio: var(--transmission-machine-ratio, 1536 / 931);
+
+  container-type: inline-size;
+  overflow: hidden;
+
+  filter: drop-shadow(
+    0 22px 42px
+    rgba(0, 0, 0, var(--transmission-shadow-opacity, .62))
+  );
+}
+
+.imTransmission__chassis {
+  position:absolute;
+  inset:0;
+  z-index:20;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  pointer-events:none;
+  user-select:none;
+}
+
+.imTransmission__overlay {
+  position:absolute;
+  inset:0;
+  z-index:30;
+  font-family:var(--font-mono);
+  color:rgba(231,221,213,.9);
+  text-shadow:0 1px 1px #000,0 0 6px rgba(0,0,0,.86);
+  pointer-events:none;
+}
+
+.imTransmission__heading {
+  position:absolute;
+  left:var(--transmission-heading-left);
+  top:var(--transmission-heading-top);
+  display:flex;
+  width:var(--transmission-heading-width);
+  height:var(--transmission-heading-height);
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-size:var(--transmission-heading-size);
+  font-weight:500;
+  letter-spacing:var(--transmission-heading-letter-spacing);
+  color:rgba(194,143,220,.92);
+  text-align:center;
+  white-space:nowrap;
+}
+
+.imTransmission__video {
+  position:absolute;
+  left:var(--transmission-video-left);
+  top:var(--transmission-video-top);
+  z-index:5;
+  width:var(--transmission-video-width);
+  aspect-ratio:16 / 9;
+  overflow:hidden;
+  background:#000;
+  pointer-events:auto;
+}
+
+.imTransmission__video iframe {
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  background:#000;
+}
+
+.imTransmission__videoError {
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  font-size:var(--transmission-error-size);
+  letter-spacing:.12em;
+  color:rgba(194,143,220,.7);
+  text-align:center;
+}
+
+.imTransmission__track {
+  position:absolute;
+  left:var(--transmission-track-left);
+  top:var(--transmission-track-top);
+  display:flex;
+  width:var(--transmission-track-width);
+  height:var(--transmission-track-height);
+  align-items:center;
+  justify-content:center;
+  gap:var(--transmission-track-gap);
+  overflow:hidden;
+  text-align:center;
+  white-space:nowrap;
+}
+
+.imTransmission__track strong {
+  overflow:hidden;
+  max-width:48%;
+  font-family:var(--font-display);
+  font-size:var(--transmission-artist-size);
+  font-weight:600;
+  color:rgba(241,235,227,.94);
+  text-overflow:ellipsis;
+}
+
+.imTransmission__track span {
+  overflow:hidden;
+  max-width:48%;
+  font-size:var(--transmission-title-size);
+  color:rgba(211,178,226,.9);
+  text-overflow:ellipsis;
+}
+
+.imTransmission__control {
+  position:absolute;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  border:0;
+  padding:0 3%;
+  background:transparent;
+  font-family:var(--font-mono);
+  font-size:var(--transmission-control-size);
+  letter-spacing:var(--transmission-control-letter-spacing);
+  line-height:1.15;
+  color:rgba(220,210,202,.78);
+  text-align:center;
+  text-decoration:none;
+  text-transform:uppercase;
+  cursor:pointer;
+  pointer-events:auto;
+  transition:color 140ms ease,text-shadow 140ms ease,filter 140ms ease;
+}
+
+.imTransmission__control--previous {
+  left:var(--transmission-previous-left);
+  top:var(--transmission-controls-top);
+  width:var(--transmission-previous-width);
+  height:var(--transmission-controls-height);
+}
+
+.imTransmission__control--youtube {
+  left:var(--transmission-youtube-left);
+  top:var(--transmission-controls-top);
+  width:var(--transmission-youtube-width);
+  height:var(--transmission-controls-height);
+}
+
+.imTransmission__control--next {
+  left:var(--transmission-next-left);
+  top:var(--transmission-controls-top);
+  width:var(--transmission-next-width);
+  height:var(--transmission-controls-height);
+}
+
+.imTransmission__control--close {
+  left:var(--transmission-close-left);
+  top:var(--transmission-controls-top);
+  width:var(--transmission-close-width);
+  height:var(--transmission-controls-height);
+}
+
+.imTransmission__control:hover,
+.imTransmission__control:focus-visible {
+  color:rgba(226,186,244,.98);
+  text-shadow:0 0 7px rgba(177,102,220,.62);
+  outline:none;
+}
+
+.imTransmission__control:active {
+  filter:brightness(1.28);
+}
+
+.imTransmission__control:disabled,
+.imTransmission__control.is-disabled {
+  opacity:.24;
+  cursor:default;
+  text-shadow:none;
+}
+
+@media (max-width:900px) {
+  .imTransmission {
+    overflow-x:auto;
+    padding-bottom:8px;
+  }
+
+  .imTransmission__machine {
+    min-width:760px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .imTransmission__control {
+    transition:none;
+  }
+}
+
+/* Bouton physique de fermeture — transmission externe */
+.imTransmission__physicalClose {
+  position:absolute;
+  left:var(--transmission-physical-close-left);
+  top:var(--transmission-physical-close-top);
+  z-index:50;
+  display:block;
+  width:var(--transmission-physical-close-width);
+  aspect-ratio:1 / 1;
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+}
+
+.imTransmission__physicalClose img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  pointer-events:none;
+  user-select:none;
+  filter:brightness(var(--playlist-close-brightness, .9));
+  transition:filter 140ms ease,transform 140ms ease;
+}
+
+.imTransmission__physicalClose:hover img,
+.imTransmission__physicalClose:focus-visible img {
+  filter:brightness(var(--playlist-close-hover-brightness, 1.15));
+  transform:scale(var(--playlist-close-hover-scale, 1.04));
+}
+
+.imTransmission__physicalClose:focus-visible {
+  outline:none;
+}
+
+.imTransmission__physicalClose:active img {
+  transform:scale(.94);
+}
+
+/* Les éléments dynamiques restent au-dessus du châssis. */
+.imTransmission__heading,
+.imTransmission__track,
+.imTransmission__control {
+  z-index:40;
+}
+

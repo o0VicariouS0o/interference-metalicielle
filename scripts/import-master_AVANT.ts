@@ -32,46 +32,6 @@ const supabase = createClient(SUPABASE_URL, SERVICE_KEY, {
 
 type ValidationResult<T> = { valid: T[]; errors: string[]; warnings: string[] };
 
-function duration(value: unknown): string | null {
-  if (value === null || value === undefined || value === '') return null;
-
-  // Les cellules de durée Excel peuvent être lues comme des objets Date
-  // ancrés artificiellement en décembre 1899.
-  if (value instanceof Date && !Number.isNaN(value.getTime())) {
-    const hours = value.getUTCHours();
-    const minutes = value.getUTCMinutes();
-    const seconds = value.getUTCSeconds();
-
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  }
-
-  // Accepte aussi une durée Excel brute exprimée en fraction de journée.
-  if (typeof value === 'number' && Number.isFinite(value)) {
-    const totalSeconds = Math.round(value * 24 * 60 * 60);
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  }
-
-  const raw = trim(value);
-  if (!raw) return null;
-
-  const match = raw.match(/^(\d{1,3}):(\d{2})(?::(\d{2}))?$/);
-  if (match) {
-    const hours = Number(match[1]);
-    const minutes = Number(match[2]);
-    const seconds = Number(match[3] ?? '0');
-
-    if (minutes < 60 && seconds < 60) {
-      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    }
-  }
-
-  return raw;
-}
-
 async function upsertBatched<T extends object>(
   table: string,
   rows: T[],
@@ -232,7 +192,7 @@ function buildEmissions(
   description_longue: trim(r.description_longue),
   yem_observation: trim(r.yem_observation),
   yem_type: trim(r.yem_type),
-  duree: duration(r.duree),
+  duree: trim(r.duree),
   type_libelle: type,
   audio_url: audio,
   visuel_path: trim(r.image),
@@ -249,7 +209,7 @@ function buildMorceaux(
   albumIds: Set<number>,
 ): ValidationResult<{
   id: number; emission_id: string; position: number; titre: string;
-  artiste_id: number; album_id: number | null; est_extrait: boolean; youtube_url: string | null; youtube_type: string | null;
+  artiste_id: number; album_id: number | null;
 }> {
   const valid: any[] = [];
   const errors: string[] = [];
@@ -270,21 +230,6 @@ function buildMorceaux(
     const titre     = trim(r.titre);
     const artistId  = int(r.artist_id);
     const albumId   = int(r.album_id);
-    const extraitRaw = r.est_extrait;
-    const extraitText = trim(extraitRaw).toLowerCase();
-    const estExtrait =
-      extraitRaw === true ||
-      extraitRaw === 1 ||
-      extraitText === 'true' ||
-      extraitText === 'vrai' ||
-      extraitText === '1' ||
-      extraitText === 'oui' ||
-      extraitText === 'extrait';
-    const youtubeRaw = trim(r.youtube_url);
-    const youtubeUrl = url(r.youtube_url);
-    const youtubeTypeRaw = trim(r.youtube_type);
-    const allowedYoutubeTypes = new Set(['clip_officiel', 'audio_officiel', 'label', 'live_officiel', 'autre']);
-    const youtubeType = youtubeTypeRaw && allowedYoutubeTypes.has(youtubeTypeRaw) ? youtubeTypeRaw : null;
 
     if (id === null) { skippedNoId++; continue; }
     if (eId === null || !emissionIds.has(eId)) { skippedNoEmission++; continue; }
@@ -293,10 +238,6 @@ function buildMorceaux(
     if (position === null || position < 1) { skippedNoOrder++; continue; }
 
     if (seen.has(id)) { errors.push(`morceau ${id} : id en doublon`); continue; }
-
-    if (youtubeRaw && !youtubeUrl) warnings.push(`morceau ${id} ("${titre}") : youtube_url ignoree (format invalide) "${youtubeRaw}"`);
-    if (youtubeTypeRaw && !youtubeType) warnings.push(`morceau ${id} ("${titre}") : youtube_type ignore (valeur invalide) "${youtubeTypeRaw}"`);
-    if (youtubeType && !youtubeUrl) warnings.push(`morceau ${id} ("${titre}") : youtube_type present sans youtube_url, youtube_type=NULL`);
 
     let finalAlbumId: number | null = null;
     if (albumId !== null) {
@@ -309,12 +250,7 @@ function buildMorceaux(
     }
 
     seen.add(id);
-    valid.push({
-      id, emission_id: eId, position, titre, artiste_id: artistId, album_id: finalAlbumId,
-      est_extrait: estExtrait,
-      youtube_url: youtubeUrl,
-      youtube_type: youtubeUrl ? youtubeType : null,
-    });
+    valid.push({ id, emission_id: eId, position, titre, artiste_id: artistId, album_id: finalAlbumId });
   }
 
   if (skippedNoId)       warnings.push(`${skippedNoId} ligne(s) playlist_entries ignoree(s) : id manquant`);

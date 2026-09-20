@@ -22,6 +22,28 @@
     "confidenceScore": 99.67
   },
   {
+    "id": "au-hobart-tasmanie",
+    "sourceLabel": "Hobart, Tasmanie",
+    "countryCode": "AU",
+    "matchedName": "Hobart",
+    "toponymName": "Hobart",
+    "adminName1": "Tasmanie",
+    "adminName2": "Hobart",
+    "geonameId": 2163355,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": -42.87936,
+    "longitude": 147.32941,
+    "mapX": 90.9248,
+    "mapY": 73.8219,
+    "artistCount": 1,
+    "artists": [
+      "Kim Dracula"
+    ],
+    "status": "matched",
+    "confidenceScore": 109.11
+  },
+  {
     "id": "au-melbourne-victoria",
     "sourceLabel": "Melbourne, Victoria",
     "countryCode": "AU",
@@ -45,28 +67,6 @@
     "confidenceScore": 111.0
   },
   {
-    "id": "au-sydney",
-    "sourceLabel": "Sydney",
-    "countryCode": "AU",
-    "matchedName": "Sydney",
-    "toponymName": "Sydney",
-    "adminName1": "Nouvelle-Galles du Sud",
-    "adminName2": "",
-    "geonameId": 2147714,
-    "featureClass": "P",
-    "featureCode": "PPLA",
-    "latitude": -33.86785,
-    "longitude": 151.20732,
-    "mapX": 92.002,
-    "mapY": 68.8155,
-    "artistCount": 1,
-    "artists": [
-      "Cenobia"
-    ],
-    "status": "matched",
-    "confidenceScore": 102.0
-  },
-  {
     "id": "au-sydney-nouvelle-galles-du-sud",
     "sourceLabel": "Sydney, Nouvelle-Galles du Sud",
     "countryCode": "AU",
@@ -81,15 +81,38 @@
     "longitude": 151.20732,
     "mapX": 92.002,
     "mapY": 68.8155,
-    "artistCount": 4,
+    "artistCount": 5,
     "artists": [
       "AC/DC",
+      "Cenobia",
       "Plini",
       "SPK",
       "The Amenta"
     ],
     "status": "matched",
     "confidenceScore": 111.0
+  },
+  {
+    "id": "be-bruxelles",
+    "sourceLabel": "Bruxelles",
+    "countryCode": "BE",
+    "matchedName": "Bruxelles",
+    "toponymName": "Brussels",
+    "adminName1": "Bruxelles-Capitale",
+    "adminName2": "Bruxelles-Capitale",
+    "geonameId": 2800866,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": 50.85045,
+    "longitude": 4.34878,
+    "mapX": 51.208,
+    "mapY": 21.7497,
+    "artistCount": 1,
+    "artists": [
+      "Ice Sealed Eyes"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.01
   },
   {
     "id": "be-courtrai-flandre-occidentale",
@@ -112,6 +135,28 @@
     ],
     "status": "matched",
     "confidenceScore": 108.3
+  },
+  {
+    "id": "be-liege",
+    "sourceLabel": "Liège",
+    "countryCode": "BE",
+    "matchedName": "Liège",
+    "toponymName": "Liège",
+    "adminName1": "Wallonie",
+    "adminName2": "Liège",
+    "geonameId": 2792413,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 50.63373,
+    "longitude": 5.56749,
+    "mapX": 51.5465,
+    "mapY": 21.8701,
+    "artistCount": 1,
+    "artists": [
+      "Brutal Sphincter"
+    ],
+    "status": "matched",
+    "confidenceScore": 99.94
   },
   {
     "id": "br-belo-horizonte-minas-gerais",
@@ -405,6 +450,28 @@
     "confidenceScore": 107.32
   },
   {
+    "id": "ch-bale-ville",
+    "sourceLabel": "Bâle-Ville",
+    "countryCode": "CH",
+    "matchedName": "Bâle",
+    "toponymName": "Basel",
+    "adminName1": "Bâle-Ville",
+    "adminName2": "Basel-Stadt",
+    "geonameId": 2661604,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": 47.55839,
+    "longitude": 7.57327,
+    "mapX": 52.1037,
+    "mapY": 23.5787,
+    "artistCount": 1,
+    "artists": [
+      "Zeal And Ardor"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
+  },
+  {
     "id": "ch-geneve",
     "sourceLabel": "Genève",
     "countryCode": "CH",
@@ -510,9 +577,10 @@
     "longitude": 13.41053,
     "mapX": 53.7251,
     "mapY": 20.8198,
-    "artistCount": 2,
+    "artistCount": 3,
     "artists": [
       "Einstürzende Neubauten",
+      "Future Palace",
       "Rammstein"
     ],
     "status": "matched",
@@ -876,6 +944,28 @@
     "confidenceScore": 109.01
   },
   {
+    "id": "es-pampelune",
+    "sourceLabel": "Pampelune",
+    "countryCode": "ES",
+    "matchedName": "Pampelune",
+    "toponymName": "Pamplona",
+    "adminName1": "Navarre",
+    "adminName2": "Province de Navarre",
+    "geonameId": 3114472,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": 42.81687,
+    "longitude": -1.64323,
+    "mapX": 49.5435,
+    "mapY": 26.2128,
+    "artistCount": 1,
+    "artists": [
+      "The Broken Horizon"
+    ],
+    "status": "matched",
+    "confidenceScore": 99.98
+  },
+  {
     "id": "fi-helsinki-uusimaa",
     "sourceLabel": "Helsinki, Uusimaa",
     "countryCode": "FI",
@@ -1081,6 +1171,28 @@
     "confidenceScore": 108.23
   },
   {
+    "id": "fr-auvergne",
+    "sourceLabel": "Auvergne",
+    "countryCode": "FR",
+    "matchedName": "Auvergne",
+    "toponymName": "Auvergne",
+    "adminName1": "Auvergne",
+    "adminName2": "",
+    "geonameId": 3035876,
+    "featureClass": "A",
+    "featureCode": "ADM1H",
+    "latitude": 45.66667,
+    "longitude": 3.16667,
+    "mapX": 50.8796,
+    "mapY": 24.6296,
+    "artistCount": 1,
+    "artists": [
+      "Igorrr"
+    ],
+    "status": "matched",
+    "confidenceScore": 87.19
+  },
+  {
     "id": "fr-bagnols-sur-ceze-occitanie",
     "sourceLabel": "Bagnols-sur-Cèze, Occitanie",
     "countryCode": "FR",
@@ -1183,11 +1295,14 @@
     "longitude": -0.58046,
     "mapX": 49.8388,
     "mapY": 25.0882,
-    "artistCount": 5,
+    "artistCount": 8,
     "artists": [
       "Altesia",
       "CCW",
       "Dark Dogs",
+      "Fanalo",
+      "Hardwired",
+      "Mars Red Sky",
       "Overcharger",
       "Seth"
     ],
@@ -1281,6 +1396,28 @@
     ],
     "status": "matched",
     "confidenceScore": 108.33
+  },
+  {
+    "id": "fr-laval",
+    "sourceLabel": "Laval",
+    "countryCode": "FR",
+    "matchedName": "Laval",
+    "toponymName": "Laval",
+    "adminName1": "Pays de la Loire",
+    "adminName2": "Mayenne",
+    "geonameId": 3005866,
+    "featureClass": "P",
+    "featureCode": "PPLA2",
+    "latitude": 48.07247,
+    "longitude": -0.77019,
+    "mapX": 49.7861,
+    "mapY": 23.2931,
+    "artistCount": 1,
+    "artists": [
+      "Darken"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
   },
   {
     "id": "fr-lens-hauts-de-france",
@@ -1417,6 +1554,28 @@
     "confidenceScore": 109.91
   },
   {
+    "id": "fr-montendre",
+    "sourceLabel": "Montendre",
+    "countryCode": "FR",
+    "matchedName": "Montendre",
+    "toponymName": "Montendre",
+    "adminName1": "Nouvelle-Aquitaine",
+    "adminName2": "Charente-Maritime",
+    "geonameId": 2992689,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 45.28557,
+    "longitude": -0.40827,
+    "mapX": 49.8866,
+    "mapY": 24.8414,
+    "artistCount": 1,
+    "artists": [
+      "EΔrth ΩuΔke"
+    ],
+    "status": "matched",
+    "confidenceScore": 97.3
+  },
+  {
     "id": "fr-montpellier-occitanie",
     "sourceLabel": "Montpellier, Occitanie",
     "countryCode": "FR",
@@ -1431,9 +1590,10 @@
     "longitude": 3.87635,
     "mapX": 51.0768,
     "mapY": 25.7717,
-    "artistCount": 1,
+    "artistCount": 2,
     "artists": [
-      "Hypno5e"
+      "Hypno5e",
+      "Spleen"
     ],
     "status": "matched",
     "confidenceScore": 109.09
@@ -1497,7 +1657,7 @@
     "longitude": 2.3488,
     "mapX": 50.6524,
     "mapY": 22.8592,
-    "artistCount": 28,
+    "artistCount": 35,
     "artists": [
       "ADX",
       "Alternight & Orrow",
@@ -1509,17 +1669,24 @@
       "Eight Sins",
       "Enhancer",
       "Furies",
+      "Grandma’s Ashes",
       "Heavenly",
+      "Imparfait",
       "Karras",
       "Lofofora",
       "Mass Hysteria",
+      "Mirabelle",
       "Misanthrope",
       "No Return",
       "Pleymo",
+      "Revnoir",
+      "Rise of the North Star",
       "Satan Jokers",
       "Shakin' Street",
       "Shaârghot",
+      "Solitaris",
       "Sortilège",
+      "Ten56",
       "The Old Dead Tree",
       "Treponem Pal",
       "Trust",
@@ -1866,6 +2033,28 @@
     "confidenceScore": 108.4
   },
   {
+    "id": "gb-heston-angleterre",
+    "sourceLabel": "Heston, Angleterre",
+    "countryCode": "GB",
+    "matchedName": "Heston",
+    "toponymName": "Heston",
+    "adminName1": "Angleterre",
+    "adminName2": "Grand Londres",
+    "geonameId": 2647027,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 51.48363,
+    "longitude": -0.37577,
+    "mapX": 49.8956,
+    "mapY": 21.398,
+    "artistCount": 1,
+    "artists": [
+      "Ritchie Blackmore"
+    ],
+    "status": "matched",
+    "confidenceScore": 107.85
+  },
+  {
     "id": "gb-hull-angleterre",
     "sourceLabel": "Hull, Angleterre",
     "countryCode": "GB",
@@ -2046,6 +2235,28 @@
     "confidenceScore": 109.63
   },
   {
+    "id": "gb-meriden-angleterre",
+    "sourceLabel": "Meriden, Angleterre",
+    "countryCode": "GB",
+    "matchedName": "Meriden",
+    "toponymName": "Meriden",
+    "adminName1": "Angleterre",
+    "adminName2": "Solihull",
+    "geonameId": 2642706,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 52.4377,
+    "longitude": -1.64366,
+    "mapX": 49.5434,
+    "mapY": 20.8679,
+    "artistCount": 1,
+    "artists": [
+      "Napalm Death"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
+  },
+  {
     "id": "gb-middlesbrough-angleterre",
     "sourceLabel": "Middlesbrough, Angleterre",
     "countryCode": "GB",
@@ -2223,6 +2434,28 @@
     "confidenceScore": 108.13
   },
   {
+    "id": "gb-swindon-angleterre",
+    "sourceLabel": "Swindon, Angleterre",
+    "countryCode": "GB",
+    "matchedName": "Swindon",
+    "toponymName": "Swindon",
+    "adminName1": "Angleterre",
+    "adminName2": "Borough of Swindon",
+    "geonameId": 2636389,
+    "featureClass": "P",
+    "featureCode": "PPLA3",
+    "latitude": 51.55797,
+    "longitude": -1.78116,
+    "mapX": 49.5052,
+    "mapY": 21.3567,
+    "artistCount": 1,
+    "artists": [
+      "Heriot"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
+  },
+  {
     "id": "gb-whitby-yorkshire-du-nord",
     "sourceLabel": "Whitby, Yorkshire du Nord",
     "countryCode": "GB",
@@ -2267,6 +2500,28 @@
     ],
     "status": "matched",
     "confidenceScore": 109.73
+  },
+  {
+    "id": "id-garut-java-occidental",
+    "sourceLabel": "Garut, Java occidental",
+    "countryCode": "ID",
+    "matchedName": "Garut",
+    "toponymName": "Garut",
+    "adminName1": "Java occidental",
+    "adminName2": "Kabupaten Garut",
+    "geonameId": 1644409,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": -7.245,
+    "longitude": 107.921,
+    "mapX": 79.9781,
+    "mapY": 54.025,
+    "artistCount": 1,
+    "artists": [
+      "Voice Of Baceprot"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
   },
   {
     "id": "ie-dublin",
@@ -2401,28 +2656,6 @@
     "confidenceScore": 109.94
   },
   {
-    "id": "it-perouse-ombrie",
-    "sourceLabel": "Pérouse, Ombrie",
-    "countryCode": "IT",
-    "matchedName": "Pérouse",
-    "toponymName": "Perugia",
-    "adminName1": "Ombrie",
-    "adminName2": "Pérouse",
-    "geonameId": 3171180,
-    "featureClass": "P",
-    "featureCode": "PPLA",
-    "latitude": 43.1122,
-    "longitude": 12.38878,
-    "mapX": 53.4413,
-    "mapY": 26.0488,
-    "artistCount": 1,
-    "artists": [
-      "Fleshgod Apocalypse"
-    ],
-    "status": "matched",
-    "confidenceScore": 108.62
-  },
-  {
     "id": "it-pise-toscane",
     "sourceLabel": "Pise, Toscane",
     "countryCode": "IT",
@@ -2443,6 +2676,28 @@
     ],
     "status": "matched",
     "confidenceScore": 108.56
+  },
+  {
+    "id": "it-perouse-ombrie",
+    "sourceLabel": "Pérouse, Ombrie",
+    "countryCode": "IT",
+    "matchedName": "Pérouse",
+    "toponymName": "Perugia",
+    "adminName1": "Ombrie",
+    "adminName2": "Pérouse",
+    "geonameId": 3171180,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": 43.1122,
+    "longitude": 12.38878,
+    "mapX": 53.4413,
+    "mapY": 26.0488,
+    "artistCount": 1,
+    "artists": [
+      "Fleshgod Apocalypse"
+    ],
+    "status": "matched",
+    "confidenceScore": 108.62
   },
   {
     "id": "it-rome-latium",
@@ -2466,6 +2721,28 @@
     ],
     "status": "matched",
     "confidenceScore": 110.55
+  },
+  {
+    "id": "it-sacile-frioul-venetie-julienne",
+    "sourceLabel": "Sacile, Frioul-Vénétie Julienne",
+    "countryCode": "IT",
+    "matchedName": "Sacile",
+    "toponymName": "Sacile",
+    "adminName1": "Frioul-Vénétie Julienne",
+    "adminName2": "Pordenone",
+    "geonameId": 3168772,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 45.95412,
+    "longitude": 12.50274,
+    "mapX": 53.473,
+    "mapY": 24.4699,
+    "artistCount": 1,
+    "artists": [
+      "Elvenking"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
   },
   {
     "id": "it-tarente-pouilles",
@@ -3104,6 +3381,39 @@
     "confidenceScore": 108.83
   },
   {
+    "id": "se-stockholm",
+    "sourceLabel": "Stockholm",
+    "countryCode": "SE",
+    "matchedName": "Stockholm",
+    "toponymName": "Stockholm",
+    "adminName1": "Stockholm",
+    "adminName2": "Stockholms Kommun",
+    "geonameId": 2673730,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": 59.32938,
+    "longitude": 18.06871,
+    "mapX": 55.0191,
+    "mapY": 17.0392,
+    "artistCount": 12,
+    "artists": [
+      "Bathory",
+      "Candlemass",
+      "Dismember",
+      "Entombed",
+      "Frantic Amber",
+      "Katatonia",
+      "Opeth",
+      "Silencer",
+      "Soen",
+      "Sorcerer",
+      "Tiamat",
+      "Yngwie Malmsteen"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.27
+  },
+  {
     "id": "se-saffle-varmland",
     "sourceLabel": "Säffle, Värmland",
     "countryCode": "SE",
@@ -3126,36 +3436,26 @@
     "confidenceScore": 106.94
   },
   {
-    "id": "se-stockholm",
-    "sourceLabel": "Stockholm",
+    "id": "se-trelleborg",
+    "sourceLabel": "Trelleborg",
     "countryCode": "SE",
-    "matchedName": "Stockholm",
-    "toponymName": "Stockholm",
-    "adminName1": "Stockholm",
-    "adminName2": "Stockholms Kommun",
-    "geonameId": 2673730,
+    "matchedName": "Trelleborg",
+    "toponymName": "Trelleborg",
+    "adminName1": "Skåne",
+    "adminName2": "Trelleborgs Kommun",
+    "geonameId": 2667402,
     "featureClass": "P",
-    "featureCode": "PPLC",
-    "latitude": 59.32938,
-    "longitude": 18.06871,
-    "mapX": 55.0191,
-    "mapY": 17.0392,
-    "artistCount": 11,
+    "featureCode": "PPLA2",
+    "latitude": 55.37514,
+    "longitude": 13.15691,
+    "mapX": 53.6547,
+    "mapY": 19.236,
+    "artistCount": 1,
     "artists": [
-      "Bathory",
-      "Candlemass",
-      "Dismember",
-      "Entombed",
-      "Frantic Amber",
-      "Katatonia",
-      "Opeth",
-      "Silencer",
-      "Sorcerer",
-      "Tiamat",
-      "Yngwie Malmsteen"
+      "Imminence"
     ],
     "status": "matched",
-    "confidenceScore": 101.27
+    "confidenceScore": 98.7
   },
   {
     "id": "se-umea-vasterbotten",
@@ -3897,6 +4197,28 @@
     "confidenceScore": 108.89
   },
   {
+    "id": "us-glendale-californie",
+    "sourceLabel": "Glendale, Californie",
+    "countryCode": "US",
+    "matchedName": "Glendale",
+    "toponymName": "Glendale",
+    "adminName1": "Californie",
+    "adminName2": "Los Angeles County",
+    "geonameId": 5352423,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 34.14251,
+    "longitude": -118.25508,
+    "mapX": 17.1514,
+    "mapY": 31.0319,
+    "artistCount": 1,
+    "artists": [
+      "System Of A Down"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
+  },
+  {
     "id": "us-greenville-caroline-du-sud",
     "sourceLabel": "Greenville, Caroline du Sud",
     "countryCode": "US",
@@ -4096,6 +4418,52 @@
     "confidenceScore": 110.01
   },
   {
+    "id": "us-jersey-city-new-jersey",
+    "sourceLabel": "Jersey City, New Jersey",
+    "countryCode": "US",
+    "matchedName": "Jersey City",
+    "toponymName": "Jersey City",
+    "adminName1": "New Jersey",
+    "adminName2": "Comté de Hudson",
+    "geonameId": 5099836,
+    "featureClass": "P",
+    "featureCode": "PPLA2",
+    "latitude": 40.72816,
+    "longitude": -74.07764,
+    "mapX": 29.4229,
+    "mapY": 27.3732,
+    "artistCount": 1,
+    "artists": [
+      "Fit for an Autopsy"
+    ],
+    "status": "matched",
+    "confidenceScore": 109.13
+  },
+  {
+    "id": "us-long-island-etat-de-new-york",
+    "sourceLabel": "Long Island, État de New York",
+    "countryCode": "US",
+    "matchedName": "Long Island",
+    "toponymName": "Long Island",
+    "adminName1": "New York",
+    "adminName2": "",
+    "geonameId": null,
+    "featureClass": "T",
+    "featureCode": "ISL",
+    "latitude": 40.7891,
+    "longitude": -73.135,
+    "mapX": 29.6847,
+    "mapY": 27.3394,
+    "artistCount": 3,
+    "artists": [
+      "Blackmore's Night",
+      "Blue Öyster Cult",
+      "Dream Theater"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
+  },
+  {
     "id": "us-los-angeles-californie",
     "sourceLabel": "Los Angeles, Californie",
     "countryCode": "US",
@@ -4110,7 +4478,7 @@
     "longitude": -118.24368,
     "mapX": 17.1545,
     "mapY": 31.0821,
-    "artistCount": 27,
+    "artistCount": 28,
     "artists": [
       "Brujeria",
       "Coal Chamber",
@@ -4119,6 +4487,7 @@
       "Fanny",
       "Faster Pussycat",
       "Fear Factory",
+      "Guns N'Roses",
       "Guns'N'Roses",
       "Health",
       "Megadeth",
@@ -4142,6 +4511,28 @@
     ],
     "status": "matched",
     "confidenceScore": 110.87
+  },
+  {
+    "id": "us-mechanicsburg-pennsylvanie",
+    "sourceLabel": "Mechanicsburg, Pennsylvanie",
+    "countryCode": "US",
+    "matchedName": "Mechanicsburg",
+    "toponymName": "Mechanicsburg",
+    "adminName1": "Pennsylvanie",
+    "adminName2": "Cumberland County",
+    "geonameId": 5200657,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 40.21426,
+    "longitude": -77.00859,
+    "mapX": 28.6087,
+    "mapY": 27.6587,
+    "artistCount": 1,
+    "artists": [
+      "Poison"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.0
   },
   {
     "id": "us-miami-floride",
@@ -4369,10 +4760,11 @@
     "longitude": -112.07404,
     "mapX": 18.8683,
     "mapY": 31.4176,
-    "artistCount": 2,
+    "artistCount": 3,
     "artists": [
       "Alice Cooper",
-      "Sacred Reich"
+      "Sacred Reich",
+      "Soulfly"
     ],
     "status": "matched",
     "confidenceScore": 110.33
@@ -4717,7 +5109,7 @@
     "artistCount": 5,
     "artists": [
       "Bell Witch",
-      "Saint Vitus",
+      "Jimi Hendrix",
       "Soundgarden",
       "Sunn O)))",
       "Thorr's Hammer"

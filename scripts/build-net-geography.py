@@ -169,17 +169,16 @@ def find_sheet_name(workbook: Any, expected: str) -> str:
     )
 
 
-def detect_headers(sheet: Any) -> tuple[int, dict[str, int]]:
+def detect_headers_from_rows(rows: list[tuple[Any, ...]]) -> tuple[int, dict[str, int]]:
     required_groups = {
         "place": {"ville region", "ville_region", "ville", "region ville pays"},
         "country": {"country code", "country_code", "code pays", "iso", "iso2"},
     }
 
-    for row_index in range(1, min(sheet.max_row, 25) + 1):
+    for row_index, row in enumerate(rows[:25], start=1):
         headers: dict[str, int] = {}
 
-        for column_index in range(1, sheet.max_column + 1):
-            raw_value = sheet.cell(row=row_index, column=column_index).value
+        for column_index, raw_value in enumerate(row, start=1):
             key = normalize_key(normalize_text(raw_value))
             if key:
                 headers[key] = column_index
@@ -207,67 +206,81 @@ def find_column(headers: dict[str, int], aliases: Iterable[str]) -> int | None:
 
 
 def read_source_places(excel_path: Path) -> list[SourcePlace]:
+    # IMPORTANT :
+    # En mode read_only, appeler sheet.cell() cellule par cellule force openpyxl
+    # à reparcourir le XML de la feuille à répétition. Sur la base maître,
+    # cela devient extrêmement lent. On parcourt donc la feuille UNE SEULE FOIS.
     workbook = load_workbook(excel_path, read_only=True, data_only=True)
-    sheet_name = find_sheet_name(workbook, "artistes")
-    sheet = workbook[sheet_name]
+    try:
+        sheet_name = find_sheet_name(workbook, "artistes")
+        sheet = workbook[sheet_name]
 
-    header_row, headers = detect_headers(sheet)
+        rows = list(sheet.iter_rows(values_only=True))
+        if not rows:
+            return []
 
-    place_column = find_column(
-        headers,
-        ("ville_region", "ville région", "ville", "region_ville_pays"),
-    )
-    country_column = find_column(
-        headers,
-        ("country_code", "country code", "code pays", "iso", "iso2"),
-    )
-    artist_column = find_column(
-        headers,
-        ("nom", "artiste", "artist", "nom artiste", "nom_artiste"),
-    )
+        header_row, headers = detect_headers_from_rows(rows)
 
-    if place_column is None or country_column is None:
-        raise KeyError(
-            "Les colonnes 'ville_region' et 'country_code' sont obligatoires."
+        place_column = find_column(
+            headers,
+            ("ville_region", "ville région", "ville", "region_ville_pays"),
+        )
+        country_column = find_column(
+            headers,
+            ("country_code", "country code", "code pays", "iso", "iso2"),
+        )
+        artist_column = find_column(
+            headers,
+            ("nom", "artiste", "artist", "nom artiste", "nom_artiste"),
         )
 
-    grouped_artists: dict[tuple[str, str], set[str]] = defaultdict(set)
-    display_labels: dict[tuple[str, str], str] = {}
-
-    for row_index in range(header_row + 1, sheet.max_row + 1):
-        source_label = normalize_text(sheet.cell(row=row_index, column=place_column).value)
-        country_code = normalize_text(
-            sheet.cell(row=row_index, column=country_column).value
-        ).upper()
-
-        if not source_label or not country_code:
-            continue
-
-        artist_name = ""
-        if artist_column is not None:
-            artist_name = normalize_text(
-                sheet.cell(row=row_index, column=artist_column).value
+        if place_column is None or country_column is None:
+            raise KeyError(
+                "Les colonnes 'ville_region' et 'country_code' sont obligatoires."
             )
 
-        key = (normalize_key(source_label), country_code)
-        display_labels.setdefault(key, source_label)
+        grouped_artists: dict[tuple[str, str], set[str]] = defaultdict(set)
+        display_labels: dict[tuple[str, str], str] = {}
 
-        if artist_name:
-            grouped_artists[key].add(artist_name)
+        # Les index de colonnes sont 1-based ; les tuples Python sont 0-based.
+        place_idx = place_column - 1
+        country_idx = country_column - 1
+        artist_idx = artist_column - 1 if artist_column is not None else None
 
-    places = [
-        SourcePlace(
-            source_label=display_labels[key],
-            country_code=key[1],
-            artists=tuple(sorted(artists, key=str.casefold)),
+        for row in rows[header_row:]:
+            source_label = normalize_text(row[place_idx] if place_idx < len(row) else None)
+            country_code = normalize_text(
+                row[country_idx] if country_idx < len(row) else None
+            ).upper()
+
+            if not source_label or not country_code:
+                continue
+
+            artist_name = ""
+            if artist_idx is not None and artist_idx < len(row):
+                artist_name = normalize_text(row[artist_idx])
+
+            key = (normalize_key(source_label), country_code)
+            display_labels.setdefault(key, source_label)
+
+            if artist_name:
+                grouped_artists[key].add(artist_name)
+
+        places = [
+            SourcePlace(
+                source_label=display_labels[key],
+                country_code=key[1],
+                artists=tuple(sorted(artists, key=str.casefold)),
+            )
+            for key, artists in grouped_artists.items()
+        ]
+
+        return sorted(
+            places,
+            key=lambda place: (place.country_code, normalize_key(place.source_label)),
         )
-        for key, artists in grouped_artists.items()
-    ]
-
-    return sorted(
-        places,
-        key=lambda place: (place.country_code, normalize_key(place.source_label)),
-    )
+    finally:
+        workbook.close()
 
 
 def load_json_list(path: Path) -> list[dict[str, Any]]:

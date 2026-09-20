@@ -1400,3 +1400,234 @@
   --contact-external-size: clamp(0.52rem, 0.66vw, 0.66rem);
   --contact-external-letter-spacing: 0.14em;
 }
+
+/* =========================================================
+   PLAYLIST I.M. — CONSOLE DE RÉGLAGE MANUEL
+   Référentiel : chassis_playlist.png
+
+   RÈGLE :
+   - LEFT augmente  => déplacement vers la droite
+   - TOP augmente   => déplacement vers le bas
+   - WIDTH augmente => zone plus large
+   - SIZE augmente  => texte / bouton plus grand
+   ========================================================= */
+:root {
+  /* CHÂSSIS */
+  --playlist-machine-ratio: 1024 / 1456;
+  --playlist-shadow-opacity: 0.48;
+
+  /* ARCHIVE — IM-XXX */
+  --playlist-archive-id-left: 77.8%;
+  --playlist-archive-id-top: 6.35%;
+  --playlist-archive-id-width: 15.5%;
+  --playlist-archive-id-size: 4.0cqw;
+  --playlist-archive-id-line-height: 0.90;
+  --playlist-archive-id-letter-spacing: 0.035em;
+
+  /* MÉTADONNÉES — zone générale */
+  --playlist-info-left: 31.4%;
+  --playlist-info-top: 12.35%;
+  --playlist-info-width: 18.0%;
+  --playlist-info-height: 9.45%;
+  --playlist-info-size: 1.32cqw;
+  --playlist-info-line-height: 1.15;
+  --playlist-info-letter-spacing: 0.045em;
+
+  /* MÉTADONNÉES — réglage individuel de chaque ligne
+     X positif = droite / négatif = gauche
+     Y positif = bas    / négatif = haut */
+  --playlist-info-type-x: -12%;
+  --playlist-info-type-y: -10%;
+  --playlist-info-status-x: -5%;
+  --playlist-info-status-y: 0%;
+  --playlist-info-date-x: 48%;
+  --playlist-info-date-y: 15%;
+  --playlist-info-operator-x: 7%;
+  --playlist-info-operator-y: 25%;
+  --playlist-info-source-x: -5%;
+  --playlist-info-source-y: 40%;
+
+  /* TITRE DE L'ÉMISSION */
+  --playlist-title-left: 55.4%;
+  --playlist-title-top: 12.5%;
+  --playlist-title-width: 35.2%;
+  --playlist-title-height: 8.7%;
+  --playlist-title-padding-x: 2.2%;
+  --playlist-title-size: 4.05cqw;
+  --playlist-title-line-height: 1.05;
+  --playlist-title-letter-spacing: -0.015em;
+  --playlist-title-max-lines: 2;
+  /* Marge interne basse pour éviter de couper g, j, p, q, y */
+  --playlist-title-descender-space: 0.18em;
+
+  /* NOMBRE DE MORCEAUX */
+  --playlist-count-right: 9.55%;
+  --playlist-count-top: 24.05%;
+  --playlist-count-size: 1.82cqw;
+  --playlist-count-letter-spacing: 0.08em;
+
+  /* LISTE — zone générale */
+  --playlist-list-left: 8.65%;
+  --playlist-list-top: 30.25%;
+  --playlist-list-width: 84.7%;
+  --playlist-list-height: 47.7%;
+
+  /* COLONNES — largeur / placement relatif */
+  --playlist-col-number: 5.8%;
+  --playlist-col-artist: 35%;
+  --playlist-col-signal: 9.5%;
+
+  /* NUMÉROS */
+  --playlist-position-size: 1.52cqw;
+  --playlist-position-letter-spacing: 0.06em;
+  --playlist-position-padding-left: 4%;
+
+  /* ARTISTES */
+  --playlist-artist-size: 1.52cqw;
+  --playlist-artist-padding-x: 5%;
+
+  /* TITRES DES MORCEAUX */
+  --playlist-track-size: 1.52cqw;
+  --playlist-track-padding-x: 3%;
+
+  /* LIGNES */
+  --playlist-row-border-opacity: 0.07;
+
+  /* BOUTONS YOUTUBE — augmente WIDTH pour les grossir */
+  --playlist-signal-width: 5.25cqw;
+  --playlist-signal-max-width: 76px;
+
+  /* NOTES D'ARCHIVISTE — type d'observation YEM */
+  --playlist-archivist-note-left: 62.0%;
+  --playlist-archivist-note-top: 85.0%;
+  --playlist-archivist-note-width: 22.5%;
+  --playlist-archivist-note-size: 1.55cqw;
+  --playlist-archivist-note-line-height: 1.15;
+  --playlist-archivist-note-letter-spacing: 0.10em;
+
+  /* PAGINATION — sous la liste */
+  --playlist-pagination-left: 41.5%;
+  --playlist-pagination-top: 25.04%;
+  --playlist-pagination-width: 17%;
+  --playlist-pagination-size: 1.72cqw;
+  --playlist-pagination-button-size: 2.15cqw;
+  --playlist-pagination-arrow-size: 0.95cqw;
+
+  /* FERMER L'ARCHIVE — bloc technique inférieur droit */
+  --playlist-close-left: 93.95%;
+  --playlist-close-top: 0.45%;
+  --playlist-close-width: 5.45%;
+  --playlist-close-height: 3.45%;
+  --playlist-close-size: 0.68cqw;
+  --playlist-close-letter-spacing: 0.10em;
+}
+
+/* =========================================================
+   PLAYLIST — OSCILLOSCOPE NIVEAU SIGNAL
+
+   Réglage visuel :
+   - LEFT augmente  => droite
+   - TOP augmente   => bas
+   - WIDTH          => largeur
+   - HEIGHT         => hauteur
+   ========================================================= */
+
+:root {
+  --playlist-scope-left: 8.5%;
+  --playlist-scope-top: 84.6%;
+  --playlist-scope-width: 21%;
+  --playlist-scope-height: 2.8%;
+  --playlist-scope-opacity: 0.88;
+  --playlist-scope-speed: 5.8s;
+}
+
+/* =========================================================
+   PLAYLIST — LED D'ÉTAT
+   Réglage visuel :
+   - LEFT augmente => droite
+   - TOP augmente  => bas
+   - SIZE          => taille des 4 LED
+   ========================================================= */
+
+:root {
+  --playlist-led-size: 1.8cqw;
+
+  /* SYNC */
+  --playlist-led-sync-left: 9.5%;
+  --playlist-led-sync-top: 91.25%;
+
+  /* NOISE */
+  --playlist-led-noise-left: 17.5%;
+  --playlist-led-noise-top: 91.25%;
+
+  /* LINK */
+  --playlist-led-link-left: 26.1%;
+  --playlist-led-link-top: 91.25%;
+
+  /* IM-RÉSEAU */
+  --playlist-led-network-left: 68.1%;
+  --playlist-led-network-top: 96.8%;
+}
+
+/* =========================================================
+   TRANSMISSION EXTERNE — PANNEAU DE CONTRÔLE
+   Référentiel : youtube-transmission-chassis.png — 1536 × 931
+
+   RÈGLE SIMPLE :
+   - LEFT augmente => droite
+   - TOP augmente  => bas
+   - WIDTH augmente => élargit
+   ========================================================= */
+
+:root {
+  /* CHÂSSIS */
+  --transmission-machine-ratio: 1536 / 931;
+  --transmission-shadow-opacity: 0.62;
+
+  /* TITRE "TRANSMISSION EXTERNE" */
+  --transmission-heading-left: 35%;
+  --transmission-heading-top: 3.5%;
+  --transmission-heading-width: 30%;
+  --transmission-heading-height: 5.5%;
+  --transmission-heading-size: 1.55cqw;
+  --transmission-heading-letter-spacing: 0.10em;
+
+  /* FENÊTRE YOUTUBE 16:9 */
+  --transmission-video-left: 12.2%;
+  --transmission-video-top: 10.7%;
+  --transmission-video-width: 73.6%;
+
+  /* BOUTON PHYSIQUE DE FERMETURE */
+  --transmission-physical-close-left: 91.85%;
+  --transmission-physical-close-top: 0.95%;
+  --transmission-physical-close-width: 4.55%;
+  --transmission-error-size: 1.15cqw;
+
+  /* ARTISTE + TITRE */
+  --transmission-track-left: 20%;
+  --transmission-track-top: 77.5%;
+  --transmission-track-width: 60%;
+  --transmission-track-height: 5.8%;
+  --transmission-track-gap: 1.1cqw;
+  --transmission-artist-size: 1.30cqw;
+  --transmission-title-size: 1.18cqw;
+
+  /* COMMANDES DU BAS */
+  --transmission-controls-top: 85.7%;
+  --transmission-controls-height: 8.2%;
+  --transmission-control-size: 0.85cqw;
+  --transmission-control-letter-spacing: 0.08em;
+
+  --transmission-previous-left: 5.2%;
+  --transmission-previous-width: 17.4%;
+
+  --transmission-youtube-left: 23.8%;
+  --transmission-youtube-width: 17.5%;
+
+  --transmission-next-left: 52.0%;
+  --transmission-next-width: 17.4%;
+
+  --transmission-close-left: 60.1%;
+  --transmission-close-width: 50.4%;
+}
+
