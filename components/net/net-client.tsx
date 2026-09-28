@@ -26,9 +26,16 @@ type Props = {
 };
 
 function imagePathForEmission(id: string): string | null {
-  const match = id.match(/^IM-(\d{3})$/);
-  if (match) return `/visuels/emissions/avec-titres/Episode ${match[1]}.jpg`;
-  if (id === 'IM-HS001') return '/visuels/emissions/avec-titres/Episode HS001.jpg';
+  const regularMatch = id.match(/^IM-(\d{3})$/);
+  if (regularMatch) {
+    return `/visuels/emissions/avec-titres/Episode ${regularMatch[1]}.jpg`;
+  }
+
+  const horsSerieMatch = id.match(/^IM-HS(\d{3})$/);
+  if (horsSerieMatch) {
+    return `/visuels/emissions/avec-titres/Episode HS${horsSerieMatch[1]}.jpg`;
+  }
+
   return null;
 }
 

@@ -637,7 +637,7 @@ export function NetMap({
 
             return (
               <button
-                key={point.id}
+                key={`${point.id}-${point.latitude}-${point.longitude}`}
                 type="button"
                 className={[
                   'netImpact',

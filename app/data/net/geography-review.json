@@ -1,1 +1,168 @@
-[]
+[
+  {
+    "id": "us-irvington-new-jersey",
+    "sourceLabel": "Irvington, New Jersey",
+    "countryCode": "US",
+    "artistCount": 1,
+    "artists": [
+      "Bulldoze"
+    ],
+    "status": "review",
+    "reason": "Correspondance à vérifier : meilleur score 108.18, écart 7.18.",
+    "candidates": [
+      {
+        "geonameId": 5099724,
+        "name": "Irvington",
+        "toponymName": "Irvington",
+        "countryCode": "US",
+        "adminName1": "New Jersey",
+        "adminName2": "Comté d'Essex",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "40.73232",
+        "longitude": "-74.23487",
+        "population": 61323,
+        "score": 108.18
+      },
+      {
+        "geonameId": 7258771,
+        "name": "Irvington",
+        "toponymName": "Irvington",
+        "countryCode": "US",
+        "adminName1": "New Jersey",
+        "adminName2": "Comté d'Essex",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "40.7242",
+        "longitude": "-74.23181",
+        "population": 0,
+        "score": 101.0
+      },
+      {
+        "geonameId": 5122365,
+        "name": "Irvington",
+        "toponymName": "Irvington",
+        "countryCode": "US",
+        "adminName1": "New York",
+        "adminName2": "Comté de Westchester",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "41.03922",
+        "longitude": "-73.86823",
+        "population": 6607,
+        "score": 82.73
+      },
+      {
+        "geonameId": 4295960,
+        "name": "Irvington",
+        "toponymName": "Irvington",
+        "countryCode": "US",
+        "adminName1": "Kentucky",
+        "adminName2": "Comté de Breckinridge",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "37.88034",
+        "longitude": "-86.28386",
+        "population": 1184,
+        "score": 81.61
+      },
+      {
+        "geonameId": 4241612,
+        "name": "Irvington",
+        "toponymName": "Irvington",
+        "countryCode": "US",
+        "adminName1": "Illinois",
+        "adminName2": "Comté de Washington",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "38.43922",
+        "longitude": "-89.16285",
+        "population": 636,
+        "score": 81.21
+      }
+    ]
+  },
+  {
+    "id": "us-long-island-new-york",
+    "sourceLabel": "Long Island, New York",
+    "countryCode": "US",
+    "artistCount": 1,
+    "artists": [
+      "Vision of Disorder"
+    ],
+    "status": "review",
+    "reason": "Correspondance à vérifier : meilleur score 80.61, écart 0.12.",
+    "candidates": [
+      {
+        "geonameId": 5125125,
+        "name": "Long Island City",
+        "toponymName": "Long Island City",
+        "countryCode": "US",
+        "adminName1": "New York",
+        "adminName2": "Comté de Queens",
+        "featureClass": "P",
+        "featureCode": "PPLX",
+        "latitude": "40.74482",
+        "longitude": "-73.94875",
+        "population": 25595,
+        "score": 80.61
+      },
+      {
+        "geonameId": 4970331,
+        "name": "Long Island",
+        "toponymName": "Long Island",
+        "countryCode": "US",
+        "adminName1": "Maine",
+        "adminName2": "Comté de Cumberland",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "43.68425",
+        "longitude": "-70.17116",
+        "population": 210,
+        "score": 80.49
+      },
+      {
+        "geonameId": 4274772,
+        "name": "Long Island",
+        "toponymName": "Long Island",
+        "countryCode": "US",
+        "adminName1": "Kansas",
+        "adminName2": "Comté de Phillips",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "39.94945",
+        "longitude": "-99.53594",
+        "population": 128,
+        "score": 80.17
+      },
+      {
+        "geonameId": 4770569,
+        "name": "Long Island",
+        "toponymName": "Long Island",
+        "countryCode": "US",
+        "adminName1": "Virginie",
+        "adminName2": "Comté de Campbell",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "37.07847",
+        "longitude": "-79.09419",
+        "population": 0,
+        "score": 77.0
+      },
+      {
+        "geonameId": 4073651,
+        "name": "Long Island",
+        "toponymName": "Long Island",
+        "countryCode": "US",
+        "adminName1": "Alabama",
+        "adminName2": "Comté de Jackson",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "34.97369",
+        "longitude": "-85.67108",
+        "population": 0,
+        "score": 77.0
+      }
+    ]
+  }
+]
