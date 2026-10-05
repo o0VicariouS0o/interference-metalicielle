@@ -4209,11 +4209,12 @@
     "longitude": -81.69541,
     "mapX": 27.3068,
     "mapY": 26.9447,
-    "artistCount": 5,
+    "artistCount": 6,
     "artists": [
       "Integrity",
       "Mushroomhead",
       "Nine Inch Nails",
+      "Psywarfare",
       "Ringworm",
       "Screamin' Jay Hawkins"
     ],
@@ -5218,6 +5219,28 @@
     ],
     "status": "matched",
     "confidenceScore": 109.22
+  },
+  {
+    "id": "us-salem-massachusetts",
+    "sourceLabel": "Salem, Massachusetts",
+    "countryCode": "US",
+    "matchedName": "Salem",
+    "toponymName": "Salem",
+    "adminName1": "Massachusetts",
+    "adminName2": "Comté d'Essex",
+    "geonameId": 4950065,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 42.51977,
+    "longitude": -70.89552,
+    "mapX": 30.3068,
+    "mapY": 26.3779,
+    "artistCount": 1,
+    "artists": [
+      "Converge"
+    ],
+    "status": "matched",
+    "confidenceScore": 107.95
   },
   {
     "id": "us-san-diego-californie",

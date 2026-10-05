@@ -82,7 +82,7 @@ async function upsertBatched<T extends object>(
     const slice = rows.slice(i, i + batchSize);
     const { error } = await supabase.from(table).upsert(slice, { onConflict });
     if (error) {
-      throw new Error(`${table} (batch ${i}-${i + slice.length}) : ${error.message}`);
+      throw new Error(`${table} (batch ${i}-${i + slice.length}) : ${error.message}${error.details ? ` — ${error.details}` : ''}`);
     }
   }
 }
@@ -137,6 +137,38 @@ function buildArtistes(rows: Row[], paysCodes: Set<string>): ValidationResult<{
   return { valid, errors, warnings };
 }
 
+function albumKey(artisteId: number, titre: string): string {
+  return JSON.stringify([artisteId, titre.trim().toLowerCase()]);
+}
+
+// Lecture seule, y compris en mode APPLY : détecter les conflits avant tout upsert.
+async function checkAlbumsInDatabase(
+  albums: { id: number; artiste_id: number; titre: string }[],
+): Promise<void> {
+  const existing = new Map<string, number>();
+  const pageSize = 500;
+  for (let offset = 0; ; offset += pageSize) {
+    const { data, error } = await supabase.from('albums')
+      .select('id, artiste_id, titre').order('id', { ascending: true })
+      .range(offset, offset + pageSize - 1);
+    if (error) throw new Error(`Contrôle des albums Supabase impossible : ${error.message}. Aucune écriture effectuée.`);
+    if (!Array.isArray(data)) throw new Error('Réponse albums Supabase invalide. Aucune écriture effectuée.');
+    for (const row of data) existing.set(albumKey(row.artiste_id, row.titre), row.id);
+    if (data.length < pageSize) break;
+  }
+  const conflicts: string[] = [];
+  for (const album of albums) {
+    const databaseId = existing.get(albumKey(album.artiste_id, album.titre));
+    if (databaseId !== undefined && databaseId !== album.id) {
+      conflicts.push(`"${album.titre}" (artiste ${album.artiste_id}) : id Excel ${album.id}, id Supabase ${databaseId}`);
+    }
+  }
+  if (conflicts.length) {
+    throw new Error(`Conflits d'identifiants albums :\n${conflicts.join('\n')}\nCorriger Excel et ses références avant import. Aucune écriture effectuée.`);
+  }
+  log.ok('Albums comparés à Supabase : aucun conflit d’identifiants.');
+}
+
 function buildAlbums(
   rows: Row[],
   artistesIds: Set<number>,
@@ -146,6 +178,7 @@ function buildAlbums(
   const errors: string[] = [];
   const warnings: string[] = [];
   const seen = new Set<number>();
+  const seenAlbums = new Map<string, number>();
 
   for (const [i, r] of rows.entries()) {
     const id    = int(r.id);
@@ -169,6 +202,13 @@ function buildAlbums(
       warnings.push(`album ${id} (${titre}) : année hors plage (${annee}), conservée à NULL`);
     }
 
+    const key = albumKey(artisteId, titre);
+    const previousId = seenAlbums.get(key);
+    if (previousId !== undefined) {
+      errors.push(`album ligne ${i + 2} : "${titre}" (artiste ${artisteId}) existe sous les ids ${previousId} et ${id}. Corriger albums et les album_id de playlist_entries dans Excel.`);
+      continue;
+    }
+    seenAlbums.set(key, id);
     seen.add(id);
     valid.push({
       id, titre, artiste_id: artisteId,
@@ -391,22 +431,8 @@ async function main() {
   log.info(`  pays           : ${paysData.length} entrées`);
   log.info(`  types_emission : ${typesEmissionData.length} entrées`);
 
-  // 3. Upsert des référentiels (apply seulement)
-  if (APPLY) {
-    log.step('3. Upsert référentiels');
-    const a = await supabase.from('pays').upsert(paysData, { onConflict: 'country_code' });
-    if (a.error) { log.err(`pays : ${a.error.message}`); process.exit(1); }
-    log.ok(`pays (${paysData.length})`);
-
-    const b = await supabase.from('types_emission').upsert(typesEmissionData, { onConflict: 'libelle' });
-    if (b.error) { log.err(`types_emission : ${b.error.message}`); process.exit(1); }
-    log.ok(`types_emission (${typesEmissionData.length})`);
-  } else {
-    log.step('3. Upsert référentiels (dry-run, ignoré)');
-  }
-
   // 4. Validation des entités principales
-  log.step('4. Validation');
+  log.step('3. Validation locale');
 
   const paysCodes = new Set(paysData.map(p => p.country_code));
   const typesLib  = new Set(typesEmissionData.map(t => t.libelle));
@@ -437,6 +463,9 @@ async function main() {
     process.exit(1);
   }
 
+  log.step('4. Contrôle des albums existants dans Supabase (lecture seule)');
+  await checkAlbumsInDatabase(albumsV.valid);
+
   // 5. Apply
   if (!APPLY) {
     log.step('5. Dry-run terminé');
@@ -444,7 +473,19 @@ async function main() {
     return;
   }
 
-  log.step('5. Upsert des entités principales');
+  // 3. Upsert des référentiels (apply seulement)
+  if (APPLY) {
+    log.step('5. Upsert référentiels');
+    const a = await supabase.from('pays').upsert(paysData, { onConflict: 'country_code' });
+    if (a.error) { log.err(`pays : ${a.error.message}`); process.exit(1); }
+    log.ok(`pays (${paysData.length})`);
+
+    const b = await supabase.from('types_emission').upsert(typesEmissionData, { onConflict: 'libelle' });
+    if (b.error) { log.err(`types_emission : ${b.error.message}`); process.exit(1); }
+    log.ok(`types_emission (${typesEmissionData.length})`);
+  }
+
+  log.step('6. Upsert des entités principales');
 
   const paysMap = await fetchPaysMap();
   const typesMap = await fetchTypesEmissionMap();
