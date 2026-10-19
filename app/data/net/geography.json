@@ -418,10 +418,11 @@
     "longitude": -123.11934,
     "mapX": 15.8002,
     "mapY": 22.6391,
-    "artistCount": 2,
+    "artistCount": 3,
     "artists": [
       "Devin Townsend",
-      "Devin Townsend Project"
+      "Devin Townsend Project",
+      "Strapping Young Lad"
     ],
     "status": "matched",
     "confidenceScore": 109.73
@@ -3397,6 +3398,28 @@
     "confidenceScore": 100.57
   },
   {
+    "id": "ru-yekaterinburg-sverdlovsk-oblast",
+    "sourceLabel": "Yekaterinburg, Sverdlovsk Oblast",
+    "countryCode": "RU",
+    "matchedName": "Ekaterinbourg",
+    "toponymName": "Yekaterinburg",
+    "adminName1": "Oblast de Sverdlovsk",
+    "adminName2": "",
+    "geonameId": 1486209,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": 56.85733,
+    "longitude": 60.61529,
+    "mapX": 66.8376,
+    "mapY": 18.4126,
+    "artistCount": 1,
+    "artists": [
+      "Slaughter to Prevail"
+    ],
+    "status": "matched",
+    "confidenceScore": 86.26
+  },
+  {
     "id": "se-eskilstuna-sodermanland",
     "sourceLabel": "Eskilstuna, Södermanland",
     "countryCode": "SE",
@@ -4149,6 +4172,28 @@
     "confidenceScore": 95.33
   },
   {
+    "id": "us-centereach-new-york",
+    "sourceLabel": "Centereach, New York",
+    "countryCode": "US",
+    "matchedName": "Centereach",
+    "toponymName": "Centereach",
+    "adminName1": "New York",
+    "adminName2": "Comté de Suffolk",
+    "geonameId": 5112035,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 40.85843,
+    "longitude": -73.09955,
+    "mapX": 29.6946,
+    "mapY": 27.3009,
+    "artistCount": 1,
+    "artists": [
+      "Suffocation"
+    ],
+    "status": "matched",
+    "confidenceScore": 107.75
+  },
+  {
     "id": "us-chicago-illinois",
     "sourceLabel": "Chicago, Illinois",
     "countryCode": "US",
@@ -4258,8 +4303,9 @@
     "longitude": -96.80667,
     "mapX": 23.1093,
     "mapY": 31.7872,
-    "artistCount": 2,
+    "artistCount": 3,
     "artists": [
+      "Devourment",
       "Drowning Pool",
       "Power Trip"
     ],
@@ -4829,6 +4875,28 @@
     "confidenceScore": 108.22
   },
   {
+    "id": "us-morris-plains-new-jersey",
+    "sourceLabel": "Morris Plains, New Jersey",
+    "countryCode": "US",
+    "matchedName": "Morris Plains",
+    "toponymName": "Morris Plains",
+    "adminName1": "New Jersey",
+    "adminName2": "Comté de Morris",
+    "geonameId": 5101417,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 40.82177,
+    "longitude": -74.48099,
+    "mapX": 29.3108,
+    "mapY": 27.3212,
+    "artistCount": 1,
+    "artists": [
+      "The Dillinger Escape Plan"
+    ],
+    "status": "matched",
+    "confidenceScore": 106.61
+  },
+  {
     "id": "us-new-york-etat-de-new-york",
     "sourceLabel": "New York, État de New York",
     "countryCode": "US",
@@ -5056,9 +5124,10 @@
     "longitude": -79.99589,
     "mapX": 27.7789,
     "mapY": 27.533,
-    "artistCount": 1,
+    "artistCount": 2,
     "artists": [
-      "Code Orange"
+      "Code Orange",
+      "Signs of the Swarm"
     ],
     "status": "matched",
     "confidenceScore": 109.23
@@ -5174,6 +5243,28 @@
     ],
     "status": "matched",
     "confidenceScore": 109.03
+  },
+  {
+    "id": "us-rockville-centre-new-york",
+    "sourceLabel": "Rockville Centre, New York",
+    "countryCode": "US",
+    "matchedName": "Rockville Centre",
+    "toponymName": "Rockville Centre",
+    "adminName1": "New York",
+    "adminName2": "Comté de Nassau",
+    "geonameId": 5134203,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 40.65871,
+    "longitude": -73.64124,
+    "mapX": 29.5441,
+    "mapY": 27.4118,
+    "artistCount": 1,
+    "artists": [
+      "Car Bomb"
+    ],
+    "status": "matched",
+    "confidenceScore": 107.58
   },
   {
     "id": "us-sacramento-californie",
@@ -5616,6 +5707,28 @@
     ],
     "status": "matched",
     "confidenceScore": 102.92
+  },
+  {
+    "id": "us-warren-county-new-jersey",
+    "sourceLabel": "Warren County, New Jersey",
+    "countryCode": "US",
+    "matchedName": "Comté de Warren",
+    "toponymName": "Warren County",
+    "adminName1": "New Jersey",
+    "adminName2": "Comté de Warren",
+    "geonameId": 5106044,
+    "featureClass": "A",
+    "featureCode": "ADM2",
+    "latitude": 40.85725,
+    "longitude": -74.99702,
+    "mapX": 29.1675,
+    "mapY": 27.3015,
+    "artistCount": 1,
+    "artists": [
+      "Lorna Shore"
+    ],
+    "status": "matched",
+    "confidenceScore": 94.55
   },
   {
     "id": "us-washington-district-de-columbia",
