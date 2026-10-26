@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import './globals.css';
 
 const siteUrl = 'https://interference-metalicielle.fr';
@@ -98,6 +99,11 @@ export default function RootLayout({
     <html lang="fr">
       <body className="min-h-screen bg-bg text-text">
         {children}
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          strategy="afterInteractive"
+          data-cf-beacon='{"token":"2915059103e44f0d8e4f59a1f97ddab2"}'
+        />
       </body>
     </html>
   );

@@ -43,3 +43,19 @@ next-env.d.ts
 # Données locales d'import
 /data/
 *.xlsx
+
+# Preparations locales des emissions
+/nouvelle-emission-modele/
+/preparations-emissions/
+
+# Archives locales
+/scripts.zip
+
+# Scripts de preparation locaux
+/scripts/completer-emission.mjs
+/scripts/im-completion.mjs
+/scripts/im-lecture-v1.mjs
+/scripts/im-metadonnees.mjs
+/scripts/im-xlsx-patch.mjs
+/scripts/nouvelle-emission-core.mjs
+/scripts/nouvelle-emission.mjs
