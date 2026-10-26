@@ -67,6 +67,28 @@
     "confidenceScore": 111.0
   },
   {
+    "id": "au-perth-australie-occidentale",
+    "sourceLabel": "Perth, Australie-Occidentale",
+    "countryCode": "AU",
+    "matchedName": "Perth",
+    "toponymName": "Perth",
+    "adminName1": "Australie-Occidentale",
+    "adminName2": "cité de Perth",
+    "geonameId": 2063523,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": -31.95224,
+    "longitude": 115.8614,
+    "mapX": 82.1837,
+    "mapY": 67.7512,
+    "artistCount": 1,
+    "artists": [
+      "Karnivool"
+    ],
+    "status": "matched",
+    "confidenceScore": 110.57
+  },
+  {
     "id": "au-sydney",
     "sourceLabel": "Sydney",
     "countryCode": "AU",
@@ -935,10 +957,11 @@
     "longitude": 12.56553,
     "mapX": 53.4904,
     "mapY": 19.0689,
-    "artistCount": 2,
+    "artistCount": 3,
     "artists": [
       "King Diamond",
-      "Myrkur"
+      "Myrkur",
+      "VOLA"
     ],
     "status": "matched",
     "confidenceScore": 101.09
@@ -1002,7 +1025,7 @@
     "longitude": 24.93545,
     "mapX": 56.9265,
     "mapY": 16.5725,
-    "artistCount": 7,
+    "artistCount": 8,
     "artists": [
       "Apocalyptica",
       "Beast in Black",
@@ -1010,6 +1033,7 @@
       "Finntroll",
       "Hanoi Rocks",
       "Stratovarius",
+      "Waltari",
       "Wintersun"
     ],
     "status": "matched",
@@ -2221,10 +2245,11 @@
     "longitude": -2.97794,
     "mapX": 49.1728,
     "mapY": 20.3275,
-    "artistCount": 2,
+    "artistCount": 3,
     "artists": [
       "Anathema",
-      "Carcass"
+      "Carcass",
+      "Loathe"
     ],
     "status": "matched",
     "confidenceScore": 109.54
@@ -3947,6 +3972,28 @@
     "confidenceScore": 109.36
   },
   {
+    "id": "us-baltimore-maryland",
+    "sourceLabel": "Baltimore, Maryland",
+    "countryCode": "US",
+    "matchedName": "Baltimore",
+    "toponymName": "Baltimore",
+    "adminName1": "Maryland",
+    "adminName2": "Ville de Baltimore",
+    "geonameId": 4347778,
+    "featureClass": "P",
+    "featureCode": "PPLA2",
+    "latitude": 39.29038,
+    "longitude": -76.61219,
+    "mapX": 28.7188,
+    "mapY": 28.172,
+    "artistCount": 1,
+    "artists": [
+      "Dog Fashion Disco"
+    ],
+    "status": "matched",
+    "confidenceScore": 109.65
+  },
+  {
     "id": "us-bellevue-washington",
     "sourceLabel": "Bellevue, Washington",
     "countryCode": "US",
@@ -4096,9 +4143,10 @@
     "longitude": -73.94958,
     "mapX": 29.4585,
     "mapY": 27.4166,
-    "artistCount": 2,
+    "artistCount": 3,
     "artists": [
       "Carnivore",
+      "Life of Agony",
       "Merauder"
     ],
     "status": "matched",
@@ -4194,6 +4242,28 @@
     "confidenceScore": 107.75
   },
   {
+    "id": "us-champaign-illinois",
+    "sourceLabel": "Champaign, Illinois",
+    "countryCode": "US",
+    "matchedName": "Champaign",
+    "toponymName": "Champaign",
+    "adminName1": "Illinois",
+    "adminName2": "Comté de Champaign",
+    "geonameId": 4887158,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 40.11642,
+    "longitude": -88.24338,
+    "mapX": 25.4879,
+    "mapY": 27.7131,
+    "artistCount": 1,
+    "artists": [
+      "Hum"
+    ],
+    "status": "matched",
+    "confidenceScore": 108.4
+  },
+  {
     "id": "us-chicago-illinois",
     "sourceLabel": "Chicago, Illinois",
     "countryCode": "US",
@@ -4254,8 +4324,9 @@
     "longitude": -81.69541,
     "mapX": 27.3068,
     "mapY": 26.9447,
-    "artistCount": 6,
+    "artistCount": 7,
     "artists": [
+      "Filter",
       "Integrity",
       "Mushroomhead",
       "Nine Inch Nails",
@@ -4357,6 +4428,28 @@
     "confidenceScore": 109.0
   },
   {
+    "id": "us-el-sobrante-californie",
+    "sourceLabel": "El Sobrante, Californie",
+    "countryCode": "US",
+    "matchedName": "El Sobrante",
+    "toponymName": "El Sobrante",
+    "adminName1": "Californie",
+    "adminName2": "Comté de Contra Costa",
+    "geonameId": 5345888,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 37.97715,
+    "longitude": -122.29525,
+    "mapX": 16.0291,
+    "mapY": 28.9016,
+    "artistCount": 1,
+    "artists": [
+      "Primus"
+    ],
+    "status": "matched",
+    "confidenceScore": 107.15
+  },
+  {
     "id": "us-eureka-californie",
     "sourceLabel": "Eureka, Californie",
     "countryCode": "US",
@@ -4421,6 +4514,28 @@
     ],
     "status": "matched",
     "confidenceScore": 100.0
+  },
+  {
+    "id": "us-grayslake-illinois",
+    "sourceLabel": "Grayslake, Illinois",
+    "countryCode": "US",
+    "matchedName": "Grayslake",
+    "toponymName": "Grayslake",
+    "adminName1": "Illinois",
+    "adminName2": "Comté de Lake",
+    "geonameId": 4894465,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 42.34447,
+    "longitude": -88.04175,
+    "mapX": 25.544,
+    "mapY": 26.4753,
+    "artistCount": 1,
+    "artists": [
+      "Chevelle"
+    ],
+    "status": "matched",
+    "confidenceScore": 107.48
   },
   {
     "id": "us-greenville-caroline-du-sud",
@@ -4667,6 +4782,28 @@
     "confidenceScore": 109.52
   },
   {
+    "id": "us-katy-texas",
+    "sourceLabel": "Katy, Texas",
+    "countryCode": "US",
+    "matchedName": "Katy",
+    "toponymName": "Katy",
+    "adminName1": "Texas",
+    "adminName2": "Comté de Harris",
+    "geonameId": 4702732,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 29.78579,
+    "longitude": -95.8244,
+    "mapX": 23.3821,
+    "mapY": 33.4523,
+    "artistCount": 1,
+    "artists": [
+      "King's X"
+    ],
+    "status": "matched",
+    "confidenceScore": 107.31
+  },
+  {
     "id": "us-knoxville-tennessee",
     "sourceLabel": "Knoxville, Tennessee",
     "countryCode": "US",
@@ -4875,6 +5012,28 @@
     "confidenceScore": 108.22
   },
   {
+    "id": "us-montesano-washington",
+    "sourceLabel": "Montesano, Washington",
+    "countryCode": "US",
+    "matchedName": "Montesano",
+    "toponymName": "Montesano",
+    "adminName1": "Washington",
+    "adminName2": "Comté de Grays Harbor",
+    "geonameId": 5803818,
+    "featureClass": "P",
+    "featureCode": "PPLA2",
+    "latitude": 46.98121,
+    "longitude": -123.60266,
+    "mapX": 15.6659,
+    "mapY": 23.8993,
+    "artistCount": 1,
+    "artists": [
+      "Melvins"
+    ],
+    "status": "matched",
+    "confidenceScore": 106.39
+  },
+  {
     "id": "us-morris-plains-new-jersey",
     "sourceLabel": "Morris Plains, New Jersey",
     "countryCode": "US",
@@ -4930,6 +5089,30 @@
     ],
     "status": "matched",
     "confidenceScore": 100.0
+  },
+  {
+    "id": "us-new-york-new-york",
+    "sourceLabel": "New York, New York",
+    "countryCode": "US",
+    "matchedName": "New York",
+    "toponymName": "New York City",
+    "adminName1": "New York",
+    "adminName2": "",
+    "geonameId": 5128581,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 40.71427,
+    "longitude": -74.00597,
+    "mapX": 29.4428,
+    "mapY": 27.381,
+    "artistCount": 3,
+    "artists": [
+      "Helmet",
+      "Living Colour",
+      "Prong"
+    ],
+    "status": "matched",
+    "confidenceScore": 111.0
   },
   {
     "id": "us-newton-massachusetts",
@@ -5374,13 +5557,14 @@
     "longitude": -122.41942,
     "mapX": 15.9946,
     "mapY": 29.0139,
-    "artistCount": 8,
+    "artistCount": 9,
     "artists": [
       "Blue Cheer",
       "Dead Kennedys",
       "Deafheaven",
       "Faith No More",
       "Faith No More & Boo-Yaa T.R.I.B.E.",
+      "Fantômas",
       "King Woman",
       "Possessed",
       "Vain"
@@ -5494,8 +5678,9 @@
     "longitude": -122.33207,
     "mapX": 16.0189,
     "mapY": 23.5521,
-    "artistCount": 6,
+    "artistCount": 7,
     "artists": [
+      "Alice in Chains",
       "Bell Witch",
       "Jimi Hendrix",
       "Saint Vitus",

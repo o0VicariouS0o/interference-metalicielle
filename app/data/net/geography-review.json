@@ -1,5 +1,88 @@
 [
   {
+    "id": "us-germantown-maryland",
+    "sourceLabel": "Germantown, Maryland",
+    "countryCode": "US",
+    "artistCount": 1,
+    "artists": [
+      "Clutch"
+    ],
+    "status": "review",
+    "reason": "Correspondance à vérifier : meilleur score 108.4, écart 7.4.",
+    "candidates": [
+      {
+        "geonameId": 4356050,
+        "name": "Germantown",
+        "toponymName": "Germantown",
+        "countryCode": "US",
+        "adminName1": "Maryland",
+        "adminName2": "Comté de Montgomery",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "39.17316",
+        "longitude": "-77.27165",
+        "population": 86395,
+        "score": 108.4
+      },
+      {
+        "geonameId": 4356049,
+        "name": "Germantown",
+        "toponymName": "Germantown",
+        "countryCode": "US",
+        "adminName1": "Maryland",
+        "adminName2": "Comté de Baltimore",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "39.41677",
+        "longitude": "-76.45857",
+        "population": 0,
+        "score": 101.0
+      },
+      {
+        "geonameId": 4356051,
+        "name": "Germantown",
+        "toponymName": "Germantown",
+        "countryCode": "US",
+        "adminName1": "Maryland",
+        "adminName2": "Comté de Worcester",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "38.30845",
+        "longitude": "-75.20963",
+        "population": 0,
+        "score": 101.0
+      },
+      {
+        "geonameId": 4356048,
+        "name": "Germantown",
+        "toponymName": "Germantown",
+        "countryCode": "US",
+        "adminName1": "Maryland",
+        "adminName2": "Comté d'Anne Arundel",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "38.89261",
+        "longitude": "-76.52301",
+        "population": 0,
+        "score": 101.0
+      },
+      {
+        "geonameId": 4624601,
+        "name": "Germantown",
+        "toponymName": "Germantown",
+        "countryCode": "US",
+        "adminName1": "Tennessee",
+        "adminName2": "Comté de Shelby",
+        "featureClass": "P",
+        "featureCode": "PPL",
+        "latitude": "35.08676",
+        "longitude": "-89.81009",
+        "population": 39240,
+        "score": 83.89
+      }
+    ]
+  },
+  {
     "id": "us-irvington-new-jersey",
     "sourceLabel": "Irvington, New Jersey",
     "countryCode": "US",
