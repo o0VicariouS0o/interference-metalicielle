@@ -1,5 +1,49 @@
 [
   {
+    "id": "ao-benguela",
+    "sourceLabel": "Benguela",
+    "countryCode": "AO",
+    "matchedName": "Benguela",
+    "toponymName": "Benguela",
+    "adminName1": "Benguela",
+    "adminName2": "",
+    "geonameId": 3351663,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": -12.57674,
+    "longitude": 13.40268,
+    "mapX": 53.723,
+    "mapY": 56.9871,
+    "artistCount": 1,
+    "artists": [
+      "Dor Fantasma"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.62
+  },
+  {
+    "id": "ao-lobito-benguela",
+    "sourceLabel": "Lobito, Benguela",
+    "countryCode": "AO",
+    "matchedName": "Lobito",
+    "toponymName": "Lobito",
+    "adminName1": "Benguela",
+    "adminName2": "",
+    "geonameId": 3347939,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": -12.3644,
+    "longitude": 13.53601,
+    "mapX": 53.76,
+    "mapY": 56.8691,
+    "artistCount": 1,
+    "artists": [
+      "Before Crush"
+    ],
+    "status": "matched",
+    "confidenceScore": 109.39
+  },
+  {
     "id": "au-brisbane-queensland",
     "sourceLabel": "Brisbane, Queensland",
     "countryCode": "AU",
@@ -268,6 +312,74 @@
     ],
     "status": "matched",
     "confidenceScore": 102.0
+  },
+  {
+    "id": "bw-francistown",
+    "sourceLabel": "Francistown",
+    "countryCode": "BW",
+    "matchedName": "Francistown",
+    "toponymName": "Francistown",
+    "adminName1": "City of Francistown",
+    "adminName2": "",
+    "geonameId": 933778,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": -21.17,
+    "longitude": 27.50778,
+    "mapX": 57.641,
+    "mapY": 61.7611,
+    "artistCount": 1,
+    "artists": [
+      "Metal Orizon"
+    ],
+    "status": "matched",
+    "confidenceScore": 99.52
+  },
+  {
+    "id": "bw-gaborone",
+    "sourceLabel": "Gaborone",
+    "countryCode": "BW",
+    "matchedName": "Gaborone",
+    "toponymName": "Gaborone",
+    "adminName1": "Gaborone",
+    "adminName2": "",
+    "geonameId": 933773,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": -24.65451,
+    "longitude": 25.90859,
+    "mapX": 57.1968,
+    "mapY": 63.6969,
+    "artistCount": 3,
+    "artists": [
+      "Crackdust",
+      "Skinflint",
+      "Wrust"
+    ],
+    "status": "matched",
+    "confidenceScore": 100.09
+  },
+  {
+    "id": "bw-ghanzi",
+    "sourceLabel": "Ghanzi",
+    "countryCode": "BW",
+    "matchedName": "Ghanzi",
+    "toponymName": "Ghanzi",
+    "adminName1": "Ghanzi",
+    "adminName2": "",
+    "geonameId": 933759,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": -21.69785,
+    "longitude": 21.64581,
+    "mapX": 56.0127,
+    "mapY": 62.0544,
+    "artistCount": 1,
+    "artists": [
+      "Overthrust"
+    ],
+    "status": "matched",
+    "confidenceScore": 98.42
   },
   {
     "id": "ca-ajax-ontario",
@@ -965,6 +1077,50 @@
     ],
     "status": "matched",
     "confidenceScore": 101.09
+  },
+  {
+    "id": "dz-alger",
+    "sourceLabel": "Alger",
+    "countryCode": "DZ",
+    "matchedName": "Alger",
+    "toponymName": "Algiers",
+    "adminName1": "Alger",
+    "adminName2": "",
+    "geonameId": 2507480,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": 36.73225,
+    "longitude": 3.08746,
+    "mapX": 50.8576,
+    "mapY": 29.5932,
+    "artistCount": 1,
+    "artists": [
+      "Lelahell"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.56
+  },
+  {
+    "id": "eg-le-caire",
+    "sourceLabel": "Le Caire",
+    "countryCode": "EG",
+    "matchedName": "Le Caire",
+    "toponymName": "Cairo",
+    "adminName1": "Le Caire",
+    "adminName2": "",
+    "geonameId": 360630,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": 30.06263,
+    "longitude": 31.24967,
+    "mapX": 58.6805,
+    "mapY": 33.2985,
+    "artistCount": 1,
+    "artists": [
+      "Crescent"
+    ],
+    "status": "matched",
+    "confidenceScore": 102.0
   },
   {
     "id": "es-oviedo-asturies",
@@ -3039,6 +3195,54 @@
     "confidenceScore": 102.0
   },
   {
+    "id": "ke-nairobi",
+    "sourceLabel": "Nairobi",
+    "countryCode": "KE",
+    "matchedName": "Nairobi",
+    "toponymName": "Nairobi",
+    "adminName1": "Nairobi",
+    "adminName2": "",
+    "geonameId": 184745,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": -1.28333,
+    "longitude": 36.81667,
+    "mapX": 60.2269,
+    "mapY": 50.713,
+    "artistCount": 3,
+    "artists": [
+      "Chovu",
+      "Duma",
+      "Last Year's Tragedy"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.96
+  },
+  {
+    "id": "mg-antananarivo",
+    "sourceLabel": "Antananarivo",
+    "countryCode": "MG",
+    "matchedName": "Tananarive",
+    "toponymName": "Antananarivo",
+    "adminName1": "Analamanga",
+    "adminName2": "",
+    "geonameId": 1070940,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": -18.91368,
+    "longitude": 47.53613,
+    "mapX": 63.2045,
+    "mapY": 60.5076,
+    "artistCount": 3,
+    "artists": [
+      "Kazar",
+      "LohArano",
+      "The Dizzy Brains"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.2
+  },
+  {
     "id": "mn-oulan-bator",
     "sourceLabel": "Oulan-Bator",
     "countryCode": "MN",
@@ -3059,6 +3263,29 @@
     ],
     "status": "matched",
     "confidenceScore": 100.89
+  },
+  {
+    "id": "mz-maputo",
+    "sourceLabel": "Maputo",
+    "countryCode": "MZ",
+    "matchedName": "Maputo",
+    "toponymName": "Maputo",
+    "adminName1": "Maputo City",
+    "adminName2": "",
+    "geonameId": 1040652,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": -25.96553,
+    "longitude": 32.58322,
+    "mapX": 59.0509,
+    "mapY": 64.4253,
+    "artistCount": 2,
+    "artists": [
+      "Darkest Place",
+      "SarcotrofiA"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.15
   },
   {
     "id": "nl-oss-brabant-septentrional",
@@ -3680,6 +3907,50 @@
     "confidenceScore": 84.87
   },
   {
+    "id": "tg-lome",
+    "sourceLabel": "Lomé",
+    "countryCode": "TG",
+    "matchedName": "Lomé",
+    "toponymName": "Lomé",
+    "adminName1": "Région maritime",
+    "adminName2": "",
+    "geonameId": 2365267,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": 6.12874,
+    "longitude": 1.22154,
+    "mapX": 50.3393,
+    "mapY": 46.5951,
+    "artistCount": 1,
+    "artists": [
+      "Arka'n Asrafokor"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.51
+  },
+  {
+    "id": "tn-carthage",
+    "sourceLabel": "Carthage",
+    "countryCode": "TN",
+    "matchedName": "Carthage",
+    "toponymName": "Carthage",
+    "adminName1": "Tunis",
+    "adminName2": "Délégation de Carthage",
+    "geonameId": 2468245,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": 36.86108,
+    "longitude": 10.33161,
+    "mapX": 52.8699,
+    "mapY": 29.5216,
+    "artistCount": 1,
+    "artists": [
+      "Carthagods"
+    ],
+    "status": "matched",
+    "confidenceScore": 98.58
+  },
+  {
     "id": "tn-tunis",
     "sourceLabel": "Tunis",
     "countryCode": "TN",
@@ -3744,6 +4015,28 @@
     ],
     "status": "matched",
     "confidenceScore": 100.93
+  },
+  {
+    "id": "ug-kampala",
+    "sourceLabel": "Kampala",
+    "countryCode": "UG",
+    "matchedName": "Kampala",
+    "toponymName": "Kampala",
+    "adminName1": "Centre",
+    "adminName2": "Kampala",
+    "geonameId": 232422,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": 0.31628,
+    "longitude": 32.58219,
+    "mapX": 59.0506,
+    "mapY": 49.8243,
+    "artistCount": 1,
+    "artists": [
+      "Vale of Amonition"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.34
   },
   {
     "id": "us-agoura-hills-californie",
@@ -5982,5 +6275,94 @@
     ],
     "status": "matched",
     "confidenceScore": 107.93
+  },
+  {
+    "id": "za-durban-kwazulu-natal",
+    "sourceLabel": "Durban, KwaZulu-Natal",
+    "countryCode": "ZA",
+    "matchedName": "Durban",
+    "toponymName": "Durban",
+    "adminName1": "KwaZulu-Natal",
+    "adminName2": "eThekwini",
+    "geonameId": 1007311,
+    "featureClass": "P",
+    "featureCode": "PPLA2",
+    "latitude": -29.8579,
+    "longitude": 31.0292,
+    "mapX": 58.6192,
+    "mapY": 66.5877,
+    "artistCount": 1,
+    "artists": [
+      "Vulvodynia"
+    ],
+    "status": "matched",
+    "confidenceScore": 110.79
+  },
+  {
+    "id": "za-le-cap-cap-occidental",
+    "sourceLabel": "Le Cap, Cap-Occidental",
+    "countryCode": "ZA",
+    "matchedName": "Le Cap",
+    "toponymName": "Cape Town",
+    "adminName1": "Cap-Occidental",
+    "adminName2": "Le Cap",
+    "geonameId": 3369157,
+    "featureClass": "P",
+    "featureCode": "PPLA",
+    "latitude": -33.92584,
+    "longitude": 18.42322,
+    "mapX": 55.1176,
+    "mapY": 68.8477,
+    "artistCount": 1,
+    "artists": [
+      "Voice of Destruction"
+    ],
+    "status": "matched",
+    "confidenceScore": 111.0
+  },
+  {
+    "id": "za-soweto-gauteng",
+    "sourceLabel": "Soweto, Gauteng",
+    "countryCode": "ZA",
+    "matchedName": "Soweto",
+    "toponymName": "Soweto",
+    "adminName1": "Gauteng",
+    "adminName2": "Municipalité de Johannesbourg",
+    "geonameId": 953781,
+    "featureClass": "P",
+    "featureCode": "PPL",
+    "latitude": -26.26781,
+    "longitude": 27.85849,
+    "mapX": 57.7385,
+    "mapY": 64.5932,
+    "artistCount": 1,
+    "artists": [
+      "Demogoroth Satanum"
+    ],
+    "status": "matched",
+    "confidenceScore": 110.34
+  },
+  {
+    "id": "zw-harare",
+    "sourceLabel": "Harare",
+    "countryCode": "ZW",
+    "matchedName": "Harare",
+    "toponymName": "Harare",
+    "adminName1": "Harare",
+    "adminName2": "",
+    "geonameId": 890299,
+    "featureClass": "P",
+    "featureCode": "PPLC",
+    "latitude": -17.82772,
+    "longitude": 31.05337,
+    "mapX": 58.6259,
+    "mapY": 59.9043,
+    "artistCount": 2,
+    "artists": [
+      "Chikwata.263",
+      "Dividing the Element"
+    ],
+    "status": "matched",
+    "confidenceScore": 101.28
   }
 ]

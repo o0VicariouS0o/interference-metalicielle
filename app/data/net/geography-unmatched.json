@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "eg-le-caire-gizeh",
+    "sourceLabel": "Le Caire / Gizeh",
+    "countryCode": "EG",
+    "artistCount": 1,
+    "artists": [
+      "Scarab"
+    ],
+    "status": "unmatched",
+    "reason": "Aucun résultat GeoNames."
+  }
+]
